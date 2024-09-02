@@ -1,0 +1,30 @@
+@use "../../../styles/_fonts.scss" as f;
+@use "../../../styles/_reset.scss";
+@use "../../../styles/_variables.scss" as v;
+
+.navbar {
+  background-color: v.$color-white;
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar-item {
+  font-family: v.$font-cinzel;
+  font-size:  f.$font-size-h3;
+  font-weight: bold;  
+  color: v.$color-black;
+}
+
+.categories-button {
+  background-color: v.$color-light-grey;
+  color: v.$color-yellow; 
+  border: none;
+  padding: 0.1rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+// }
+}

@@ -1,3 +1,18 @@
+# Installation du projet
+
+1. Installer les dépendances
+Installez toutes les dépendances nécessaires au projet. Ces dépendances sont listées dans le fichier package.json.
+```
+npm install
+```
+
+2. Lancer le serveur de développement
+Pour démarrer le serveur de développement et voir votre projet en action :
+```
+npm run dev
+```
+Cela ouvrira votre application dans le navigateur par défaut à l'adresse http://localhost:3000/.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

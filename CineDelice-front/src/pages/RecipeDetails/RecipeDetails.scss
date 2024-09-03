@@ -2,10 +2,9 @@
 @use '../../styles/reset';
 @use '../../styles/_fonts' as f;
 
-ul {
+.ingredient-list {
     display: flex;
     flex-direction: column;
-    ;
 }
 
 .description {

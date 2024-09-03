@@ -1,0 +1,8 @@
+@use '../../styles/_variables' as v;
+@use '../../styles/reset';
+@use '../../styles/_fonts' as f;
+
+ul {
+    display: flex;
+    flex-direction: column;
+}

@@ -10,6 +10,7 @@ import About from '../pages/About/About';
 import Contact from '../pages/Contact/Contact';
 import Signin from '../pages/Sign_in/Sign_in';
 import Signup from '../pages/Sign up/Sign_up';
+import RecipeDetails from '../pages/RecipeDetails/RecipeDetails';
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         {
           path: '/Recipes',
           element: < Recipes />,
+        },
+        {
+          path: '/Recipes/:RecipeId',
+          element: < RecipeDetails />,
         },
         {
           path: '/LegalNotice',

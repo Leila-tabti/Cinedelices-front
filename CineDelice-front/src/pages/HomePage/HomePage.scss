@@ -1,0 +1,62 @@
+@use "../../styles/_fonts" as f;
+@use "../../styles/_reset";
+@use "../../styles/_variables" as v;
+
+.homepage {
+    background-color: v.$color-white;
+}
+
+
+.landing_page {
+    background-color: v.$color-light-yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+    
+.image_container {
+        max-width: 100%;
+        img {
+            width: 100%;
+            height: auto;
+        }
+}
+
+.slogan {
+    height: 40rem;
+    margin-top: 2rem;
+    margin: 0.5rem;
+    
+        h1 {
+            font-size: f.$font-size-h1;
+            color: v.$color-grey;
+            margin-bottom: 2rem;
+            font-family: f.$font-cinzel;
+        }
+
+        h2 {
+            font-size: f.$font-size-h3;
+            color: v.$color-grey;
+            font-family: f.$font-cinzel;
+            margin-bottom: 2rem;
+            margin: 2rem;
+        }
+}
+
+.subscribe_button {
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+        background-color: v.$color-light-grey;
+        border: none;
+        padding: 0.1rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+}
+      
+.subscribe_button a {
+        color: v.$color-yellow; 
+        text-transform: uppercase;
+        font-size: f.$font-size-h2;
+        text-decoration: none;
+}

@@ -4,6 +4,7 @@
 
 .navbar {
   background-color: v.$color-white;
+  margin-bottom: 1.5rem;
 }
 
 .navbar-list {
@@ -32,6 +33,6 @@ li a {
   color: v.$color-black;
 }
 
-.categories-button a{
+.categories-button a {
   color: v.$color-yellow; 
 }

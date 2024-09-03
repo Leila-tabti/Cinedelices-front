@@ -1,10 +1,10 @@
 import React from 'react';
-import ratatouille from '../../assets/Pictures/ratatouille.png';
-import seigneur from '../../assets/Pictures/seigneur.png';
-import hp from '../../assets/Pictures/harrypotter.png';
-import starwars from '../../assets/Pictures/starwars.png';
-import got from '../../assets/Pictures/got.png';
-import onepiece from '../../assets/Pictures/onepiece.png';
+import ratatouille from '../../assets/Pictures/MoviesSeries/ratatouille.png';
+import seigneur from '../../assets/Pictures/MoviesSeries/seigneur.png';
+import hp from '../../assets/Pictures//MoviesSeries/harrypotter.png';
+import starwars from '../../assets/Pictures/MoviesSeries/starwars.png';
+import got from '../../assets/Pictures/MoviesSeries/got.png';
+import onepiece from '../../assets/Pictures//MoviesSeries/onepiece.png';
 import './MoviesSeries.scss';
 export default function MoviesSeries () {
     

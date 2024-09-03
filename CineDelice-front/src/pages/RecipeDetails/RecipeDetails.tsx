@@ -37,7 +37,7 @@ export default function RecipeDetails () {
                     <li>Sel et poivre</li>
                 </ul>
                 </div>
-                <div className='second-container'>
+            <div className='second-container'>
                     <h3>instructions</h3>
                     <p>
                     Faites fondre le beurre avec l'huile d'olive dans une grande casserole à feu moyen. Ajoutez les oignons émincés et faites-les revenir doucement jusqu'à ce qu'ils soient caramélisés et dorés (environ 20-25 minutes). <br />
@@ -48,7 +48,7 @@ export default function RecipeDetails () {
                     Faites gratiner sous le gril du four jusqu'à ce que le fromage soit doré et bouillonnant.
 
                     </p>   
-                </div>      
+            </div>      
             
         </div>
     )

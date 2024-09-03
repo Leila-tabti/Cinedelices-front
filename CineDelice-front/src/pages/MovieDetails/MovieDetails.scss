@@ -1,0 +1,57 @@
+@use '../../styles/_variables' as v;
+@use '../../styles/reset';
+@use '../../styles/_fonts' as f;
+
+.container {
+    padding: 1rem;
+}
+
+img {
+    display: block;
+    margin: auto;
+    padding: 1rem;
+}
+
+.informations {
+    flex-direction: column;
+    display: block;
+    justify-content: left;
+    line-height: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+.synopsis {
+    font-size: f.$font-size-p;
+    padding: 1rem;
+}
+
+.genres {
+    font-size: 1.3rem; 
+    font-weight: bold;
+}
+
+.second-container {
+    background-color: v.$color-yellow;
+    border-radius: 0.5rem;
+    h2 {
+        padding: 1rem;
+    }
+    ul {
+        flex-direction: column;
+    }
+}
+
+h2 {
+    font-size: f.$font-size-h2;
+    padding: 1rem;
+}
+
+.otherRecipes {
+    font-size: 1.2rem;
+    padding-top: 1rem;
+}
+
+h3 {
+    font-size: f.$font-size-h3;
+    padding: 1rem;
+}

@@ -10,7 +10,7 @@ import About from '../pages/About/About';
 import Contact from '../pages/Contact/Contact';
 import Signin from '../pages/Sign_in/Sign_in';
 import Signup from '../pages/Sign up/Sign_up';
-
+import MovieDetails from '../pages/MovieDetails/MovieDetails';
 
 const router = createBrowserRouter([
     {
@@ -23,6 +23,10 @@ const router = createBrowserRouter([
         {
           path: '/MoviesSeries',
           element: <MoviesSeries />,
+        },
+        {
+          path: '/MoviesSeries/:MovieSerieId',
+          element: <MovieDetails />,
         },
         {
           path: '/Recipes',

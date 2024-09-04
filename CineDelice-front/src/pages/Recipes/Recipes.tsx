@@ -7,6 +7,7 @@ import painlembas from '../../assets/Pictures/Recipes/painlembas.png';
 import soupechampignon from '../../assets/Pictures/Recipes/soupechampignon.png';
 import tarteetoiles from '../../assets/Pictures/Recipes/tarteetoiles.png';
 import './Recipes.scss';
+import { NavLink } from 'react-router-dom';
 
 export default function Recipes () {
     return (
@@ -14,7 +15,11 @@ export default function Recipes () {
             <h1>Recettes</h1>
             <div className="cards-container">
                 <div className="card">
-                    <img src={chiliHeinsenberg} alt="image chili Heinsenberg" />
+                <NavLink to='/'>Accueil</NavLink> 
+                <NavLink to='/Recipes/:RecipeId'>
+                <img src={chiliHeinsenberg} alt="image chili Heinsenberg"/>
+                </NavLink>
+                
                     <h2>Chili Heinsenberg</h2>
                     <h3>Breaking Bad</h3>
                 </div>

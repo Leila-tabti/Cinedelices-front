@@ -1,0 +1,63 @@
+@use '../../styles/_variables' as v;
+@use '../../styles/reset';
+@use '../../styles/_fonts' as f;
+
+
+.ingredient-list {
+    flex-direction: column;
+    display: block;
+    justify-content: left;
+    padding-bottom: 1rem;
+}
+
+.description {
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 1rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.second-container {
+    background-color: v.$color-yellow;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    h2 {
+        padding-bottom: 1rem;
+    }
+    img {
+        display: block;
+        justify-content: center;
+        margin: auto;
+    }
+    p {
+        line-height: 1.7rem;
+    }
+}
+
+
+
+.inspiredBy {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+h2 {
+    font-size: f.$font-size-h2;
+    padding: 1rem;
+}
+
+.otherRecipes {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border: solid 2px v.$color-red;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+h3 {
+    font-size: f.$font-size-h3;
+    padding: 1rem;
+}
+

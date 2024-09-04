@@ -23,11 +23,6 @@
   input, button, textarea, select {
     font: inherit;
   }
-
-  button {
-    margin: auto;
-    display: block;
-  }
   
   h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
@@ -37,6 +32,12 @@
 
   input, button, a {
     font: inherit;
+    outline: none;
+  }
+
+  button {
+    display: block;
+    margin: 0 auto;
   }
 
   p {

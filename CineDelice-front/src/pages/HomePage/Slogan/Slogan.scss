@@ -3,15 +3,19 @@
 @use "../../../styles/variables" as v;
 
 .slogan {
-    height: 40rem;
+    height: 30rem;
+    width: 100%;
     margin-top: 2rem;
     margin: 0.5rem;
+    box-sizing: border-box;
+    padding: 1rem;
     
         h1 {
-            font-size: f.$font-size-h1;
+            font-size: f.$font-size-h2;
             color: v.$color-grey;
-            margin-bottom: 2rem;
             font-family: f.$font-cinzel;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
 
         h2 {
@@ -20,6 +24,13 @@
             font-family: f.$font-cinzel;
             margin-bottom: 2rem;
             margin: 2rem;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        button {
+            margin: 0 auto;
+            display: block;
         }
 }
 

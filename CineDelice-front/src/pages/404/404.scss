@@ -1,0 +1,34 @@
+@use '../../styles/_variables' as v;
+@use '../../styles/reset';
+@use '../../styles/_fonts' as f;
+
+.error-page-text {
+    font-family: f.$font-cinzel;
+    margin: auto;
+    width: 70%;
+    text-align: center;
+}
+
+.error-page-text p {
+    font-size: f.$font-size-p;
+    color: v.$color-black;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+.error-button {
+    background-color: v.$color-light-grey;
+    border: none;
+    padding: 0.1rem 1rem;
+    border-radius: 20px;
+    font-family: v.$font-cinzel;
+    font-size:  f.$font-size-h3;
+    font-weight: bold; 
+    margin-bottom: 10px;
+} 
+
+
+.error-button a {
+    text-decoration: none;
+}

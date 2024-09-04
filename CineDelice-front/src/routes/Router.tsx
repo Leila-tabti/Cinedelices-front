@@ -12,6 +12,7 @@ import SignIn from '../pages/SignIn/SignIn';
 import SignUp from '../pages/SignUp/SignUp';
 
 import MovieDetails from '../pages/MovieDetails/MovieDetails';
+import Page404 from '../pages/404/404';
 
 import RecipeDetails from '../pages/RecipeDetails/RecipeDetails';
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         {
           path: '/',
           element: <HomePage />,
+        },
+        {
+          path: '/404',
+          element: <Page404/>,
         },
         {
           path: '/MoviesSeries',

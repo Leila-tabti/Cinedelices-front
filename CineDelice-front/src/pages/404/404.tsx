@@ -1,6 +1,6 @@
 import React from 'react';
 import chefImage from '../../assets/Pictures/404/ChefImage.png';
-import './404.scss';
+import '../404/404.scss';
 export default function Page404 () {
     
     return (
@@ -11,7 +11,7 @@ export default function Page404 () {
           <p>
             La recette que vous cherchez a peut-être été coupée au montage ou n'existe pas. Revenez à la cuisine et trouvez d'autres délices à savourer !
           </p>
-          <button className="categories-button"><a href="">Retour à la cuisine</a></button>
+          <button className="error-button"><a href="">Retour à la cuisine</a></button>
           </div>
         </div>
       );

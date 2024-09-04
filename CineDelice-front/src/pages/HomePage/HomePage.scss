@@ -1,0 +1,29 @@
+@use "../../styles/_fonts" as f;
+@use "../../styles/_reset";
+@use "../../styles/_variables" as v;
+
+.homepage {
+    background-color: v.$color-white;
+}
+
+
+.landing_page {
+    background-color: v.$color-light-yellow;
+    height: 100%; 
+    width: 100%;
+}
+    
+.image_container {
+        max-width: 100%;
+        img {
+            width: 100%;
+            height: auto;
+        }
+}
+
+
+
+  
+  
+  
+  

@@ -14,7 +14,7 @@
 }
 
 .navbar-item {
-  font-family: v.$font-cinzel;
+  font-family: f.$font-cinzel;
   font-size:  f.$font-size-h3;
   font-weight: bold;  
   color: v.$color-black;
@@ -25,7 +25,6 @@
   border: none;
   padding: 0.1rem 1rem;
   border-radius: 20px;
-// }
 }
 
 li a {

@@ -4,7 +4,7 @@ import './SignUp.scss';
 export default function SignUp() {
     return (
         <>
-            <h1>Bienvenue sur la page d'Inscription !</h1>
+            <h1>Envie de vous inscrire ?</h1>
 
             <form className="form-wrapper">
                 <label className="label">

@@ -8,17 +8,10 @@ import LegalNotice from '../pages/LegalNotice/LegalNotice';
 import Profil from '../pages/Profil/Profil';
 import About from '../pages/About/About';
 import Contact from '../pages/Contact/Contact';
-
 import SignIn from '../pages/SignIn/SignIn';
 import SignUp from '../pages/SignUp/SignUp';
-
-<<<<<<< HEAD
 import MovieDetails from '../pages/MovieDetails/MovieDetails';
 import Page404 from '../pages/404/404';
-=======
->>>>>>> 2581366f0c8b53de4e83e1a2b02f3fa5da96ddca
-
-import MovieDetails from '../pages/MovieDetails/MovieDetails';
 import RecipeDetails from '../pages/RecipeDetails/RecipeDetails';
 
 

@@ -15,7 +15,9 @@ export default function Profil() {
             <p className="info"><FaShieldAlt  /> Rôle</p>
             <p className="info"><FaEnvelope /> email@example.com</p>
         </div>
-        
+        <div>
+            <button className="btn-record">Enregistrer</button>
+        </div>
         </div>
       </div>
     );

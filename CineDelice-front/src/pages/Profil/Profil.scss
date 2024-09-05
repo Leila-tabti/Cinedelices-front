@@ -1,0 +1,66 @@
+@use '../../styles/_variables' as v;
+@use '../../styles/reset';
+@use '../../styles/_fonts' as f;
+
+.profil {
+    display: flex;
+    flex-direction: column;
+    
+}
+.avatar img {
+    height: 19rem;
+    border-radius: 2.5rem;
+    width: 19rem;
+}
+
+.title {
+    font-family: f.$font-cinzel;
+    font-size: f.$font-size-h1;
+    color: v.$color-black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.background-profil {
+    background-color: #f2cf82;
+    border-radius: 2.5rem;
+    width: 22rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding: 2rem;
+}
+
+.pseudo {
+    font-family: f.$font-cinzel;
+    font-size: f.$font-size-h3;
+    color: v.$color-black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    margin-bottom: 2rem;
+}
+
+.info {
+    font-family: f.$font-cinzel;
+    font-size: f.$font-size-p;
+    color: v.$color-black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-left: 3rem;
+    padding-right: 5rem;
+    margin-bottom: 6rem; 
+    margin-top: 2rem;
+}

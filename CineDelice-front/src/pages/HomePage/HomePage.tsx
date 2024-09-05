@@ -7,7 +7,7 @@ import LastRecipes from '../HomePage/LastRecipes/LastRecipes';
 export default function HomePage() {
 
     return (
-        <>
+        <main>
             <section className="landing_page">
                 {/* Slides*/}
 
@@ -17,6 +17,6 @@ export default function HomePage() {
             </section>
 
                 <LastRecipes />
-        </>
+        </main>
     );
 }

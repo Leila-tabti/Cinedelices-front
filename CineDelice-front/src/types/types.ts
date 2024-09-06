@@ -55,7 +55,7 @@ export interface ILoggedUser {
 
 export type IRootContext = {
     recipes: IRecipe[];
-    setArticles: React.Dispatch<React.SetStateAction<IRecipe[]>>;
-    user: ILoggedUser | null;
-    setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>;
+    setRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>;
+   // user: ILoggedUser | null;
+   // setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import './SignIn.scss';
+import './Login.scss';
 
-export default function SignIn() {
+export default function Login() {
     return (
         <>
             <h1>Vous souhaitez vous connectez ?</h1>

@@ -1,10 +1,12 @@
-/* Slider.scss */
+@use "../../../styles/fonts" as f;
+@use "../../../styles/reset";
+@use "../../../styles/variables" as v;
 
 .slick-slider {
     position: relative;
     margin: 0 auto;
     padding: 0 0; 
-    max-width: 100%; 
+    width: 100%; 
   }
   
   .slick-list {
@@ -34,7 +36,7 @@
     transform: translateY(-50%);
     width: 40px;
     height: 40px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(138, 14, 14, 0.5);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -75,7 +77,7 @@
   
   .slick-dots li button {
     border: none;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(138, 14, 14, 0.5);
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -83,6 +85,6 @@
   }
   
   .slick-dots li.slick-active button {
-    background-color: white;
+    background-color: v.$color-grey;
   }
   

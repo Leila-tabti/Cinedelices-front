@@ -12,6 +12,7 @@ interface RecipeProps {
 
 export default function Recipes () {
 
+
     
    const { recipes } = useRootContext();
 
@@ -20,12 +21,12 @@ export default function Recipes () {
             <h1>Recettes</h1>
             <div className="cards-container">
                 {recipes.map((recipe) => (
-                    <div className="card">
-                <NavLink to='/Recipes/:RecipeId'>
+                    <div key={recipe.id} className="card">
+                <NavLink to= {`Recipes/${recipe.id}`}>
                 <img src={chiliHeinsenberg} alt="image chili Heinsenberg"/>
                 </NavLink>
                 
-                    <h2>{recipe.name}</h2>
+                    <h3>{recipe.name}</h3>
                     <h3>{recipe.recipeCategory.name}</h3>
                 </div>
                 ))}

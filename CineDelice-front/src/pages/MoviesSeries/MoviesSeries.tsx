@@ -1,41 +1,29 @@
 import React from 'react';
-import ratatouille from '../../assets/Pictures/MoviesSeries/ratatouille.png';
 import seigneur from '../../assets/Pictures/MoviesSeries/seigneur.png';
-import hp from '../../assets/Pictures//MoviesSeries/harrypotter.png';
-import starwars from '../../assets/Pictures/MoviesSeries/starwars.png';
-import got from '../../assets/Pictures/MoviesSeries/got.png';
-import onepiece from '../../assets/Pictures//MoviesSeries/onepiece.png';
+import { useRootContext } from '../../routes/Root';
+import { IMovieSerie } from '../../types/types';
+
 import './MoviesSeries.scss';
+
+interface MovieSerieProps {
+    movieSerie: IMovieSerie[]
+}
 export default function MoviesSeries () {
+
+    const { moviesSeries } = useRootContext();
     
     return (
         <div className="container">
             <h1>Films & Séries</h1>
             <div className="cards-container">
-                <div className="card">
+                {moviesSeries.map((movieSerie) => (
+                   <div key={movieSerie.id} className="card">
+                    
                     <img src={seigneur} alt="image_seigneur des anneaux" />
-                    <h2>Seigneur des Anneaux</h2>
-                </div>
-                <div className="card">
-                    <img src={hp} alt="image_harry_potter" />
-                    <h2>Harry Potter</h2>
-                </div>
-                <div className="card">
-                    <img src={ratatouille} alt="image_ratatouille" />
-                    <h2>Ratatouille</h2>
-                </div>
-                <div className="card">
-                    <img src={starwars} alt="image_starwars" />
-                    <h2>Star wars</h2>
-                </div>
-                <div className="card">
-                    <img src={got} alt="image_got" />
-                    <h2>Game of throne</h2>
-                </div>
-                <div className="card">
-                    <img src={onepiece} alt="image_one_piece" />
-                    <h2>One piece</h2>
-                </div>
+                    <h3>{movieSerie.name}</h3>
+                </div> 
+                ))}
+                
             </div>
         </div>
 )

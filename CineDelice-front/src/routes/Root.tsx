@@ -4,7 +4,7 @@ import NavBar from '../components/App/Navbar/Navbar';
 import Footer from '../components/App/Footer/Footer';
 import Header from '../components/App/Header/Header';
 import { Outlet, useOutletContext } from 'react-router-dom';
-import { IRecipe, IRootContext, ILoggedUser } from '../types/types';
+import { IRecipe, IMovieSerie, IRootContext, ILoggedUser } from '../types/types';
 
 // je défini un décorateur pour mon useOutletContext
 export function useRootContext() {
@@ -14,7 +14,9 @@ export function useRootContext() {
 export default function Root() {
 
     const [recipes, setRecipes] = useState<IRecipe[]>([]);
-
+    const [recipe, setRecipe] = useState<IRecipe[]>([]);
+    const [moviesSeries, setMoviesSeries] = useState<IMovieSerie[]>([]);
+    
     useEffect(() => {
         const fetchRecipes = async () => {
             const response = await fetch('http://localhost:3000/recipes');
@@ -22,6 +24,19 @@ export default function Root() {
             setRecipes(newRecipes);
         };
         fetchRecipes();
+
+        const fetchRecipeDetails = async () => {
+            const response = await fetch('http://localhost:3000/recipes/:id');
+            const newRecipe: IRecipe[] = await response.json();
+            setRecipe(newRecipeDetails);
+        }
+
+        const fetchMoviesSeries = async () => {
+            const response = await fetch('http://localhost:3000/moviesSeries');
+            const newMoviesSeries: IMovieSerie[] = await response.json();
+            setMoviesSeries(newMoviesSeries);
+        };
+        fetchMoviesSeries();
     }, []);
         
 
@@ -29,7 +44,7 @@ export default function Root() {
       <>
             <Header />
             <NavBar />
-            <Outlet context= {{recipes, setRecipes} satisfies IRootContext} />
+            <Outlet context= {{recipes, setRecipes, recipe, setRecipe, moviesSeries, setMoviesSeries} satisfies IRootContext} />
             <Footer />
      </>
     );

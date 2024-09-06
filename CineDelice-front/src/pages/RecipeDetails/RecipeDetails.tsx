@@ -3,13 +3,25 @@ import ratatouille from '../../assets/Pictures/Recipes/ratatouille.jpg';
 import ratatouilleMovie from '../../assets/Pictures/MoviesSeries/ratatouille.png';
 import './RecipeDetails.scss';
 import { RiH3 } from 'react-icons/ri';
+import { IRecipe } from '../../types/types';
+import {useParams, useOutletContext} from 'react-router-dom';
+
 
 export default function RecipeDetails () {
+
+    const {recipeId} = useParams();
+
+    const { recipes }: {recipes: IRecipe[]} = useOutletContext();
+
+    const recipeFound = recipes.find((recipe) => recipe.id === recipeId);
+
+    if(recipeFound) {
+
     return(
         <div className='container'>
-            <h1>Ratatouille</h1>
+            <h1>{recipe.name}</h1>
             <p className='description'>
-            Le plat principal inspiré du film, qui est la quintessence de la cuisine provençale avec des légumes frais et savoureux.
+            {recipe.description}
             </p>
             <div className='second-container'>
                 <img src={ratatouille} alt="image ratatouille" />
@@ -51,5 +63,5 @@ export default function RecipeDetails () {
             </div>      
             
         </div>
-    )
+    )}
 }

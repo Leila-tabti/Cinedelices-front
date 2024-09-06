@@ -9,7 +9,7 @@ export interface IUser {
     password: string;
     avatar: string;
     role: string;
-}
+};
 
 export interface IMovieSerie {
     id: number;
@@ -20,12 +20,12 @@ export interface IMovieSerie {
     releaseDate: string;
     picture: string;
     category: IMovieCategory;
-}
+};
 
 export interface IRecipeCategory {
     id: number;
     name: string;
-}
+};
 
 export interface IRecipe {
     id: number;
@@ -38,12 +38,24 @@ export interface IRecipe {
     category: IRecipeCategory;
     movieSerie: IMovieSerie;
     user: IUser;
-}
+};
 
 export interface IIngredient {
     id: number;
     name: string;
     picture: string;
+};
+
+export interface ILoggedUser {
+    userId: number;
+    userName: string;
+    userMail: string;
+    accessToken: `${string}.${string}.${string}`; // on précise le format (jwt)
+  }
+
+export type IRootContext = {
+    recipes: IRecipe[];
+    setArticles: React.Dispatch<React.SetStateAction<IRecipe[]>>;
+    user: ILoggedUser | null;
+    setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>;
 }
-
-

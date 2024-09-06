@@ -22,17 +22,14 @@ export default function Recipes () {
             <div className="cards-container">
                 {recipes.map((recipe) => (
                     <div key={recipe.id} className="card">
-                <NavLink to= {`Recipes/${recipe.id}`}>
+                <NavLink to= {`${recipe.id}`}>
                 <img src={chiliHeinsenberg} alt="image chili Heinsenberg"/>
                 </NavLink>
                 
                     <h3>{recipe.name}</h3>
                     <h3>{recipe.recipeCategory.name}</h3>
                 </div>
-                ))}
-                
-               
-                
+                ))}               
             </div>
         </div>
     )

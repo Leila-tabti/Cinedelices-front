@@ -1,10 +1,10 @@
-import {React, useState, useEffect, createContext} from 'react';
-import MoviesSeries from '../pages/MoviesSeries/MoviesSeries';
+import { React, useState, useEffect, createContext } from 'react';
 import NavBar from '../components/App/Navbar/Navbar';
 import Footer from '../components/App/Footer/Footer';
 import Header from '../components/App/Header/Header';
-import { Outlet, useOutletContext } from 'react-router-dom';
+import { Outlet, useOutletContext, useNavigate } from 'react-router-dom'; // Ajout de useNavigate pour rediriger si besoin
 import { IUser } from '../types/types';
+import { IRootContext } from '../types/types';
 
 
 export function useRootContext() {
@@ -13,29 +13,52 @@ export function useRootContext() {
 
 export default function Root() {
 
-    const [users, setUsers] = useState<IUser[] | null>(null);
+    const [user, setUser] = useState<IUser | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchUsers = async () => {
+        const fetchUser = async () => {
             const stockedUser = localStorage.getItem('user');
-            if(stockedUser) {
-                setUser(JSON.parse(stockedUser));
+            const token = localStorage.getItem('token'); // Récupérer le token ici
+
+            if (stockedUser) {
+                setUser(JSON.parse(stockedUser)); // Récupérer l'utilisateur depuis le stockage local si présent
             }
 
-            const response = await fetch('http://localhost:3000/user');
-            const data = await response.json();
-            const newUser: IUser[] = data.user;
-            setUsers(newUser);
+            // Si le token est manquant, l'utilisateur n'est pas authentifié
+            if (!token) {
+                console.log("Pas de token trouvé, redirection vers la page de login");
+                navigate("/login"); // Rediriger vers la page de login si pas de token
+                return;
+            }
+
+            // Faire une requête pour récupérer les infos utilisateur avec le token
+            const response = await fetch('http://localhost:3000/user', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`, // Envoi du token dans le header
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.status === 401) {
+                console.log("Token invalide, redirection vers la page de login");
+                navigate("/login"); // Rediriger si le token est invalide
+            } else {
+                const data = await response.json();
+                setUser(data.user); // Mettre à jour l'état utilisateur avec les données du backend
+            }
         }
-        fetchUsers();
-    }, []);
+
+        fetchUser();
+    }, [navigate]);
+
     return (
         <>
             <Header />
             <NavBar />
-            <Outlet context = {{users, setUsers}}/>
+            <Outlet context={{ user, setUser }} />
             <Footer />
         </>
     );
 }
-

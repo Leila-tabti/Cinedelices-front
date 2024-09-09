@@ -1,73 +1,99 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
+import { useRootContext } from '../../routes/Root';
+import { ILoggedUser } from '../../types/types';
+import { Navigate } from 'react-router-dom';
 import './Login.scss';
-import {IUser} from '../../types/types';
-import {Navigate, redirect} from 'react-router-dom';
 
 export default function Login() {
-    // State pour stocker les données du formulaire de connexion
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-    const {user, setUser} = useRootContext();
+  const { user, setUser } = useRootContext();
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const response = await fetch('http://localhost:3000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({email, password}),
-        });
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-        const data = await response.json();
-        if(data.logged) {
-            const newUser: IUser = {
-                userId: data.userId,
-                userMail: data.userMail,
-                accessToken: data.token
-            };
-            setUser(newUser);
+    // Validation des champs
+    if (!email || !password) {
+      setErrorMessage('Veuillez remplir tous les champs.');
+      return;
+    }
 
-            localStorage.setItem('user', JSON.stringify(newUser));
+    try {
+      const response = await fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erreur serveur');
+      }
+
+      const data = await response.json();
+
+      if (data.logged) {
+        const loggedUser: ILoggedUser = {
+          userId: data.userId,
+          userName: data.userName,
+          userMail: data.userMail,
+          accessToken: data.token,
         };
 
-        if(user) {
-            return <Navigate to ="/" replace />;
-        }
+        setUser(loggedUser);
+        localStorage.setItem('user', JSON.stringify(loggedUser));
+      } else {
+        setErrorMessage('Identifiants incorrects.');
+      }
+    } catch (error) {
+      setErrorMessage('Une erreur est survenue lors de la connexion.');
     }
-    return (
-        <>
-            <h1>Vous souhaitez vous connecter ?</h1>
+  };
 
-            <form onSubmit={(e) => handleSubmit(e) }className="form-wrapper">
-                <label className="label">
-                    <h2>Pseudo ou Email</h2>
-                    <span className="subtext">Renseignez votre pseudo ou email :</span>
-                    <input 
-                        type="text" 
-                        id="email"
-                        name="email"
- 
-                        className="input"
-                        value={email} // Associer la valeur du champ au state
-                        onChange={(e) => setEmail(e.target.value)} // Appeler handleInputChange quand l'utilisateur tape
-                    />
-                </label>
-                <label className="label">
-                    <h2>Mot de passe</h2>
-                    <span className="subtext">Saisissez votre mot de passe :</span>
-                    <input 
-                        type="password" 
-                        id="password"
-                        name="password" 
-                        
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </label>
-                <button type="submit" className="submit-button">Se connecter</button>
-            </form>
-        </>
-    );
-}
+  // Redirection si l'utilisateur est déjà connecté
+  if (user) {
+    return <Navigate to="/" replace />;
+  }
+
+  return (
+
+        <div>
+          <h2>Se connecter au site</h2>
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+          <form className="form-wrapper" onSubmit={handleSubmit}>
+            <fieldset>
+              <legend>Informations de connexion</legend>
+      
+              <div className="input-group">
+                <label htmlFor="email">Votre email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+      
+              <div className="input-group">
+                <label htmlFor="password">Votre mot de passe</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+      
+              <button type="submit">Se connecter</button>
+            </fieldset>
+          </form>
+        </div>
+      );
+    }

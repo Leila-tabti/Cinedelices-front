@@ -1,39 +1,43 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Register.scss';
 
 export default function Register() {
-    // State pour stocker les données du formulaire
     const [formData, setFormData] = useState({
         username: '',
         email: '',
         password: '',
         confirmPassword: '',
     });
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
-    // Fonction pour mettre à jour les données du formulaire
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value, // Met à jour la valeur en fonction du nom du champ
+            [e.target.name]: e.target.value,
         });
     };
 
-    // Fonction qui gère la soumission du formulaire
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault(); // Empêche le rechargement de la page
+        e.preventDefault();
 
-        // Validation basique des mots de passe avant d'envoyer les données au backend
+        // Validation des champs
+        if (!formData.username || !formData.email || !formData.password || !formData.confirmPassword) {
+            setErrorMessage("Tous les champs doivent être remplis.");
+            return;
+        }
+
         if (formData.password !== formData.confirmPassword) {
-            alert("Le mot de passe ne correspond pas.");
+            setErrorMessage("Le mot de passe et la confirmation doivent correspondre.");
             return;
         }
 
         try {
-            // Envoi des données d'inscription au backend via une requête POST
-            const response = await fetch("/register", {
-                method: "POST",
+            const response = await fetch('http://localhost:3000/register', {
+                method: 'POST',
                 headers: {
-                    "Content-Type": "application/json",
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     username: formData.username,
@@ -42,71 +46,81 @@ export default function Register() {
                 }),
             });
 
-            const data = await response.json(); // On récupère la réponse JSON
-
-            if (response.ok) {
-                alert("Inscription réussie ! Bienvenue " + data.username);
-                // Redirection ou autres actions après l'inscription réussie
-            } else {
-                alert("Erreur lors de l'inscription : " + data.message);
+            if (!response.ok) {
+                const data = await response.json();
+                setErrorMessage(`Erreur lors de l'inscription : ${data.message}`);
+                return;
             }
+
+            const data = await response.json();
+            alert(`Inscription réussie ! Bienvenue ${data.username}`);
+            navigate('/login');
         } catch (error) {
-            console.error("Erreur serveur :", error);
-            alert("Erreur serveur...");
+            setErrorMessage('Une erreur est survenue. Veuillez réessayer.');
         }
     };
 
     return (
-        <>
-            <h1>Envie de vous inscrire ?</h1>
-
-            <form className="form-wrapper" onSubmit={handleSubmit}>
-                <label className="label">
-                    <h2>Pseudo</h2>
-                    <span className="subtext">Choisissez votre pseudo :</span>
-                    <input 
-                        type="text" 
-                        name="username" 
-                        className="input"
-                        value={formData.username} // Associer la valeur du champ au state
-                        onChange={handleInputChange} // Appeler handleInputChange quand l'utilisateur tape
-                    />
-                </label>
-                <label className="label">
-                    <h2>Email</h2>
-                    <span className="subtext">Renseignez votre email :</span>
-                    <input 
-                        type="email" 
-                        name="email" 
-                        className="input"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <label className="label">
-                    <h2>Mot de passe</h2>
-                    <span className="subtext">Choisissez votre mot de passe :</span>
-                    <input 
-                        type="password" 
-                        name="password" 
-                        className="input"
-                        value={formData.password}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <label className="label">
-                    <h2>Confirmez votre mot de passe</h2>
-                    <span className="subtext">Confirmez votre mot de passe :</span>
-                    <input 
-                        type="password" 
-                        name="confirmPassword" 
-                        className="input"
-                        value={formData.confirmPassword}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <button type="submit" className="submit-button">S'inscrire</button>
-            </form>
-        </>
-    );
-}
+        
+        <div>
+          <h2>Créer un compte</h2>
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+          <form className="form-wrapper" onSubmit={handleSubmit}>
+            <fieldset>
+              <legend>Informations d'inscription</legend>
+      
+              <div className="input-group">
+                <label htmlFor="username">Pseudo</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+      
+              <div className="input-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+      
+              <div className="input-group">
+                <label htmlFor="password">Mot de passe</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+      
+              <div className="input-group">
+                <label htmlFor="confirmPassword">Confirmez votre mot de passe</label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+      
+              <button type="submit">S'inscrire</button>
+            </fieldset>
+          </form>
+        </div>
+      );
+    }
+      

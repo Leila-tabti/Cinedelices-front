@@ -27,9 +27,9 @@ h1 {
     margin: auto;
     min-height: 100vh;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     margin-top: 2rem;
+    height: 100%;
     
 }
 
@@ -47,8 +47,6 @@ h1 {
 .card img {
     width: 100%;
     border-radius: 20px;
-    
-    
 }
 
 .card::after {
@@ -66,7 +64,11 @@ h1 {
     background-color: transparent;
 }
 
-h2 {
-    margin-top: 0.5rem;
-    font-size: f.$font-size-h3;
+.card h2 {
+     font-size: f.$font-size-h3;
+
+}
+
+@media (min-width: 1020px) {
+
 }

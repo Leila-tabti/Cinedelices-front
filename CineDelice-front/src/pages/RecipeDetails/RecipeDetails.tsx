@@ -3,18 +3,21 @@ import ratatouille from '../../assets/Pictures/Recipes/ratatouille.jpg';
 import ratatouilleMovie from '../../assets/Pictures/MoviesSeries/ratatouille.png';
 import './RecipeDetails.scss';
 import { IRecipe } from '../../types/types';
-import {useParams, useOutletContext} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Page404 from '../404/404';
+import { useRootContext } from '../../routes/Root';
+
 
 
 
 export default function RecipeDetails () {
 
-    const {recipeId} = useParams();
+    const {RecipeId} = useParams();
+    console.log(RecipeId);
 
-    const { recipes }: { recipes: IRecipe[]} = useOutletContext();
+    const { recipes }: { recipes: IRecipe[]} = useRootContext();
 
-    const recipeFound = recipes.find((recipe) => recipe.id === recipeId);
+    const recipeFound = recipes.find((recipe) => recipe.id === RecipeId);
 
     if(recipeFound) {
 
@@ -65,5 +68,5 @@ export default function RecipeDetails () {
             
         </div>
     )}
-    return Page404()
+    return Page404();
 }

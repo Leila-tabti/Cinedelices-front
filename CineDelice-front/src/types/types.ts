@@ -16,10 +16,11 @@ export interface IMovieSerie {
     name: string;
     synopsis: string;
     director: string;
-    actors: string;
-    releaseDate: string;
+    actor: string;
+    release_date: string;
     picture: string;
     category: IMovieCategory;
+    recipes: IRecipe[];
 };
 
 export interface IRecipeCategory {
@@ -45,6 +46,7 @@ export interface IIngredient {
     id: number;
     name: string;
     picture: string;
+    quantity: string;
 };
 
 export interface ILoggedUser {

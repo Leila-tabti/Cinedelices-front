@@ -17,9 +17,7 @@ export default function RecipeDetails () {
 
     const { recipes }: { recipes: IRecipe[]} = useRootContext();
 
-    const recipeIdNumber = parseInt(RecipeId || '', 10);
-
-    const recipeFound = recipes.find((recipe) => recipe.id === recipeIdNumber);
+    const recipeFound = recipes.find((recipe) => recipe.id ===  parseInt(RecipeId));
 
     if(recipeFound) {
 
@@ -45,7 +43,7 @@ export default function RecipeDetails () {
                 <ul className='ingredient-list'>
                    {recipeFound.ingredient.map((ingredient) => {
                     return (
-                        <li key={ingredient.id}>{ingredient.name}</li>
+                        <li key={ingredient.id}>{ingredient.name} : {ingredient.RecipeHasIngredient.quantity}</li>
                     )
                     
                    })}
@@ -60,5 +58,8 @@ export default function RecipeDetails () {
             
         </div>
     )}
-    
+
+    else {
+        return <Page404 />
+    }
 }

@@ -45,7 +45,7 @@ export default function Root() {
       <>
             <Header />
             <NavBar />
-            <Outlet context= {{recipes, setRecipes, moviesSeries, setMoviesSeries} satisfies IRootContext} />
+            <Outlet context= {{recipes, setRecipes, moviesSeries, setMoviesSeries}} />
             <Footer />
      </>
     );

@@ -38,7 +38,7 @@ export interface IRecipe {
     category: IRecipeCategory;
     movieSerie: IMovieSerie;
     user: IUser;
-    ingredient: IIngredient;
+    ingredient: IIngredient[];
 };
 
 export interface IIngredient {

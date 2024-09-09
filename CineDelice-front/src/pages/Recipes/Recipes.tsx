@@ -19,9 +19,10 @@ export default function Recipes () {
                 <div key={recipe.id} className="card">
                 <NavLink to={`/Recipes/${recipe.id}`}>
                 <img src={chiliHeinsenberg} alt="image chili Heinsenberg"/>
+                    <h3>{recipe.name}</h3>
+               
                 </NavLink>
                 
-                    <h3>{recipe.name}</h3>
                 </div>
                 ))}               
             </div>

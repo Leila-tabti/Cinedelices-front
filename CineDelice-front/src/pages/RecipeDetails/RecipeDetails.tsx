@@ -2,16 +2,17 @@ import React from 'react';
 import ratatouille from '../../assets/Pictures/Recipes/ratatouille.jpg';
 import ratatouilleMovie from '../../assets/Pictures/MoviesSeries/ratatouille.png';
 import './RecipeDetails.scss';
-import { RiH3 } from 'react-icons/ri';
 import { IRecipe } from '../../types/types';
 import {useParams, useOutletContext} from 'react-router-dom';
+import Page404 from '../404/404';
+
 
 
 export default function RecipeDetails () {
 
     const {recipeId} = useParams();
 
-    const { recipes }: {recipes: IRecipe[]} = useOutletContext();
+    const { recipes }: { recipes: IRecipe[]} = useOutletContext();
 
     const recipeFound = recipes.find((recipe) => recipe.id === recipeId);
 
@@ -19,9 +20,9 @@ export default function RecipeDetails () {
 
     return(
         <div className='container'>
-            <h1>{recipe.name}</h1>
+            <h1>{recipeFound.name}</h1>
             <p className='description'>
-            {recipe.description}
+            {recipeFound.description}
             </p>
             <div className='second-container'>
                 <img src={ratatouille} alt="image ratatouille" />
@@ -64,4 +65,5 @@ export default function RecipeDetails () {
             
         </div>
     )}
+    return Page404()
 }

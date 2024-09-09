@@ -3,7 +3,7 @@ export interface IMovieCategory {
 }
 
 export interface IUser {
-    id: number;
+    id: number | string;
     email: string;
     pseudo: string;
     password: string;
@@ -12,7 +12,7 @@ export interface IUser {
 };
 
 export interface IMovieSerie {
-    id: number;
+    id: string |number;
     name: string;
     synopsis: string;
     director: string;
@@ -28,7 +28,7 @@ export interface IRecipeCategory {
 };
 
 export interface IRecipe {
-    id: number;
+    id: number | string;
     name: string;
     description: string;
     picture: string;
@@ -38,6 +38,7 @@ export interface IRecipe {
     category: IRecipeCategory;
     movieSerie: IMovieSerie;
     user: IUser;
+    ingredient: IIngredient;
 };
 
 export interface IIngredient {

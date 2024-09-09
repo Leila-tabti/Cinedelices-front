@@ -6,13 +6,8 @@ import './Recipes.scss';
 import { NavLink } from 'react-router-dom';
 
 
-interface RecipeProps {
-    recipe: IRecipe;
-}
 
 export default function Recipes () {
-
-
     
    const { recipes } = useRootContext();
 
@@ -22,7 +17,7 @@ export default function Recipes () {
             <div className="cards-container">
                 {recipes.map((recipe) => (
                     <div key={recipe.id} className="card">
-                <NavLink to= {`${recipe.id}`}>
+                <NavLink to={`/Recipes/${recipe.id}`}>
                 <img src={chiliHeinsenberg} alt="image chili Heinsenberg"/>
                 </NavLink>
                 

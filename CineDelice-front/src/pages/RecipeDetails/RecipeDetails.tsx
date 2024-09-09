@@ -2,7 +2,7 @@ import React from 'react';
 import ratatouille from '../../assets/Pictures/Recipes/ratatouille.jpg';
 import ratatouilleMovie from '../../assets/Pictures/MoviesSeries/ratatouille.png';
 import './RecipeDetails.scss';
-import { IRecipe, IIngredient  } from '../../types/types';
+import { IRecipe } from '../../types/types';
 import { useParams } from 'react-router-dom';
 import Page404 from '../404/404';
 import { useRootContext } from '../../routes/Root';

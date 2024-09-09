@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, FormEvent} from 'react';
 import './Login.scss';
-import {IUser} from '../../types/types';
+import IUser from '../../types/types';
 import {Navigate, redirect} from 'react-router-dom';
-
+import { useRootContext } from '../../routes/Root';
 export default function Login() {
     // State pour stocker les données du formulaire de connexion
     const [email, setEmail] = useState('');
@@ -23,8 +23,8 @@ export default function Login() {
         const data = await response.json();
         if(data.logged) {
             const newUser: IUser = {
-                userId: data.userId,
-                userMail: data.userMail,
+                id: data.userId,
+                email: data.userMail,
                 accessToken: data.token
             };
             setUser(newUser);

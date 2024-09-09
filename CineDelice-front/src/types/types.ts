@@ -1,7 +1,6 @@
-export default interface IUser {
-    id: number;
-    email: string;
-    password: string;
+export default interface ILoggedUser {
+    userId: number;
+    userEmail: string;
     accessToken : `${string}.${string}.${string}`;
 
 }

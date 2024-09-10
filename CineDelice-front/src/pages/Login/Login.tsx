@@ -1,6 +1,6 @@
 import React, { useState, FormEvent} from 'react';
 import './Login.scss';
-import IUser from '../../types/types';
+import ILoggedUser from '../../types/types';
 import {Navigate, redirect} from 'react-router-dom';
 import { useRootContext } from '../../routes/Root';
 export default function Login() {
@@ -22,9 +22,9 @@ export default function Login() {
 
         const data = await response.json();
         if(data.logged) {
-            const newUser: IUser = {
-                id: data.userId,
-                email: data.userMail,
+            const newUser: ILoggedUser = {
+                userId: data.userId,
+                userEmail: data.userMail,
                 accessToken: data.token
             };
             setUser(newUser);

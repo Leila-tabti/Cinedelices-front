@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import './Register.scss';
 
 export default function Register() {
     const [formData, setFormData] = useState({
-        username: '',
+        pseudo: '',
         email: '',
         password: '',
         confirmPassword: '',
     });
     const [errorMessage, setErrorMessage] = useState('');
+    const [isRegistered, setIsRegistered] = useState(false);
     const navigate = useNavigate();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +24,7 @@ export default function Register() {
         e.preventDefault();
 
         // Validation des champs
-        if (!formData.username || !formData.email || !formData.password || !formData.confirmPassword) {
+        if (!formData.pseudo || !formData.email || !formData.password || !formData.confirmPassword) {
             setErrorMessage("Tous les champs doivent être remplis.");
             return;
         }
@@ -40,26 +41,29 @@ export default function Register() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    username: formData.username,
+                    pseudo: formData.pseudo,
                     email: formData.email,
                     password: formData.password,
+                    confirmPassword: formData.confirmPassword,
                 }),
             });
+            const data = await response.json();
 
             if (!response.ok) {
-                const data = await response.json();
                 setErrorMessage(`Erreur lors de l'inscription : ${data.message}`);
                 return;
             }
 
-            const data = await response.json();
-            alert(`Inscription réussie ! Bienvenue ${data.username}`);
+            alert(`Inscription réussie ! Bienvenue ${data.pseudo}`);
             navigate('/login');
+
         } catch (error) {
             setErrorMessage('Une erreur est survenue. Veuillez réessayer.');
         }
     };
-
+    if(isRegistered) {
+      return <Navigate to ="/" replace />;
+  }
     return (
         
         <div>
@@ -70,12 +74,12 @@ export default function Register() {
               <legend>Informations d'inscription</legend>
       
               <div className="input-group">
-                <label htmlFor="username">Pseudo</label>
+                <label htmlFor="pseudo">Pseudo</label>
                 <input
                   type="text"
-                  id="username"
-                  name="username"
-                  value={formData.username}
+                  id="pseudo"
+                  name="pseudo"
+                  value={formData.pseudo}
                   onChange={handleInputChange}
                   required
                 />

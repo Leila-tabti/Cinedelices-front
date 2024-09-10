@@ -22,10 +22,7 @@ const HeaderAuth = () => {
         <FaHamburger className="icon-burger" />
       </button>
 
-      {/* Navbar visible uniquement sur les grands écrans */}
-      <nav className="navbar modal-menu">
-        <Navbar />
-      </nav>
+      
 
       {/* La modale s'affiche uniquement si isModalOpen est true */}
       <ModalMenu isOpen={isModalOpen} onClose={handleCloseModal} />

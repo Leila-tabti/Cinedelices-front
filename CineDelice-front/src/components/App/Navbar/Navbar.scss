@@ -10,9 +10,10 @@
 .navbar-list {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: center;
   margin: 0;
   padding: 0 1rem 1rem 0;
+  display: none;
 }
 
 .navbar-item {
@@ -36,4 +37,9 @@ li a {
 
 .categories-button a {
   color: v.$color-yellow; 
+}
+
+.modal-content .navbar-list {
+   display: flex;
+   flex-direction: column;
 }

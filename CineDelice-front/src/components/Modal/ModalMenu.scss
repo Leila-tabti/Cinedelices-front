@@ -13,14 +13,15 @@
   
   .modal-content {
     background: #fff;
-    padding: 1rem;
     border-radius: 20px;
-    width: 50%;
+    width: 40%;
     height: 50%;
     max-width: 80%;
     position: fixed;
-    top: 1.5rem;
-    right: 1.5em;
+    top: 1rem;
+    right: 1em;
+    margin: 0;
+    padding: 0;
   }
   
   .modal-close {
@@ -33,11 +34,6 @@
     cursor: pointer;
   }
   
-  .modal-menu {
-    display: flex;
-    flex-direction: column;
-  }
-
   // Modale d'affichage de la Navbar
 .modal-content .navbar-list {
   display: flex;

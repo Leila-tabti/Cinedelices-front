@@ -1,0 +1,34 @@
+@use "../../../styles/_fonts.scss" as f;
+@use "../../../styles/_reset.scss";
+@use "../../../styles/_variables.scss" as v;
+
+// Header authentication
+.header-auth {
+    display: flex;
+    align-items: center;
+}
+
+.auth-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.auth-item a {
+    color: v.$color-yellow;
+}
+
+.auth-item {
+  font-family: v.$font-cinzel;
+  font-size: f.$font-size-h3;
+  font-weight: bold;  
+  color: v.$color-yellow;
+  text-transform: uppercase;
+  margin-left: 1rem;
+}
+
+.auth-item:first-child {
+  margin-left: 0; /* Pour éviter un espace sur le premier élément */
+}

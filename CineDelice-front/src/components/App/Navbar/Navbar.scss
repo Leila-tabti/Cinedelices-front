@@ -4,7 +4,6 @@
 
 .navbar {
   background-color: v.$color-white;
-  margin-bottom: 1.5rem;
 }
 
 .navbar-list {
@@ -39,7 +38,5 @@ li a {
   color: v.$color-yellow; 
 }
 
-.modal-content .navbar-list {
-   display: flex;
-   flex-direction: column;
-}
+
+

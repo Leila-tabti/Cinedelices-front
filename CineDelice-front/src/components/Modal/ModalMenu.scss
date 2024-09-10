@@ -18,7 +18,9 @@
     width: 50%;
     height: 50%;
     max-width: 80%;
-    position: relative;
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5em;
   }
   
   .modal-close {
@@ -34,6 +36,21 @@
   .modal-menu {
     display: flex;
     flex-direction: column;
-    display: contents;
   }
+
+  // Modale d'affichage de la Navbar
+.modal-content .navbar-list {
+  display: flex;
+  flex-direction: column;
+}
+
+// Styles pour mobile first (petits écrans) - Menu burger visible, Navbar cachée
+
+// Media query pour les grands écrans (par exemple, à partir de 768px)
+@media (min-width: 768px) {
+
+ .modal-overlay {
+   display: none; /* Cache la modale */
+ }
+}
   

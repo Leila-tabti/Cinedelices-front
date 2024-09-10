@@ -1,6 +1,8 @@
 import React from 'react';
 import './ModalMenu.scss';
 import Navbar from '../App/Navbar/Navbar';
+import { FaTimes } from 'react-icons/fa'; // Importer l'icône
+
 
 
 const ModalMenu = ({ isOpen, onClose }) => {
@@ -10,7 +12,7 @@ const ModalMenu = ({ isOpen, onClose }) => {
     <div className="modal-overlay">
       <div className="modal-content">
         {/* Bouton pour fermer la modale */}
-        <button className="modal-close" onClick={onClose}>X</button>
+        <button className="modal-close" onClick={onClose}><FaTimes></FaTimes></button>
         
         {/* Navbar à l'intérieur de la modale */}
         <nav className="navbar modal-navbar modal-menu">

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { React, useState, useEffect, createContext } from 'react';
 import NavBar from '../components/App/Navbar/Navbar';
 import Footer from '../components/App/Footer/Footer';
@@ -5,6 +6,14 @@ import Header from '../components/App/Header/Header';
 import { Outlet, useOutletContext, useNavigate } from 'react-router-dom'; // Ajout de useNavigate pour rediriger si besoin
 import { IUser } from '../types/types';
 import { IRootContext } from '../types/types';
+=======
+import {React} from 'react';
+import NavBar from '../components/App/Navbar/Navbar';
+import Footer from '../components/App/Footer/Footer';
+import Header from '../components/App/Header/Header';
+import { Outlet, useOutletContext } from 'react-router-dom';
+import  ILoggedUser  from '../types/types';
+>>>>>>> 6092a04e511540a30147a789018300bfaa4c83b7
 
 
 
@@ -60,10 +69,14 @@ export default function Root() {
             <Header />
             <NavBar />
 <<<<<<< HEAD
+<<<<<<< HEAD
             <Outlet context={{ user, setUser }} />
 =======
             <Outlet />
 >>>>>>> 63198687fb16fecf1e99902d4acea4cc19c6c0fb
+=======
+            <Outlet context={useOutletContext<ILoggedUser>()} />
+>>>>>>> 6092a04e511540a30147a789018300bfaa4c83b7
             <Footer />
         </>
     );

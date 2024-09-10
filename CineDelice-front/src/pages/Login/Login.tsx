@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 import React, { FormEvent, useState } from 'react';
 import { useRootContext } from '../../routes/Root';
 import { ILoggedUser } from '../../types/types';
 import { Navigate } from 'react-router-dom';
 import './Login.scss';
 
+=======
+import React, { useState, FormEvent} from 'react';
+import './Login.scss';
+import IUser from '../../types/types';
+import {Navigate, redirect} from 'react-router-dom';
+import { useRootContext } from '../../routes/Root';
+>>>>>>> 63198687fb16fecf1e99902d4acea4cc19c6c0fb
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,6 +22,7 @@ export default function Login() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+<<<<<<< HEAD
     // Validation des champs
     if (!email || !password) {
       setErrorMessage('Veuillez remplir tous les champs.');
@@ -34,6 +43,16 @@ export default function Login() {
       }
 
       const data = await response.json();
+=======
+        const data = await response.json();
+        if(data.logged) {
+            const newUser: IUser = {
+                id: data.userId,
+                email: data.userMail,
+                accessToken: data.token
+            };
+            setUser(newUser);
+>>>>>>> 63198687fb16fecf1e99902d4acea4cc19c6c0fb
 
       if (data.logged) {
         const loggedUser: ILoggedUser = {

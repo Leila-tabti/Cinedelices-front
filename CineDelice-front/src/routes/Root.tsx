@@ -7,12 +7,8 @@ import { IUser } from '../types/types';
 import { IRootContext } from '../types/types';
 
 
-export function useRootContext() {
-    return useOutletContext<IRootContext>();
-}
 
-export default function Root() {
-
+<<<<<<< HEAD
     const [user, setUser] = useState<IUser | null>(null);
     const navigate = useNavigate();
 
@@ -53,11 +49,21 @@ export default function Root() {
         fetchUser();
     }, [navigate]);
 
+=======
+
+export default function Root() {
+
+   
+>>>>>>> 63198687fb16fecf1e99902d4acea4cc19c6c0fb
     return (
         <>
             <Header />
             <NavBar />
+<<<<<<< HEAD
             <Outlet context={{ user, setUser }} />
+=======
+            <Outlet />
+>>>>>>> 63198687fb16fecf1e99902d4acea4cc19c6c0fb
             <Footer />
         </>
     );

@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import chiliHeinsenberg from '../../assets/Pictures/Recipes/chiliHeinsenberg.png';
 
 import './Recipes.scss';
 import { NavLink } from 'react-router-dom';
+
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+
+const optionCategory = [
+    { value : 'entrée', label : ' Entrée'},
+    { value : 'plat', label : 'Plat'},
+    { value : 'dessert', label : 'Dessert'},
+]
 
 export default function Recipes () {
     return (

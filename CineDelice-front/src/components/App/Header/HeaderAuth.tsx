@@ -1,15 +1,23 @@
 import React from 'react';
 import './Header.scss';
 import { FaHamburger } from 'react-icons/fa';
+import { ILoggedUser } from '../../../types/types';
+interface HeaderProps {
+    user: ILoggedUser | null
+  };
+  
+export default function HeaderAuth({user}: HeaderProps) {
 
-
-export default function HeaderAuth() {
+    
+    console.log( {user} );
     return (
         <>
         <div className="header-auth">
-        <button className="btn-menu-burger" type="submit" aria-label="Rechercher">
-                <FaHamburger className="icon-burger" />
-        </button>
+            {user ? <span>Bienvenue {user.userPseudo}</span>
+             : <button className="btn-menu-burger" type="submit" aria-label="Rechercher">
+                    <FaHamburger className="icon-burger" />
+                </button>} 
+        
         </div>
         </>
     );

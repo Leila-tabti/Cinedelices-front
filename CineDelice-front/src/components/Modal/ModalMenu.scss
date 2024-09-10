@@ -13,9 +13,10 @@
   
   .modal-content {
     background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
+    padding: 1rem;
+    border-radius: 20px;
+    width: 50%;
+    height: 50%;
     max-width: 80%;
     position: relative;
   }
@@ -35,17 +36,3 @@
     flex-direction: column;
   }
   
-  .modal-menu ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .modal-menu li {
-    margin-bottom: 10px;
-  }
-  
-  .modal-menu a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-  }

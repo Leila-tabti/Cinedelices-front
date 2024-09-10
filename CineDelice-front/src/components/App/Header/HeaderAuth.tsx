@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './Header.scss';
 import { FaHamburger } from 'react-icons/fa';
-import Modal from '../../Modal/ModalMenu'; // Importez le composant Modal
+import ModalMenu from '../../Modal/ModalMenu'; // Composant ModalMenu pour la modale
+import Navbar from '../Navbar/Navbar'; // Composant Navbar
 
-const Header = () => {
+const HeaderAuth = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => setIsModalOpen(true);
@@ -11,6 +12,7 @@ const Header = () => {
 
   return (
     <header className="header-auth">
+      {/* Bouton du menu burger, visible seulement sur mobile */}
       <button
         className="btn-menu-burger"
         type="button"
@@ -19,9 +21,16 @@ const Header = () => {
       >
         <FaHamburger className="icon-burger" />
       </button>
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+
+      {/* Navbar visible uniquement sur les grands écrans */}
+      <nav className="navbar modal-menu">
+        <Navbar />
+      </nav>
+
+      {/* La modale s'affiche uniquement si isModalOpen est true */}
+      <ModalMenu isOpen={isModalOpen} onClose={handleCloseModal} />
     </header>
   );
 };
 
-export default Header;
+export default HeaderAuth;

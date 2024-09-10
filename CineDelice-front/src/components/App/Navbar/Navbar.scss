@@ -9,8 +9,10 @@
 
 .navbar-list {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0 1rem 1rem 0;
 }
 
 .navbar-item {

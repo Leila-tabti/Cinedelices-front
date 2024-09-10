@@ -1,24 +1,24 @@
 import React from 'react';
-import './ModalMenu.scss'; // Assurez-vous d'ajouter les styles appropriés
+import './ModalMenu.scss';
+import Navbar from '../App/Navbar/Navbar';
 
-const Modal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
+
+const ModalMenu = ({ isOpen, onClose }) => {
+  if (!isOpen) return null; // Si la modale n'est pas ouverte, on ne l'affiche pas
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
+        {/* Bouton pour fermer la modale */}
         <button className="modal-close" onClick={onClose}>X</button>
-        <nav className="modal-menu">
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+        
+        {/* Navbar à l'intérieur de la modale */}
+        <nav className="navbar modal-navbar modal-menu">
+          <Navbar />
         </nav>
       </div>
     </div>
   );
 };
 
-export default Modal;
+export default ModalMenu;

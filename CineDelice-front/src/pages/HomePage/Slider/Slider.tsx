@@ -22,8 +22,6 @@ export default function ImageSlider() {
 
   return (
       
-          
-              
               <Slider {...settings}>
                   <div>
                       <img src={Photo1} alt="Photo de la recette de la Tarte cerise au chocolat" className="w-full object-cover" />
@@ -35,7 +33,5 @@ export default function ImageSlider() {
                       <img src={Photo3} alt="Photo de la recette du Poulet sauce piment et chocolat" className="w-full object-cover" />
                   </div>
               </Slider>
-    
-    
   );
 }

@@ -1,14 +1,17 @@
 import React, { useState, FormEvent} from 'react';
 import './Login.scss';
-import ILoggedUser from '../../types/types';
-import {Navigate, redirect} from 'react-router-dom';
+import { ILoggedUser, IRootContext } from '../../types/types';
+import {Navigate, useOutletContext} from 'react-router-dom';
 import { useRootContext } from '../../routes/Root';
+
+
 export default function Login() {
     // State pour stocker les données du formulaire de connexion
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [user, setRedirect] = useState(false);
 
-    const {user, setUser} = useRootContext();
+    const {setUser} = useRootContext();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -24,18 +27,21 @@ export default function Login() {
         if(data.logged) {
             const newUser: ILoggedUser = {
                 userId: data.userId,
+                userPseudo: data.userPseudo,
                 userEmail: data.userMail,
                 accessToken: data.token
             };
             setUser(newUser);
 
             localStorage.setItem('user', JSON.stringify(newUser));
-        };
+            setRedirect(true);
+        }  
+    };
 
-        if(user) {
-            return <Navigate to ="/" replace />;
-        }
+    if(user) {
+        return <Navigate to ="/" replace />;
     }
+
     return (
         <>
             <h1>Vous souhaitez vous connecter ?</h1>
@@ -48,7 +54,6 @@ export default function Login() {
                         type="text" 
                         id="email"
                         name="email"
- 
                         className="input"
                         value={email} // Associer la valeur du champ au state
                         onChange={(e) => setEmail(e.target.value)} // Appeler handleInputChange quand l'utilisateur tape

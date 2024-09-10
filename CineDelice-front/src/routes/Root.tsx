@@ -21,7 +21,7 @@ const contextValue: IRootContext = {
    
     return (
         <>
-            <Header />
+            <Header user={user} />
             <NavBar />
             <Outlet context={contextValue} />
             <Footer />

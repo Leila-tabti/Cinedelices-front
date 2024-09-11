@@ -24,7 +24,7 @@ export interface IMovieSerie {
 };
 
 export interface IRecipeCategory {
-    id: number;
+    id: string;
     name: string;
 };
 
@@ -36,7 +36,7 @@ export interface IRecipe {
     difficulty: string;
     time: string;
     instruction: string;
-    category: IRecipeCategory;
+    recipeCategory: IRecipeCategory;
     movieSerie: IMovieSerie;
     user: IUser;
     ingredient: IIngredient[];

@@ -15,7 +15,7 @@ export default function Root() {
 
     const [recipes, setRecipes] = useState<IRecipe[]>([]);
     const [moviesSeries, setMoviesSeries] = useState<IMovieSerie[]>([]);
-  const [user, setUser] = useState<ILoggedUser | null>(null);
+    const [user, setUser] = useState<ILoggedUser | null>(null);
     
     useEffect(() => {
       
@@ -63,9 +63,9 @@ const contextValue: IRootContext = {
     user,
     setUser,
     recipes, 
-      setRecipes, 
-      moviesSeries, 
-      setMoviesSeries
+    setRecipes, 
+    moviesSeries, 
+    setMoviesSeries
    
 
 }

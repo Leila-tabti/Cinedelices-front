@@ -1,6 +1,6 @@
 import React from 'react';
 import './MovieDetails.scss';
-import seigneur from '../../assets/Pictures/MoviesSeries/seigneur.png';
+import seigneur from '../../assets/Pictures/MoviesSeries/10.png';
 import painlembas from '../../assets/Pictures/Recipes/painlembas.png';
 import flanaumiel from '../../assets/Pictures/Recipes/flanaumiel.png';
 import soupechampignon from '../../assets/Pictures/Recipes/soupechampignon.png';

@@ -1,6 +1,6 @@
 import React from 'react';
 import ratatouille from '../../assets/Pictures/Recipes/ratatouille.jpg';
-import ratatouilleMovie from '../../assets/Pictures/MoviesSeries/ratatouille.png';
+import ratatouilleMovie from '../../assets/Pictures/MoviesSeries/1.png';
 import './RecipeDetails.scss';
 import { IRecipe } from '../../types/types';
 import { useParams } from 'react-router-dom';

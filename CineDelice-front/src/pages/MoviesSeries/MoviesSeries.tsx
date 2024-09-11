@@ -1,5 +1,4 @@
 import React from 'react';
-import seigneur from '../../assets/Pictures/MoviesSeries/seigneur.png';
 import { useRootContext } from '../../routes/Root';
 import { IMovieSerie } from '../../types/types';
 import { NavLink } from 'react-router-dom';
@@ -19,7 +18,7 @@ export default function MoviesSeries () {
                 {moviesSeries.map((movieSerie) => (
                     <div key={movieSerie.id} className="card">
                     <NavLink to={`/MoviesSeries/${movieSerie.id}`}>
-                    <img src={seigneur} alt="image_seigneur des anneaux" />
+                    <img src={`/MoviesSeries/${movieSerie.id}.png`} alt={`image ${movieSerie.name} `} />
                     <h3>{movieSerie.name}</h3>
                     </NavLink>
                 </div> 

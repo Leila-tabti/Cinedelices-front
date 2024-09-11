@@ -59,6 +59,7 @@ export interface ILoggedUser {
 
 export type IRootContext = {
     recipes: IRecipe[];
+<<<<<<< HEAD
     setRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>;
     moviesSeries: IMovieSerie[];
     setMoviesSeries: React.Dispatch<React.SetStateAction<IMovieSerie[]>>;
@@ -66,3 +67,12 @@ export type IRootContext = {
     user: ILoggedUser | null;
     setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>;
 }
+=======
+    user: ILoggedUser | null;
+    setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>;
+    setRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>;
+    moviesSeries: IMovieSerie[];
+    setMoviesSeries: React.Dispatch<React.SetStateAction<IMovieSerie[]>>;
+}
+
+>>>>>>> e5e8cf76a57ae63032b0468e92bca047d5ecdead

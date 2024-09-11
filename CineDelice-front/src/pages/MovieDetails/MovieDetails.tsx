@@ -1,9 +1,6 @@
 import React from 'react';
 import './MovieDetails.scss';
-import seigneur from '../../assets/Pictures/MoviesSeries/10.png';
-import painlembas from '../../assets/Pictures/Recipes/painlembas.png';
-import flanaumiel from '../../assets/Pictures/Recipes/flanaumiel.png';
-import soupechampignon from '../../assets/Pictures/Recipes/soupechampignon.png';
+import { NavLink } from 'react-router-dom';
 import { useRootContext } from '../../routes/Root';
 import { useParams } from 'react-router-dom';
 import { IMovieSerie } from '../../types/types';
@@ -44,8 +41,10 @@ export default function MovieDetails() {
                     {movieSerieFound.recipes.map((recipe) => {
                         return(
                         <div key={recipe.id}>
+                            <NavLink to={`/Recipes/${recipe.id}`}>
                             <img src="{flanaumiel}" alt={recipe.name} />
                             <h3>{recipe.name}</h3>
+                            </NavLink>
                         </div>
                         )
     })}

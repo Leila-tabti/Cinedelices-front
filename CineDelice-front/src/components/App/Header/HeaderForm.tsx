@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.scss';
+import './HeaderForm.scss';
 import { FaSearch } from 'react-icons/fa';
 
 export default function HeaderForm() { 

@@ -1,54 +1,17 @@
-import React, { useState } from 'react';
-import './Header.scss';
-import { FaHamburger, FaSignOutAlt } from 'react-icons/fa';
-import { ILoggedUser } from '../../../types/types';
-import ModalMenu from '../../Modal/ModalMenu'; // Composant ModalMenu pour la modale
-import { useNavigate } from 'react-router-dom';
 
-interface HeaderProps {
-    user: ILoggedUser | null
-  };
-  
-export default function HeaderAuth({user}: HeaderProps) {
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './HeaderAuth.scss';
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const navigate = useNavigate();
-
-    const handleOpenModal = () => setIsModalOpen(true);
-    const handleCloseModal = () => setIsModalOpen(false);
-    
-    const handleLogout = () => {
-        localStorage.removeItem('user');
-        navigate('/login');
-    }
+export default function HeaderAuth() { 
     return (
         <>
-        <div className="header-auth">
-            {user ? (
-                    <>
-                        <span>Bienvenue {user.userPseudo}</span>
-                        <button
-                            className="btn-logout"
-                            type="button"
-                            aria-label="Déconnexion"
-                            onClick={handleLogout}
-                        >
-                            <FaSignOutAlt className="icon-logout" />
-                        </button>
-                    </>
-                ) 
-             : (<button 
-                    className="btn-menu-burger"
-                    type="submit" 
-                    aria-label="Rechercher"
-                    onClick={handleOpenModal}
-              > 
-                    <FaHamburger className="icon-burger" />
-                </button>
-                )} 
-
-                <ModalMenu isOpen={isModalOpen} onClose={handleCloseModal} />
-        </div>
+            <nav className="header-auth active">
+                <ul className="auth-list">
+                <li className="auth-item "><NavLink to ='/login'>Connexion</NavLink></li>
+                <li className="auth-item"><NavLink to ='/register'>Inscription</NavLink></li>
+                </ul>
+            </nav>
         </>
     );
 }

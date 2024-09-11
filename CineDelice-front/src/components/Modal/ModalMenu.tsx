@@ -1,6 +1,7 @@
 import React from 'react';
 import './ModalMenu.scss';
 import Navbar from '../App/Navbar/Navbar';
+import HeaderAuth from '../App/Header/HeaderAuth';
 import { FaTimes } from 'react-icons/fa'; // Importer l'icône
 
 
@@ -15,9 +16,10 @@ const ModalMenu = ({ isOpen, onClose }) => {
         <button className="modal-close" onClick={onClose}><FaTimes></FaTimes></button>
         
         {/* Navbar à l'intérieur de la modale */}
-        <nav className="navbar modal-navbar modal-menu">
+        
           <Navbar />
-        </nav>
+          <HeaderAuth />
+       
       </div>
     </div>
   );

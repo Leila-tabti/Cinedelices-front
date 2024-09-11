@@ -10,19 +10,13 @@ footer {
     margin: auto;
     color: v.$color-yellow;
     font-family: f.$font-cinzel;
-}
-  
-ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
     
+    ul li {
+        margin: auto;
+        margin-top: 2rem;
+    }
 }
 
-ul li {
-    margin: auto;
-    margin-top: 2rem;
-}
 .footer-item a {
     color: v.$color-yellow;
 }

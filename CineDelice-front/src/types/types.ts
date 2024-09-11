@@ -4,7 +4,7 @@ export interface IMovieCategory {
 }
 
 export interface IUser {
-    id: number;
+    id: number | string;
     email: string;
     pseudo: string;
     password: string;
@@ -13,38 +13,41 @@ export interface IUser {
 };
 
 export interface IMovieSerie {
-    id: number;
+    id: string |number;
     name: string;
     synopsis: string;
     director: string;
-    actors: string;
-    releaseDate: string;
+    actor: string;
+    release_date: string;
     picture: string;
     category: IMovieCategory;
+    recipes: IRecipe[];
 };
 
 export interface IRecipeCategory {
-    id: number;
+    id: string;
     name: string;
 };
 
 export interface IRecipe {
-    id: number;
+    id: number | string;
     name: string;
     description: string;
     picture: string;
     difficulty: string;
     time: string;
     instruction: string;
-    category: IRecipeCategory;
-    movieSerie: IMovieSerie;
+    recipeCategory: IRecipeCategory;
+    movieAndSerie: IMovieSerie;
     user: IUser;
+    ingredient: IIngredient[];
 };
 
 export interface IIngredient {
     id: number;
     name: string;
     picture: string;
+    quantity: string;
 };
 
 export interface ILoggedUser {
@@ -56,6 +59,9 @@ export interface ILoggedUser {
 
 export type IRootContext = {
     recipes: IRecipe[];
+    setRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>;
+    moviesSeries: IMovieSerie[];
+    setMoviesSeries: React.Dispatch<React.SetStateAction<IMovieSerie[]>>;
     setArticles: React.Dispatch<React.SetStateAction<IRecipe[]>>;
     user: ILoggedUser | null;
     setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>;

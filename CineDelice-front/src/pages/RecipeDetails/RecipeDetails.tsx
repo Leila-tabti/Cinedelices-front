@@ -31,7 +31,8 @@ export default function RecipeDetails () {
                 <img src={ratatouille} alt="image ratatouille" />
                 <p className='inspiredBy'>Inspiré du film :</p>
                 <h2>{recipeFound.movieAndSerie.name}</h2>
-                <img src={ratatouilleMovie} alt="image ratatouille le film" />
+                // dynamic movie image
+                <img src={`/MoviesSeries/${recipeFound.movieAndSerie.id}.png`} alt={`image ${recipeFound.movieAndSerie.name} `} />
                 <div className='otherRecipesContainer'>
                     <h3 className='otherRecipes'>
                         Voir d'autres recettes liées à Ratatouille 

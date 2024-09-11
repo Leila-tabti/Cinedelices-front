@@ -28,7 +28,7 @@ export default function MovieDetails() {
                 <li>Acteurs principaux : {movieSerieFound.actor}</li>
                 <li>Sorti le : {movieSerieFound.release_date}</li>
             </ul>
-            <img src={seigneur} alt="image du seigneur des anneaux" />
+            <img src={`/MoviesSeries/${movieSerieFound.id}.png`} alt={`image ${movieSerieFound.name} `} />
             <h3>Synopsis</h3>
             <p className='synopsis'>
                 {movieSerieFound.synopsis}

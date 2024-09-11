@@ -1,17 +1,4 @@
-<<<<<<< HEAD
-export interface ILoggedUser {
-    userId: number;
-    userPseudo: string;
-    userEmail: string;
-    accessToken : `${string}.${string}.${string}`;
-}
 
-export type IRootContext = {
-    user: ILoggedUser | null,
-    setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>;
-}
-
-=======
 export interface IMovieCategory {
     name: string
 }
@@ -62,7 +49,7 @@ export interface IIngredient {
 
 export interface ILoggedUser {
     userId: number;
-    userName: string;
+    userPseudo: string;
     userMail: string;
     accessToken: `${string}.${string}.${string}`; // on précise le format (jwt)
   }
@@ -73,4 +60,3 @@ export type IRootContext = {
     user: ILoggedUser | null;
     setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>;
 }
->>>>>>> 63d73bd5dc2d7922d5e976aeab319ac948142c8c

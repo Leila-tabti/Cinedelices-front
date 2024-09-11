@@ -54,7 +54,7 @@ export default function Register() {
                 return;
             }
 
-            alert(`Inscription réussie ! Bienvenue ${data.pseudo}`);
+            alert(`Inscription réussie ! Bienvenue ${data.user.pseudo}`);
             navigate('/login');
 
         } catch (error) {

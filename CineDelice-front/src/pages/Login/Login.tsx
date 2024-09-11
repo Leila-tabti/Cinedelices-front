@@ -1,7 +1,7 @@
 import React, { useState, FormEvent} from 'react';
 import './Login.scss';
 import { ILoggedUser, IRootContext } from '../../types/types';
-import {Navigate, useOutletContext} from 'react-router-dom';
+import {Navigate, redirect, useOutletContext} from 'react-router-dom';
 import { useRootContext } from '../../routes/Root';
 
 
@@ -9,7 +9,7 @@ export default function Login() {
     // State pour stocker les données du formulaire de connexion
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [user, setRedirect] = useState(false);
+    const [redirect, setRedirect] = useState(false);
 
     const {setUser} = useRootContext();
 
@@ -19,6 +19,7 @@ export default function Login() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                
             },
             body: JSON.stringify({email, password}),
         });
@@ -26,19 +27,20 @@ export default function Login() {
         const data = await response.json();
         if(data.logged) {
             const newUser: ILoggedUser = {
-                userId: data.userId,
-                userPseudo: data.userPseudo,
-                userEmail: data.userMail,
+                userId: data.user.id,
+                userPseudo: data.user.pseudo,
+                userMail: data.user.email,
                 accessToken: data.token
             };
-            setUser(newUser);
+            
 
             localStorage.setItem('user', JSON.stringify(newUser));
+            setUser(newUser);
             setRedirect(true);
         }  
     };
 
-    if(user) {
+    if(redirect) {
         return <Navigate to ="/" replace />;
     }
 

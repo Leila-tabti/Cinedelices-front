@@ -2,6 +2,7 @@ import React from 'react';
 import ratatouille from '../../assets/Pictures/Recipes/ratatouille.jpg';
 import ratatouilleMovie from '../../assets/Pictures/MoviesSeries/1.png';
 import './RecipeDetails.scss';
+import { NavLink } from 'react-router-dom';
 import { IRecipe } from '../../types/types';
 import { useParams } from 'react-router-dom';
 import Page404 from '../404/404';
@@ -34,9 +35,11 @@ export default function RecipeDetails () {
                 // dynamic movie image
                 <img src={`/MoviesSeries/${recipeFound.movieAndSerie.id}.png`} alt={`image ${recipeFound.movieAndSerie.name} `} />
                 <div className='otherRecipesContainer'>
+                    <NavLink to={`/MoviesSeries/${recipeFound.movieAndSerie.id}`}>
                     <h3 className='otherRecipes'>
-                        Voir d'autres recettes liées à Ratatouille 
+                        Voir d'autres recettes liées à {recipeFound.movieAndSerie.name} 
                     </h3>
+                    </NavLink>
             </div>
             </div>
             <div className='ingredientsContainer'>

@@ -3,8 +3,6 @@ import NavBar from '../components/App/Navbar/Navbar';
 import Footer from '../components/App/Footer/Footer';
 import Header from '../components/App/Header/Header';
 import { Outlet, useOutletContext } from 'react-router-dom';
-
-
 import { IRecipe, IMovieSerie, ILoggedUser, IRootContext } from '../types/types';
 
 

@@ -30,7 +30,7 @@ export default function RecipeDetails () {
             <div className='second-container'>
                 <img src={ratatouille} alt="image ratatouille" />
                 <p className='inspiredBy'>Inspiré du film :</p>
-                <h2>Ratatouille</h2>
+                <h2>{recipeFound.movieAndSerie.name}</h2>
                 <img src={ratatouilleMovie} alt="image ratatouille le film" />
                 <div className='otherRecipesContainer'>
                     <h3 className='otherRecipes'>

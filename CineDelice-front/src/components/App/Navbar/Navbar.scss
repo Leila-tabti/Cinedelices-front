@@ -4,13 +4,15 @@
 
 .navbar {
   background-color: v.$color-white;
-  margin-bottom: 1.5rem;
 }
 
 .navbar-list {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+  justify-content: center;
+  margin: 0;
+  padding: 0 1rem 1rem 0;
+  display: none;
 }
 
 .navbar-item {
@@ -35,3 +37,6 @@ li a {
 .categories-button a {
   color: v.$color-yellow; 
 }
+
+
+

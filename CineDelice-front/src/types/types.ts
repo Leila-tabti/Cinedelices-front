@@ -1,3 +1,4 @@
+
 export interface IMovieCategory {
     name: string
 }
@@ -51,14 +52,17 @@ export interface IIngredient {
 
 export interface ILoggedUser {
     userId: number;
-    userName: string;
+    userPseudo: string;
     userMail: string;
     accessToken: `${string}.${string}.${string}`; // on précise le format (jwt)
   }
 
 export type IRootContext = {
     recipes: IRecipe[];
+    user: ILoggedUser | null;
+    setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>;
     setRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>;
     moviesSeries: IMovieSerie[];
     setMoviesSeries: React.Dispatch<React.SetStateAction<IMovieSerie[]>>;
 }
+

@@ -1,0 +1,52 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end; /* Alignement à droite */
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: #fff;
+    border-radius: 20px;
+    width: 40%;
+    height: 50%;
+    max-width: 80%;
+    position: fixed;
+    top: 1rem;
+    right: 1em;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  // Modale d'affichage de la Navbar
+.modal-content .navbar-list {
+  display: flex;
+  flex-direction: column;
+}
+
+// Styles pour mobile first (petits écrans) - Menu burger visible, Navbar cachée
+
+// Media query pour les grands écrans (par exemple, à partir de 768px)
+@media (min-width: 768px) {
+
+ .modal-overlay {
+   display: none; /* Cache la modale */
+ }
+}
+  

@@ -1,16 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.scss';
-import { FaHamburger } from 'react-icons/fa';
+import { FaHamburger, FaSignOutAlt } from 'react-icons/fa';
+import { ILoggedUser } from '../../../types/types';
+import ModalMenu from '../../Modal/ModalMenu'; // Composant ModalMenu pour la modale
+import { useNavigate } from 'react-router-dom';
 
+interface HeaderProps {
+    user: ILoggedUser | null
+  };
+  
+export default function HeaderAuth({user}: HeaderProps) {
 
-export default function HeaderAuth() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const handleOpenModal = () => setIsModalOpen(true);
+    const handleCloseModal = () => setIsModalOpen(false);
+    
+    const handleLogout = () => {
+        localStorage.removeItem('user');
+        navigate('/login');
+    }
     return (
         <>
         <div className="header-auth">
-        <button className="btn-menu-burger" type="submit" aria-label="Rechercher">
-                <FaHamburger className="icon-burger" />
-        </button>
+            {user ? (
+                    <>
+                        <span>Bienvenue {user.userPseudo}</span>
+                        <button
+                            className="btn-logout"
+                            type="button"
+                            aria-label="Déconnexion"
+                            onClick={handleLogout}
+                        >
+                            <FaSignOutAlt className="icon-logout" />
+                        </button>
+                    </>
+                ) 
+             : (<button 
+                    className="btn-menu-burger"
+                    type="submit" 
+                    aria-label="Rechercher"
+                    onClick={handleOpenModal}
+              > 
+                    <FaHamburger className="icon-burger" />
+                </button>
+                )} 
+
+                <ModalMenu isOpen={isModalOpen} onClose={handleCloseModal} />
         </div>
         </>
     );
 }
+

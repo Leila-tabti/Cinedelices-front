@@ -6,6 +6,7 @@
 .icon-burger {
     color: v.$color-yellow;
     font-size: 2rem;
+    
 }
 
 .btn-menu-burger {
@@ -13,16 +14,11 @@
   border: none;
 }
 
-// Styles pour mobile first (petits écrans) - Menu burger visible, Navbar cachée
-  
   // Media query pour les grands écrans (par exemple, à partir de 768px)
-  @media (min-width: 768px) {
-    .header-auth .navbar {
-      display: flex; /* Affiche la navbar sur grand écran */
-    }
   
-    .btn-menu-burger {
-      display: none; /* Cache le bouton burger sur grand écran */
-    }
+/* Pour les écrans plus larges (par exemple, à partir de 768px) */
+@media (min-width: 760px) {
+  .header-menu-modal {
+    display: none;
   }
-  
+}

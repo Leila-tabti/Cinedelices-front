@@ -5,7 +5,7 @@ import './Header.scss';
 import HeaderLogo from './HeaderLogo';
 import HeaderForm from './HeaderForm';
 import HeaderAuth from './HeaderAuth';
-
+import HeaderBurger from './HeaderBurger';
 
 export default function Header() {
     return (
@@ -14,6 +14,7 @@ export default function Header() {
         <HeaderLogo />
         <HeaderForm />
         <HeaderAuth />
+        <HeaderBurger />
       </header>
       </>
     );

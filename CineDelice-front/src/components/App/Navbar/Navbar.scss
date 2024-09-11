@@ -7,36 +7,70 @@
 }
 
 .navbar-list {
-  display: flex;
-  justify-content: space-between;
-  justify-content: center;
-  margin: 0;
-  padding: 0 1rem 1rem 0;
-  display: none;
+  
+  display:none;
+
 }
 
 .navbar-item {
   font-family: f.$font-cinzel;
   font-size:  f.$font-size-h3;
   font-weight: bold;  
-  color: v.$color-black;
+  color: v.$color-grey;
+  margin: 1rem;
 }
 
-.categories-button {
-  background-color: v.$color-light-grey;
-  border: none;
-  padding: 0.1rem 1rem;
-  border-radius: 20px;
-}
+
 
 li a {
   text-decoration: none;
-  color: v.$color-black;
-}
-
-.categories-button a {
-  color: v.$color-yellow; 
+  color: v.$color-grey;
 }
 
 
 
+
+@media (min-width: 760px) {
+
+
+
+ ul.navbar-list {
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 1rem;
+    
+    
+    li {
+      margin: 0 1rem;
+    }
+
+
+   .navbar-list {
+    padding: 0 1rem;
+   }
+ }
+.navbar-item:nth-child(4),
+.navbar-item:nth-child(5) {
+  display: none;
+}
+li a {
+  position: relative;
+}
+.navbar-item a:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  height: 1px;
+  background-color: v.$color-yellow;
+  left: 0;
+  width: 0;
+  transition: ease-in-out 400ms;
+}
+
+.navbar-item a:hover:after {
+  width: 100%;
+
+}
+}

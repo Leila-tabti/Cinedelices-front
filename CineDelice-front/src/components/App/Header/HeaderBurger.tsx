@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './Header.scss';
 import { FaHamburger } from 'react-icons/fa';
 import ModalMenu from '../../Modal/ModalMenu'; // Composant ModalMenu pour la modale
-import Navbar from '../Navbar/Navbar'; // Composant Navbar
+import Navbar from '../Navbar/Navbar'; 
+import './HeaderBurger.scss' // Composant Navbar
 
 const HeaderMenuModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,7 +12,7 @@ const HeaderMenuModal = () => {
   const handleCloseModal = () => setIsModalOpen(false);
 
   return (
-    <header className="header-menu-modal">
+    <div className="header-menu-modal">
       {/* Bouton du menu burger, visible seulement sur mobile */}
       <button
         className="btn-menu-burger"
@@ -26,7 +27,7 @@ const HeaderMenuModal = () => {
 
       {/* La modale s'affiche uniquement si isModalOpen est true */}
       <ModalMenu isOpen={isModalOpen} onClose={handleCloseModal} />
-    </header>
+    </div>
   );
 };
 

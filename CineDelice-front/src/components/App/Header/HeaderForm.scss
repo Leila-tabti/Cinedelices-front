@@ -21,8 +21,8 @@
 }
 
 input::placeholder {
-  color: v.$color-yellow;
-  text-align: center;
+  font-family: f.$font-roboto;
+  text-align: left;
 }
 
 .btn-search {
@@ -42,7 +42,3 @@ input::placeholder {
     height: 1.1rem;  
 }
 
-.icon-burger {
-    color: v.$color-yellow;
-    font-size: 2rem;
-}

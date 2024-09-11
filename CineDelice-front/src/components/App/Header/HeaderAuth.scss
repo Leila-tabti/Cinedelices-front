@@ -6,6 +6,8 @@
 .header-auth {
     display: flex;
     align-items: center;
+    flex-direction: column;
+    
 }
 
 .auth-list {
@@ -14,6 +16,7 @@
   list-style: none;
   display: flex;
   align-items: center;
+  color: v.$color-grey;
 }
 
 .auth-item a {
@@ -28,7 +31,29 @@
   text-transform: uppercase;
   margin-left: 1rem;
 }
+.auth-item:nth-child(2) a {
+  
+  border-radius: 20px;
+  padding: 0.6rem;
+  background-color: v.$color-yellow;
+  color: v.$color-grey;
+  transition: 200ms;
 
-.auth-item:first-child {
-  margin-left: 0; /* Pour éviter un espace sur le premier élément */
+  &:hover {
+   
+    color: v.$color-red;
+   
+  }
+}
+
+.active {
+  display: none;
+}
+
+@media (min-width: 768px) {
+
+  .active {
+    display: block;
+  }
+
 }

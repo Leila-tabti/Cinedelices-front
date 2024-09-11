@@ -23,6 +23,12 @@
 input::placeholder {
   font-family: f.$font-roboto;
   text-align: left;
+  color: v.$color-yellow;
+}
+
+input:focus {
+    color: v.$color-yellow;
+    font-family: f.$font-roboto;
 }
 
 .btn-search {

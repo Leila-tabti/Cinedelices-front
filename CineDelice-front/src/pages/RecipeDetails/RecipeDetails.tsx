@@ -32,7 +32,6 @@ export default function RecipeDetails () {
                 <img src={ratatouille} alt="image ratatouille" />
                 <p className='inspiredBy'>Inspiré du film :</p>
                 <h2>{recipeFound.movieAndSerie.name}</h2>
-                // dynamic movie image
                 <img src={`/MoviesSeries/${recipeFound.movieAndSerie.id}.png`} alt={`image ${recipeFound.movieAndSerie.name} `} />
                 <div className='otherRecipesContainer'>
                     <NavLink to={`/MoviesSeries/${recipeFound.movieAndSerie.id}`}>

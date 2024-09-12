@@ -25,6 +25,7 @@ export default function Profile({user}: ProfileProps) {
           <button><NavLink to ='/'>Retourner sur la page d'accueil</NavLink></button>
           <button>Profil</button>
           <button>Recettes favorites</button>
+          <button>Mes Recettes</button>
         </div>
         <div className="profile-container">
           <div className="profile-picture">

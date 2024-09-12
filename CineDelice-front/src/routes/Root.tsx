@@ -78,8 +78,7 @@ const contextValue: IRootContext = {
             <NavBar />
             <Outlet context={contextValue} />
             <Footer />
-            <Profile user={user}/>
-            <Admin />
+            
      </>
     );
 }

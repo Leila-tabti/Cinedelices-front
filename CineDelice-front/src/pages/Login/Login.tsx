@@ -5,6 +5,7 @@ import {Navigate, redirect, useOutletContext} from 'react-router-dom';
 import { useRootContext } from '../../routes/Root';
 
 
+
 export default function Login() {
     // State pour stocker les données du formulaire de connexion
     const [email, setEmail] = useState('');
@@ -22,6 +23,7 @@ export default function Login() {
                 
             },
             body: JSON.stringify({email, password}),
+            credentials: 'include'
         });
 
         const data = await response.json();
@@ -29,6 +31,7 @@ export default function Login() {
             const newUser: ILoggedUser = {
                 userId: data.user.id,
                 userPseudo: data.user.pseudo,
+                userRole: data.user.role,
                 userMail: data.user.email,
                 accessToken: data.token
             };
@@ -37,7 +40,9 @@ export default function Login() {
             localStorage.setItem('user', JSON.stringify(newUser));
             setUser(newUser);
             setRedirect(true);
-        }  
+        }  else {
+            throw new Error ('Identifiants incorrects');
+        }
     };
 
     if(redirect) {

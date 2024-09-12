@@ -15,6 +15,7 @@ import Page404 from '../pages/404/404';
 import RecipeDetails from '../pages/RecipeDetails/RecipeDetails';
 import Admin from '../pages/Admin/Admin';
 import { ImProfile } from 'react-icons/im';
+import PrivateRoute from './PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -77,12 +78,23 @@ const router = createBrowserRouter([
     },
     {
       path: '/Profile',
-      element: <Profile />,
+      element: <PrivateRoute requiredRole="user"/>,
+      children: [
+       { 
+        path: '',
+        element: <Profile />,
+       },
+      ],
     },
-
     {
       path: '/Admin',
-      element: <Admin />,
+      element: <PrivateRoute requiredRole="admin"/>,
+      children: [
+        {
+          path:'',
+          element: <Admin />,
+        }
+      ]
     },
   ]);
   

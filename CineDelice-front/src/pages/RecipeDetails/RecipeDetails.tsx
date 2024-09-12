@@ -1,6 +1,5 @@
 import React from 'react';
-import ratatouille from '../../assets/Pictures/Recipes/ratatouille.jpg';
-import ratatouilleMovie from '../../assets/Pictures/MoviesSeries/1.png';
+import ratatouille from '../../assets/Pictures/Recipes/Photo3.png';
 import './RecipeDetails.scss';
 import { NavLink } from 'react-router-dom';
 import { IRecipe } from '../../types/types';
@@ -29,7 +28,7 @@ export default function RecipeDetails () {
             {recipeFound.description}
             </p>
             <div className='second-container'>
-                <img src={ratatouille} alt="image ratatouille" />
+                <img className='recipe-picture' src={ratatouille} alt={`image ${recipeFound.name}`} />
                 <p className='inspiredBy'>Inspiré du film :</p>
                 <h2>{recipeFound.movieAndSerie.name}</h2>
                 <img src={`/MoviesSeries/${recipeFound.movieAndSerie.id}.png`} alt={`image ${recipeFound.movieAndSerie.name} `} />

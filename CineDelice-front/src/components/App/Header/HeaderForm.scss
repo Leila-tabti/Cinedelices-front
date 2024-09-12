@@ -49,8 +49,8 @@ input:focus {
 }
 
 @media (min-width: 760px) {
-    .search-input {
-      max-width: 100%;
+    .header-form {
+      max-width: 100% !important;
     }
   }
   

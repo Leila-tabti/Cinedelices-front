@@ -17,6 +17,10 @@ h2 {
     width: 100%; 
 }
 
+.form-wrapper input {
+    color: v.$color-grey;
+}
+
 .form-wrapper {
     display: flex;
     flex-direction: column;
@@ -44,7 +48,7 @@ h2 {
         border: none;
         outline: none;
         background-color: v.$color-form;
-        color: v.$color-red;
+        color: v.$color-grey;
         box-shadow: v.$color-shadow;
         width: 100%; 
     }

@@ -13,7 +13,7 @@ export default function ImageSlider() {
   const settings = {
       dots: true, // Affiche les points de navigation
       infinite: true, // Boucle infinie
-      speed: 500, // Vitesse de transition
+      speed: 1000, // Vitesse de transition
       slidesToShow: 1, // Nombre de slides visibles à la fois
       slidesToScroll: 1, // Nombre de slides à faire défiler à chaque clic
       nextArrow: <div className="slick-arrow slick-next">❯</div>,

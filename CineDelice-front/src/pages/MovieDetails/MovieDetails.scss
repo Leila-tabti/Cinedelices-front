@@ -16,12 +16,13 @@ img {
     flex-direction: column;
     display: block;
     justify-content: left;
-    line-height: 0.5rem;
+    line-height: 1.3rem;
     padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 
 .synopsis {
-    font-size: f.$font-size-p;
+    font-size: 1rem;
     padding: 1rem;
 }
 

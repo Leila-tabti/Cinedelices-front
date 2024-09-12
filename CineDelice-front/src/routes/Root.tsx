@@ -4,6 +4,8 @@ import Footer from '../components/App/Footer/Footer';
 import Header from '../components/App/Header/Header';
 import { Outlet, useOutletContext } from 'react-router-dom';
 import { IRecipe, IMovieSerie, ILoggedUser, IRootContext } from '../types/types';
+import Profile from '../pages/Profile/Profile';
+import Admin from '../pages/Admin/Admin';
 
 
 
@@ -76,6 +78,8 @@ const contextValue: IRootContext = {
             <NavBar />
             <Outlet context={contextValue} />
             <Footer />
+            <Profile user={user}/>
+            <Admin />
      </>
     );
 }

@@ -13,6 +13,7 @@ import Register from '../pages/Register/Register';
 import MovieDetails from '../pages/MovieDetails/MovieDetails';
 import Page404 from '../pages/404/404';
 import RecipeDetails from '../pages/RecipeDetails/RecipeDetails';
+import Admin from '../pages/Admin/Admin';
 import { ImProfile } from 'react-icons/im';
 
 
@@ -48,10 +49,10 @@ const router = createBrowserRouter([
           path: '/LegalNotice',
           element: < LegalNotice/>,
         },
-        {
-          path: '/Profile',
-          element: < Profile />,
-        },
+        // {
+        //   path: '/Profile',
+        //   element: < Profile />,
+        // },
         {
           path: '/About',
           element: < About />,
@@ -71,8 +72,17 @@ const router = createBrowserRouter([
         {
           path: '*',
           element: < Page404/>,
-        }
+        },
       ],
+    },
+    {
+      path: '/Profile',
+      element: <Profile />,
+    },
+
+    {
+      path: '/Admin',
+      element: <Admin />,
     },
   ]);
   

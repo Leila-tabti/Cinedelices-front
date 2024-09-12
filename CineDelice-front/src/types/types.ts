@@ -54,6 +54,7 @@ export interface ILoggedUser {
     userId: number;
     userPseudo: string;
     userMail: string;
+    userRole: string;
     accessToken: `${string}.${string}.${string}`; // on précise le format (jwt)
   }
 

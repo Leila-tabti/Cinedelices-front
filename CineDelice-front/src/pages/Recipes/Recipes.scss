@@ -16,9 +16,11 @@
 
 h1 {
     font-size: f.$font-size-h1;
-    color: v.$color-black;
+    color: v.$color-grey;
     width: 100%;
-    text-align: center;
+    border-bottom: 1px solid v.$color-grey;
+    text-align: left !important;
+    padding-left: 3rem;
     padding-top: 2rem;
 }
 

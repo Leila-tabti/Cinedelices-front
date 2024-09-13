@@ -45,36 +45,44 @@ export default function Login() {
     }
 
     return (
-        <>
-            <h1>Vous souhaitez vous connecter ?</h1>
+        <div>
+            <h2>Connexion</h2>
+            <form onSubmit={handleSubmit} className="form-wrapper">
+                <fieldset>
+                    <legend>Informations de connexion</legend>
 
-            <form onSubmit={(e) => handleSubmit(e) }className="form-wrapper">
-                <label className="label">
-                    <h2>Pseudo ou Email</h2>
-                    <span className="subtext">Renseignez votre pseudo ou email :</span>
-                    <input 
-                        type="text" 
-                        id="email"
-                        name="email"
-                        className="input"
-                        value={email} // Associer la valeur du champ au state
-                        onChange={(e) => setEmail(e.target.value)} // Appeler handleInputChange quand l'utilisateur tape
-                    />
-                </label>
-                <label className="label">
-                    <h2>Mot de passe</h2>
-                    <span className="subtext">Saisissez votre mot de passe :</span>
-                    <input 
-                        type="password" 
+                    <div className="input-group">
+                        <label htmlFor="emailOrPseudo">
+                        Pseudo ou Email
+                        </label>
+                        <input
+                        type="text"
+                        id="emailOrPseudo"
+                        name="emailOrPseudo"
+                        value={email} 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        required
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <label htmlFor="password">
+                        Mot de passe
+                        </label>
+                        <input
+                        type="password"
                         id="password"
-                        name="password" 
-                        
+                        name="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                    />
-                </label>
+                        required
+                        />
+                    </div>
+
                 <button type="submit" className="submit-button">Se connecter</button>
+                </fieldset>
             </form>
-        </>
+        </div>    
+
     );
 }

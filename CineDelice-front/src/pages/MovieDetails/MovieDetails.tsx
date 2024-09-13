@@ -21,9 +21,9 @@ export default function MovieDetails() {
         <div className='container'>
             <h1>{movieSerieFound.name}</h1>
             <ul className='informations'>
-                <li>Réalisateur : {movieSerieFound.director}</li>
-                <li>Acteurs principaux : {movieSerieFound.actor}</li>
-                <li>Sorti le : {movieSerieFound.release_date}</li>
+                <li><span>Réalisateur :</span>{movieSerieFound.director}</li>
+                <li><span>Acteurs principaux :</span>{movieSerieFound.actor}</li>
+                <li><span>Sorti le :</span>{movieSerieFound.release_date}</li>
             </ul>
             <img src={`/MoviesSeries/${movieSerieFound.id}.png`} alt={`image ${movieSerieFound.name} `} />
             <h3>Synopsis</h3>

@@ -48,3 +48,9 @@ input:focus {
     height: 1.1rem;  
 }
 
+@media (min-width: 760px) {
+    .header-form {
+      max-width: 100% !important;
+    }
+  }
+  

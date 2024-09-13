@@ -94,7 +94,7 @@ export default function Profile() {
         </div>
       </div>
       {isModalOpen && ( <ModalAddRecipe 
-          onclose={handleCloseModal}/>
+          onClose={handleCloseModal}/>
       )}
           </>
 

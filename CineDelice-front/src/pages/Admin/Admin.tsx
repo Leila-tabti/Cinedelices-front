@@ -1,13 +1,70 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../Profile/Profile.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FaRegEdit } from "react-icons/fa";
 import { ILoggedUser } from '../../types/types';
+import ModalAddRecipe from '../../components/Modal/ModalAddRecipe';
 
-interface AdminProps {
-    user: ILoggedUser | null
-}
-export default function Admin({user}: AdminProps) {
+export default function Admin() {
+
+  const [profileData, setProfileData] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      const storedUser = localStorage.getItem('user');
+      if (!storedUser) {
+        navigate('/login');
+        return;
+      }
+      const user = JSON.parse(storedUser);
+      const userId = user.userId;
+
+      try {
+        const response = await fetch(`http://localhost:3000/profile/${userId}`, {
+          method: 'GET',
+          credentials: 'include',
+        });
+        console.log('Fetch Checked')
+        if (!response.ok) {
+          throw new Error('Erreur lors de la récupération des données du profil');
+        }
+
+        const data = await response.json();
+        console.log('Profile data received:', data);
+        setProfileData(data);
+      } catch (error) {
+        console.error('Erreur', error);
+        setError('Une erreur est survenue. Veuillez réessayer.');
+      }
+    };
+
+    fetchProfileData();
+  }, [navigate]);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  }
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  }
+
+
+  if (error) {
+    return (
+      <div className='error-message'>
+        <p>{error}</p>
+        <NavLink to='/login'>Retourner à la page de connexion</NavLink>
+      </div>
+    );
+  }
+
+  if (!profileData) {
+    return <p>Chargement...</p>;
+  }
+
 
     return (
         <>
@@ -15,13 +72,11 @@ export default function Admin({user}: AdminProps) {
         <h1 className='username'>Bienvenue Administrateurs </h1>
         </header>
         
-    
-    
         <div className="container-profile">
           <div className="manage-container">
             <button><NavLink to ='/'>Retourner sur la page d'accueil</NavLink></button>
             <button>Gestion des utilisateurs</button>
-            <button>Gestion des Recettes</button>
+            <button> <NavLink to ='/ManageRecipes'>Gestion des Recettes</NavLink></button>
             <button>Gestion des Films et Series</button>
           </div>
           <div className="profile-container">

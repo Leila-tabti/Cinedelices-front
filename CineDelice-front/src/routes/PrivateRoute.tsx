@@ -1,18 +1,25 @@
 import React from 'react';
-import {Navigate, Outlet} from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
-const PrivateRoute =({requiredRole}) => {
-    const userString = localStorage.getItem('user');
-    const user = userString ? JSON.parse(userString) : null;
-    if(!user) {
-        return <Navigate to ="/login" />;
-    }
+// Définition des types pour les props du composant
+interface PrivateRouteProps {
+  requiredRole?: string;
+  children?: React.ReactNode; // Indiquer que `children` peut être tout élément React
+}
 
-    if(requiredRole && user.userRole !== requiredRole) {
-        return <Navigate to ="/" />;
-    }
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ requiredRole, children }) => {
+  const userString = localStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;
 
-    return <Outlet />;
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+
+  if (requiredRole && user.userRole !== requiredRole) {
+    return <Navigate to="/" />;
+  }
+
+  return <>{children || <Outlet />} </>; // Utilisation de `children` si présents, sinon affichage de `Outlet`
 };
 
 export default PrivateRoute;

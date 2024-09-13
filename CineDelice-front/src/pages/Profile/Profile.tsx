@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import './Profile.scss';
 import { FaRegEdit } from 'react-icons/fa';
+import ModalAddRecipe from '../../components/Modal/ModalAddRecipe';
 
 export default function Profile() {
   const [profileData, setProfileData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,6 +42,14 @@ export default function Profile() {
     fetchProfileData();
   }, [navigate]);
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  }
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  }
+
+
   if (error) {
     return (
       <div className='error-message'>
@@ -63,7 +73,7 @@ export default function Profile() {
           <button><NavLink to='/'>Retourner sur la page d'accueil</NavLink></button>
           <button><NavLink to='/profile'>Profil</NavLink></button>
           <button><NavLink to='/favorites'>Recettes favorites</NavLink></button>
-          <button><NavLink to='/my-recipes'>Mes Recettes</NavLink></button>
+          <button><NavLink to='/my-recipes'>Mes Recettes</NavLink></button> 
         </div>
         <div className="profile-container">
           <div className="profile-picture">
@@ -80,9 +90,16 @@ export default function Profile() {
               <input type="text" value={profileData.email} readOnly /><FaRegEdit />
             </div>
           </div>
-          <button><NavLink to='/create-recipe'>Créer votre recette !</NavLink></button>
+          <button onClick={handleOpenModal}>Créer votre recette !</button>
         </div>
       </div>
-    </>
+      {isModalOpen && ( <ModalAddRecipe 
+          onclose={handleCloseModal}/>
+      )}
+          </>
+
   );
 }
+      
+
+      

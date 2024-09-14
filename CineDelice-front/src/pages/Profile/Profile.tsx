@@ -25,13 +25,12 @@ export default function Profile() {
           method: 'GET',
           credentials: 'include',
         });
-        console.log('Fetch Checked')
+        
         if (!response.ok) {
           throw new Error('Erreur lors de la récupération des données du profil');
         }
 
         const data = await response.json();
-        console.log('Profile data received:', data);
         setProfileData(data);
       } catch (error) {
         console.error('Erreur', error);

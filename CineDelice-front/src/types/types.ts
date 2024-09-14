@@ -67,5 +67,7 @@ export type IRootContext = {
     setMoviesSeries: React.Dispatch<React.SetStateAction<IMovieSerie[]>>;
     ingredients: IIngredient[];
     setIngredients: React.Dispatch<React.SetStateAction<IIngredient[]>>;
+    profileData: any;
+    setProfileData: React.Dispatch<React.SetStateAction<any>>;
 }
 

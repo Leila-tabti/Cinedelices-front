@@ -4,8 +4,6 @@ import Footer from '../components/App/Footer/Footer';
 import Header from '../components/App/Header/Header';
 import { Outlet, useOutletContext } from 'react-router-dom';
 import { IRecipe, IMovieSerie, ILoggedUser, IRootContext, IIngredient } from '../types/types';
-import { RootProvider } from '../components/App/RootProvider/RootContext';
-
 
 
 export function useRootContext() {
@@ -18,6 +16,7 @@ export default function Root() {
     const [moviesSeries, setMoviesSeries] = useState<IMovieSerie[]>([]);
     const [user, setUser] = useState<ILoggedUser | null>(null);
     const [ingredients, setIngredients] = useState<IIngredient[]>([]);
+    const [profileData, setProfileData] = useState<any>(null);
     
     useEffect(() => {
       
@@ -48,6 +47,7 @@ export default function Root() {
                 const response = await fetch('http://localhost:3000/ingredients');
                 const newIngredients: IIngredient[] = await response.json();
                 setIngredients(newIngredients);
+                
             }catch (error) {
                 console.log(error);
             }
@@ -69,10 +69,6 @@ export default function Root() {
     }, []);
 
 
-
-
-
-
 const contextValue: IRootContext = {
     user,
     setUser,
@@ -81,7 +77,9 @@ const contextValue: IRootContext = {
     moviesSeries, 
     setMoviesSeries,
     ingredients,
-    setIngredients
+    setIngredients,
+    profileData,
+    setProfileData
 }
    
     return (

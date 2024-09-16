@@ -16,6 +16,7 @@ import RecipeDetails from '../pages/RecipeDetails/RecipeDetails';
 import Admin from '../pages/Admin/Admin';
 import PrivateRoute from './PrivateRoute';
 import ManageRecipes from '../pages/Admin/ManageRecipes';
+import ManageUsers from '../pages/Admin/ManageUsers';
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,20 @@ const router = createBrowserRouter([
       {
         path: '/Admin',
         element: <PrivateRoute requiredRole="admin"><Admin /></PrivateRoute>,
+<<<<<<< HEAD
+=======
+        children: [
+          {
+            path: 'ManageUsers',
+            element: <ManageUsers />,
+          },
+          {
+            path: 'ManageRecipes',
+            element: <ManageRecipes />,
+          },
+          
+        ],
+>>>>>>> feature/PrivateRoute
       },
       {
         path: '*',

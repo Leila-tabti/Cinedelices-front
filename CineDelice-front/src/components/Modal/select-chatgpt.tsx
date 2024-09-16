@@ -113,7 +113,7 @@ const RecipeForm: React.FC = () => {
       </label>
 
       {/* Liste des ingrédients sélectionnés */}
-      {selectedIngredients.map((selectedIngredient, index) => (
+      {seelctedIngredients.map((selectedIngredient, index) => (
         <div key={selectedIngredient.ingredient.id}>
           <span>{selectedIngredient.ingredient.name}</span>
           <input

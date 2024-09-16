@@ -42,7 +42,7 @@ export default function MovieDetails() {
                         return(
                         <div key={recipe.id}>
                             <NavLink to={`/Recipes/${recipe.id}`}>
-                            <img src="{flanaumiel}" alt={recipe.name} />
+                            <img src={`/Recipes/${recipe.id}.png`} alt={recipe.name} />
                             <h3>{recipe.name}</h3>
                             </NavLink>
                         </div>

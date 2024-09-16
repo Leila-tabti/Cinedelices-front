@@ -24,14 +24,15 @@
 }
 
 .slogan {
-    height: 40rem;
-    margin-top: 2rem;
-    margin: 0.5rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    height: 30rem;
     
         h1 {
             font-size: f.$font-size-h1;
             color: v.$color-grey;
-            margin-bottom: 2rem;
             font-family: f.$font-cinzel;
         }
 
@@ -39,17 +40,12 @@
             font-size: f.$font-size-h3;
             color: v.$color-grey;
             font-family: f.$font-cinzel;
-            margin-bottom: 2rem;
-            margin: 2rem;
         }
 }
 
 .subscribe_button {
-        margin-bottom: 2rem;
-        margin-top: 2rem;
         background-color: v.$color-light-grey;
         border: none;
-        padding: 0.1rem 1rem;
         border-radius: 20px;
         font-weight: bold;
 }
@@ -147,4 +143,16 @@ h2 {
     text-decoration: none;
 }
 
+@media (min-width: 600px) {
+    .landing_page {
+        background-color: v.$color-light-yellow;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+    }
+    
+}
+  
+  
   

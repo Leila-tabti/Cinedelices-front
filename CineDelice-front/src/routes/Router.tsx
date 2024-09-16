@@ -74,7 +74,11 @@ const router = createBrowserRouter([
         path: '/Admin',
         element: <PrivateRoute requiredRole="admin"><Admin /></PrivateRoute>,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> 75a955eeb0065e61cb04a8ddf744f826fb7d75fb
         children: [
           {
             path: 'ManageUsers',
@@ -86,7 +90,10 @@ const router = createBrowserRouter([
           },
           
         ],
+<<<<<<< HEAD
 >>>>>>> feature/PrivateRoute
+=======
+>>>>>>> 75a955eeb0065e61cb04a8ddf744f826fb7d75fb
       },
       {
         path: '*',

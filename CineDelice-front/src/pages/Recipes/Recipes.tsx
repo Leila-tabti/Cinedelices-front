@@ -44,6 +44,7 @@ export default function Recipes() {
             </div>
             <div className="cards-container">
                 {filteredRecipes.map((recipe) => (
+
                     <div key={recipe.id} className="card">
                         <NavLink to={`/Recipes/${recipe.id}`}>
                             <img src={`/Recipes/${recipe.id}`} alt={recipe.name} />
@@ -51,6 +52,7 @@ export default function Recipes() {
                         </NavLink>
                     </div>
                 ))}
+
             </div>
         </div>
     );

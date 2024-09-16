@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Select from 'react-select';  // Import de react-select
+import Select from 'react-select'
 import chiliHeinsenberg from '../../assets/Pictures/Recipes/chiliHeinsenberg.png';
 import { useRootContext } from '../../routes/Root';
 import './Recipes.scss';

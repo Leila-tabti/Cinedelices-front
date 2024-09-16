@@ -72,12 +72,6 @@ const router = createBrowserRouter([
       {
         path: '/Admin',
         element: <PrivateRoute requiredRole="admin"><Admin /></PrivateRoute>,
-        children : [
-          {
-            path: '/ManageRecipes',
-            element: <PrivateRoute requiredRole="admin"><ManageRecipes /></PrivateRoute>,
-          }
-        ]
       },
       {
         path: '*',

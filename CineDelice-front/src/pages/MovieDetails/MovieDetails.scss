@@ -16,18 +16,30 @@ img {
     flex-direction: column;
     display: block;
     justify-content: left;
-    line-height: 0.5rem;
-    padding-bottom: 1rem;
+    padding-top: 1rem;
+    li span {
+        font-weight: bold;
+    }
 }
 
 .synopsis {
-    font-size: f.$font-size-p;
+    font-size: 1rem;
     padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.synopsis {
+    font-size: f.$font-size-h3;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 .genres {
-    font-size: 1.3rem; 
+    font-size: f.$font-size-h3; 
     font-weight: bold;
+    li {
+        text-transform: uppercase;
+    }
 }
 
 .second-container {
@@ -40,6 +52,7 @@ img {
         flex-direction: column;
     }
 }
+
 
 h2 {
     font-size: f.$font-size-h2;

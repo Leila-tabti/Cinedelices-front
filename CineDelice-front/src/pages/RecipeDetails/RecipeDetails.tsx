@@ -1,6 +1,5 @@
 import React from 'react';
-import ratatouille from '../../assets/Pictures/Recipes/ratatouille.jpg';
-import ratatouilleMovie from '../../assets/Pictures/MoviesSeries/1.png';
+import ratatouille from '../../assets/Pictures/Recipes/Photo3.png';
 import './RecipeDetails.scss';
 import { NavLink } from 'react-router-dom';
 import { IRecipe } from '../../types/types';

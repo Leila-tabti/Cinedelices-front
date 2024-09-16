@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import '../Profile/Profile.scss';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { FaRegEdit } from "react-icons/fa";
-import { ILoggedUser } from '../../types/types';
-import ModalAddRecipe from '../../components/Modal/ModalAddRecipe';
+import { NavLink, useNavigate, Outlet } from 'react-router-dom';
+import { useRootContext } from '../../routes/Root';
 
 export default function Admin() {
-
   const [profileData, setProfileData] = useState<any>(null);
+  
   const [error, setError] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const {recipes, setRecipes, ingredients} = useRootContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,7 +21,7 @@ export default function Admin() {
       const userId = user.userId;
 
       try {
-        const response = await fetch(`http://localhost:3000/profile/${userId}`, {
+        const response = await fetch(`http://localhost:3000/admin/${userId}`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -43,13 +41,6 @@ export default function Admin() {
 
     fetchProfileData();
   }, [navigate]);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  }
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  }
 
 
   if (error) {
@@ -75,24 +66,13 @@ export default function Admin() {
         <div className="container-profile">
           <div className="manage-container">
             <button><NavLink to ='/'>Retourner sur la page d'accueil</NavLink></button>
-            <button>Gestion des utilisateurs</button>
-            <button> <NavLink to ='/ManageRecipes'>Gestion des Recettes</NavLink></button>
+            <button><NavLink to ='/Admin/ManageUsers'>Gestion des utilisateurs</NavLink></button>
+            <button> <NavLink to ='/Admin/ManageRecipes'>Gestion des Recettes</NavLink></button>
             <button>Gestion des Films et Series</button>
           </div>
           <div className="profile-container">
-            <div className="profile-picture">
-              
-              <img src="https://imgs.search.brave.com/xkQzy2erxbjZTXfX1KvGzpfAR3uZcxHzeA621gHIm0k/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9wdWIt/c3RhdGljLmZvdG9y/LmNvbS9hc3NldHMv/cHJvamVjdHMvcGFn/ZXMvMjhkZmRkMWI2/Nzk4NGZkMDk1ZTM2/OGI3YzYwM2I3ZTQv/Zm90b3ItODg4M2Fi/ZGNhMDI4NGQxM2Ey/NTQyZjg4MTBiZjgx/NTYuanBn" alt="avatar" />
-              </div>
-            <div className="input-container">
-              <div className="profile-pseudo">
-                <input type="text" value="user pseudo" readonly/><FaRegEdit />
-              </div>
-              <div className="profile-mail">
-              <input type="text" value="user@email.com " readonly/><FaRegEdit />
-              </div>
-            </div>
-            
+           
+          <Outlet context={{recipes, setRecipes, ingredients, profileData}}/>
             
           </div>
         </div>

@@ -11,8 +11,6 @@ interface HeaderProps {
 };
 
 
-
-
 export default function Header(props: HeaderProps) {
     const { user } = props;
     return (

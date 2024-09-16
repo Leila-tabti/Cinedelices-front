@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Select from 'react-select';  // Import de react-select
+import Select from 'react-select'
 import chiliHeinsenberg from '../../assets/Pictures/Recipes/chiliHeinsenberg.png';
 import { useRootContext } from '../../routes/Root';
 import './Recipes.scss';
@@ -44,13 +44,15 @@ export default function Recipes() {
             </div>
             <div className="cards-container">
                 {filteredRecipes.map((recipe) => (
+
                     <div key={recipe.id} className="card">
                         <NavLink to={`/Recipes/${recipe.id}`}>
-                            <img src={`/Recipes/${recipe.id}`} alt={recipe.name} />
+                            <img src={`/Recipes/${recipe.id}.png`} alt={recipe.name} />
                             <h3>{recipe.name}</h3>
                         </NavLink>
                     </div>
                 ))}
+
             </div>
         </div>
     );

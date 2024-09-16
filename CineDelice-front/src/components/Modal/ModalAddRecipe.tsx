@@ -1,39 +1,37 @@
 import React,{useEffect, useState, FormEvent} from 'react';
 import { IIngredient, IRecipe } from '../../types/types';
-import { useRootContext } from '../../routes/Root';
 import Select from 'react-select';
 import  './ModalAddRecipe.scss';
 
 interface ModalAddRecipeProps {
   onClose: () => void;
+  recipes: IRecipe[];
+  setRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>;
+  ingredients: IIngredient[];
 }
  
-export default function ModalAddRecipe({ onClose }: ModalAddRecipeProps) {
+export default function ModalAddRecipe({onClose, recipes, setRecipes, ingredients}: ModalAddRecipeProps) {
 
-  const { recipes, setRecipes } = useRootContext();
+
+  console.log('ingredient in modal recipe', ingredients);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [ingredients, setIngredients] = useState<{ name: string; quantity: string }[]>([])
-  const [ingredientQuantity, setIngredientQuantity] = useState('');
-  const [Instructions, setInstructions] = useState('');
-  const [prepTime, setPrepTime] = useState('');
+  const [instruction, setInstruction] = useState('');
+  const [time, setTime] = useState('');
   const [difficulty, setDifficulty] = useState('facile');
-  const [selectedIngredients, setSelectedIngredients] = useState<SelectedIngredient[]>([]);
+  const [selectedIngredients, setSelectedIngredients] = useState<{ ingredient: IIngredient, quantity: string }[]>([]);
 
- 
-  console.log({'recipes':recipes.map(recipe => recipe.ingredient)});
   
-
-
-  // Fonction pour gérer la sélection des ingrédients
-  const handleIngredientChange = (selectedOption: any) => {
-    const ingredient = recipes.ingredient.find((ing) => ing.id === selectedOption.value);
-    if (ingredient) {
-      setSelectedIngredients([...selectedIngredients, { ingredient, quantity: '' }]);
-    }
+  const options = ingredients.length > 0 ? ingredients.map((ing) => ({ label: ing.name, value: ing.id })) : [];
+  console.log('Select options:', options);
+  const handleIngredientChange = (selectedOptions: any) => {
+    const selectedIngs = selectedOptions ? selectedOptions.map((option: any) => ({
+      ingredient: ingredients.find(ing => ing.id === option.value)!,
+      quantity: ''
+    })) : [];
+    setSelectedIngredients(selectedIngs);
   };
 
-  // Fonction pour gérer le changement de quantité
   const handleQuantityChange = (index: number, value: string) => {
     const updatedSelectedIngredients = [...selectedIngredients];
     updatedSelectedIngredients[index].quantity = value;
@@ -45,8 +43,13 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 
   e.preventDefault();
 
+  if (!name || !description || !instruction || !time || !difficulty || selectedIngredients.length === 0) {
+    console.error('Veuillez remplir tous les champs requis.');
+    return;
+  }
+
     try {
-        const response = await fetch('http://localhost:3000/profile/recipes', {
+        const response = await fetch('http://localhost:3000/admin/recipes', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -55,22 +58,21 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
             body: JSON.stringify({
                 name,
                 description,
-                ingredients,
-                Instructions,
-                prepTime,
-                difficulty
+                ingredients: selectedIngredients,
+                instruction,
+                time,
+                difficulty,
+                
             }),
         });
 
-        const newRecipe: IRecipe = await response.json();
-        const newRecipes = [...recipes, newRecipe];
-        setRecipes(newRecipes);
-
         if(!response.ok) {
-            throw new Error('Erreur lors de l\'ajout de la recette');
+          throw new Error('Erreur lors de l\'ajout de la recette');
         }
-
+        const newRecipe: IRecipe = await response.json();
+        setRecipes([...recipes, newRecipe]);
         onClose();
+
     } catch (error) {
         console.error('Erreur', error);
     }
@@ -105,28 +107,32 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
                 <label>
                   Ingrédients:
                   
-                    <div>
-                      <input
-                        type="text"
-                        placeholder="Ingrédient"
-                        value={ingredients.name}
-                        onChange={e => setIngredients(e.target.value)}
-                      />
-                      <input
+                    <Select
+                    isMulti
+                    options={ingredients.map((ing) => ({ label: ing.name, value: ing.id}))}
+                    onChange={handleIngredientChange}
+                    placeholder= "Selectionnez les ingrédients"
+                    />
+                    {selectedIngredients.map((ing, index) => (
+                      <div key={ing.ingredient.id}>
+                        <span>{ing.ingredient.name}</span>
+                        <input
                         type="text"
                         placeholder="Quantité"
-                        value={ingredientQuantity}
-                        onChange={e => setIngredientQuantity(e.target.value)}
-                      />
-                    </div>
-                  <button>Ajouter un ingrédient</button>
+                        value={ing.quantity}
+                        onChange={e => handleQuantityChange(index, e.target.value)}
+                        />
+                      </div>
+                    ))}
+                    
+                 
                 </label>
         
                 <label>
                   Instructions:
                   <textarea
-                    value={Instructions}
-                    onChange={e => setInstructions(e.target.value)}
+                    value={instruction}
+                    onChange={e => setInstruction(e.target.value)}
                     placeholder="Instructions de préparation"
                   />
                 </label>
@@ -135,8 +141,8 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
                   Temps de préparation:
                   <input 
                     type="text" 
-                    value={prepTime}
-                    onChange={e => setPrepTime(e.target.value)}
+                    value={time}
+                    onChange={e => setTime(e.target.value)}
                     placeholder="Ex: 30 min" 
                   />
                 </label>

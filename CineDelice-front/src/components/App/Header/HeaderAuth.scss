@@ -50,6 +50,14 @@
   display: none;
 }
 
+.logged-in {
+  display: flex;
+}
+
+.logged-out {
+  display: flex;
+}
+
 @media (min-width: 768px) {
 
   .active {

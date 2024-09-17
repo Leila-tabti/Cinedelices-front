@@ -8,7 +8,7 @@ import './HeaderBurger.scss'
 
 interface HeaderProps {
     user: ILoggedUser | null
-  };
+};
   
 export default function HeaderAuth({user}: HeaderProps) {
 

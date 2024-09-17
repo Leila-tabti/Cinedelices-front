@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.scss';
 import HeaderLogo from './HeaderLogo';
-import HeaderForm from './HeaderForm';
+import SearchBar from './SearchBar';
 import HeaderAuth from './HeaderAuth';
 import HeaderBurger from './HeaderBurger';
-import { ILoggedUser } from '../../../types/types';
+import { ILoggedUser, IRecipe } from '../../../types/types';
 
 interface HeaderProps {
   user: ILoggedUser | null
+  recipes: IRecipe[];
 };
 
 
 export default function Header(props: HeaderProps) {
-    const { user } = props;
-    return (
+   
+  const { user } = props;
+  const { recipes } = props;
+
+  const [results, setResults] = useState([]);
+    
+  return (
         <>
       <header className="header">
         <HeaderLogo />
-        <HeaderForm />
+        <SearchBar recipes={recipes} />
+        <div>SearchResults</div>
         <HeaderAuth />
         <HeaderBurger user={user}/>
 

@@ -46,7 +46,7 @@ export default function Recipes() {
                 {filteredRecipes.map((recipe) => (
                     <div key={recipe.id} className="card">
                         <NavLink to={`/Recipes/${recipe.id}`}>
-                            <img src={chiliHeinsenberg} alt="image chili Heinsenberg" />
+                            <img src={`/Recipes/${recipe.id}.png`} alt="image chili Heinsenberg" />
                             <h3>{recipe.name}</h3>
                         </NavLink>
                     </div>

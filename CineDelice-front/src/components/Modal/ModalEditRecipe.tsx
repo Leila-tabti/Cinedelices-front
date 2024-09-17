@@ -1,24 +1,28 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useEffect, useState, FormEvent } from 'react';
 import { IIngredient, IRecipe, IRecipeCategory, IMovieSerie } from '../../types/types';
 import Select from 'react-select';
 import './ModalAddRecipe.scss';
 
-interface SelectedIngredient {
-  id: number;
-  name: string;
-  quantity: string;
-}
-
-interface ModalAddRecipeProps {
+interface ModalEditRecipeProps {
   onClose: () => void;
   recipes: IRecipe[];
   setRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>;
   ingredients: IIngredient[];
   recipeCategory: IRecipeCategory[];
   moviesSeries: IMovieSerie[];
+  recipe: IRecipe | null; // Prop pour la recette à éditer
 }
 
-export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredients, recipeCategory, moviesSeries }: ModalAddRecipeProps) {
+export default function ModalEditRecipe({
+  onClose,
+  recipes,
+  setRecipes,
+  ingredients,
+  recipeCategory,
+  moviesSeries,
+  recipe,
+}: ModalEditRecipeProps) {
+    console.log('recipes dans modaledit', recipes)
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [instruction, setInstruction] = useState('');
@@ -26,7 +30,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
   const [difficulty, setDifficulty] = useState('facile');
   const [movieAndSerie, setMovieAndSerie] = useState<IMovieSerie | null>(null);
   const [category, setCategory] = useState<IRecipeCategory | null>(null);
-  const [selectedIngredients, setSelectedIngredients] = useState<SelectedIngredient[]>([]);
+  const [selectedIngredients, setSelectedIngredients] = useState<{ ingredient: IIngredient, quantity: string }[]>([]);
   const [error, setError] = useState({
     name: '',
     description: '',
@@ -37,8 +41,36 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
     movieAndSerie: '',
   });
 
-  const user = localStorage.getItem('user');
-  const userId = user ? JSON.parse(user).userId : null;
+  useEffect(() => {
+    if (recipe) {
+        console.log(recipe);
+      setName(recipe.name);
+      setDescription(recipe.description);
+      setInstruction(recipe.instruction);
+      setTime(recipe.time);
+      setDifficulty(recipe.difficulty);
+      setMovieAndSerie(moviesSeries.find(m => m.id === recipe.movieAndSerie?.id) || null);
+      setCategory(recipeCategory.find(c => c.id === recipe.recipeCategory?.id) || null);
+      setSelectedIngredients(recipe.ingredient.map((ing: any) => ({
+        ingredient: ingredients.find(i => i.id === ing.ingredient.id) || ing.ingredient,
+        quantity: ing.quantity
+      })));
+    }
+  }, [recipe, ingredients, recipeCategory, moviesSeries]);
+
+  const handleIngredientChange = (selectedOptions: any) => {
+    const selectedIngs = selectedOptions ? selectedOptions.map((option: any) => ({
+      ingredient: ingredients.find(ing => ing.id === option.value)!,
+      quantity: ''
+    })) : [];
+    setSelectedIngredients(selectedIngs);
+  };
+
+  const handleQuantityChange = (index: number, value: string) => {
+    const updatedSelectedIngredients = [...selectedIngredients];
+    updatedSelectedIngredients[index].quantity = value;
+    setSelectedIngredients(updatedSelectedIngredients);
+  };
 
   const validateForm = () => {
     let formErrors = { name: '', description: '', instruction: '', time: '', ingredients: '', recipeCategory: '', movieAndSerie: '' };
@@ -77,25 +109,6 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
     return isValid;
   };
 
-  const handleIngredientChange = (selectedOptions: any) => {
-    if (selectedOptions) {
-      const updatedIngredients = selectedOptions.map((option: any) => ({
-        id: option.value,
-        name: option.label,
-        quantity: '', // Initial quantity
-      }));
-      setSelectedIngredients(updatedIngredients);
-    } else {
-      setSelectedIngredients([]);
-    }
-  };
-
-  const handleQuantityChange = (index: number, quantity: string) => {
-    const updatedIngredients = [...selectedIngredients];
-    updatedIngredients[index].quantity = quantity;
-    setSelectedIngredients(updatedIngredients);
-  };
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -105,8 +118,8 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
     }
 
     try {
-      const response = await fetch('http://localhost:3000/admin/recipes', {
-        method: 'POST',
+      const response = await fetch(`http://localhost:3000/admin/recipes/${recipe?.id}`, {
+        method: 'PUT',
         headers: {
           'Content-type': 'application/json',
         },
@@ -114,24 +127,26 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
         body: JSON.stringify({
           name,
           description,
+          ingredient: selectedIngredients.map(ing => ({ 
+            ingredientId: ing.ingredient.id, 
+            quantity: ing.quantity })),
           instruction,
           time,
           difficulty,
-          userId,
           movieId: movieAndSerie?.id,
           recipeCategoryId: category?.id,
-          ingredients: selectedIngredients.map(ing => ({
-            ingredient_id: ing.id,
-            quantity: ing.quantity
-          })),
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Erreur lors de l\'ajout de la recette');
+        throw new Error('Erreur lors de la modification de la recette');
       }
-      const newRecipe: IRecipe = await response.json();
-      setRecipes([...recipes, newRecipe]);
+      const updatedRecipe: IRecipe = await response.json();
+      if (recipes) {
+        setRecipes(recipes.map(r => (r.id === updatedRecipe.id ? updatedRecipe : r)));
+      } else {
+        console.error('La liste des recettes est indéfinie.');
+      }
       onClose();
 
     } catch (error) {
@@ -144,7 +159,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
       <div className="modal-overlay">
         <div className="modal-Recipe">
           <form onSubmit={(e) => handleSubmit(e)}>
-            <h2>Créer une nouvelle recette</h2>
+            <h2>Modifier la recette</h2>
             <label>
               Nom de la recette:
               <input
@@ -175,8 +190,8 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
                 placeholder="Sélectionnez les ingrédients"
               />
               {selectedIngredients.map((ing, index) => (
-                <div key={ing.id}>
-                  <span>{ing.name}</span>
+                <div key={ing.ingredient.id}>
+                  <span>{ing.ingredient.name}</span>
                   <input
                     type="text"
                     placeholder="Quantité"
@@ -208,7 +223,6 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
               />
               {error.time && <p>{error.time}</p>}
             </label>
-
             <label>
               Difficulté:
               <select
@@ -220,7 +234,6 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
                 <option value="Difficile">Difficile</option>
               </select>
             </label>
-
             <label>
               Catégorie de la recette:
               <Select

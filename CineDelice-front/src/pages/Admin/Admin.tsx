@@ -5,9 +5,8 @@ import { useRootContext } from '../../routes/Root';
 
 export default function Admin() {
   const [profileData, setProfileData] = useState<any>(null);
-  
   const [error, setError] = useState<string | null>(null);
-  const {recipes, setRecipes, ingredients} = useRootContext();
+  const {recipes, setRecipes, ingredients, recipeCategory, moviesSeries} = useRootContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -72,7 +71,7 @@ export default function Admin() {
           </div>
           <div className="profile-container">
            
-          <Outlet context={{recipes, setRecipes, ingredients, profileData}}/>
+          <Outlet context={{recipes, setRecipes, ingredients, recipeCategory, profileData, moviesSeries}}/>
             
           </div>
         </div>

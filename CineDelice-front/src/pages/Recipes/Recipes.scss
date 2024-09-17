@@ -82,7 +82,13 @@ a {
     }
 }
 
+@media (min-width: 600px), (max-width: 780px) {
 
+    .custom-select {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
 
   
 

@@ -1,5 +1,6 @@
 import React from "react";
 import "./LastRecipes.scss";
+import { NavLink } from "react-router-dom";
 
 import Photo1 from '../../../assets/Pictures/Recipes/Photo1.png';
 import Photo2 from '../../../assets/Pictures/Recipes/Photo2.png';
@@ -35,8 +36,9 @@ export default function LastRecipes() {
                         <h2>Tourte à la viande de Mrs Lovett</h2>
                     </article>
                 </div>
-
+                <NavLink to="/Recipes">
                 <button className="recipes_button"><a href="">Voir toutes les recettes</a></button>
+                </NavLink>
             </section>
           );
         };

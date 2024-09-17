@@ -10,9 +10,9 @@ export default function HomePage() {
         <main>
             <section className="landing_page">
                 {/* Slides*/}
-
-                <Slider />
                 <Slogan />
+                <Slider />
+                
 
             </section>
 

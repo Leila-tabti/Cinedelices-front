@@ -1,16 +1,18 @@
+
 import React from 'react';
-import './Header.scss';
-import { FaHamburger } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
+import './HeaderAuth.scss';
 
-
-export default function HeaderAuth() {
+export default function HeaderAuth() { 
     return (
         <>
-        <div className="header-auth">
-        <button className="btn-menu-burger" type="submit" aria-label="Rechercher">
-                <FaHamburger className="icon-burger" />
-        </button>
-        </div>
+            <nav className="header-auth active">
+                <ul className="auth-list">
+                <li className="auth-item "><NavLink to ='/login'>Connexion</NavLink></li>
+                <li className="auth-item"><NavLink to ='/register'>Inscription</NavLink></li>
+                </ul>
+            </nav>
         </>
     );
 }
+

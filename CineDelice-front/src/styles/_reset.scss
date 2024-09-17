@@ -34,7 +34,7 @@
     overflow-wrap: break-word;
     font-weight: bolder;
     text-align: center;
-}
+  }
   
   h3, h4, h5, h6 {
     font-family: f.$font-cinzel;
@@ -56,6 +56,14 @@
     overflow-wrap: break-word;
   }
   
+  li, ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  }
+
   #root, #__next {
     isolation: isolate;
   }
+
+  

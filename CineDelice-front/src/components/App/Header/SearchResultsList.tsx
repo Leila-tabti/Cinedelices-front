@@ -16,7 +16,7 @@ export default function SearchResultsList({results, onRecipeClick}: SearchResult
     <div className='results-list'>
         {results.map((result, id) => {
             return (
-            <NavLink to={`/recipes/${result.id}`}
+            <NavLink to={`/Recipes/${result.id}`}
             key={id}
             onClick={onRecipeClick} >
             <SearchResult result={result} />

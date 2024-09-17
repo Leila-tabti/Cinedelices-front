@@ -5,6 +5,7 @@ import SearchBar from './SearchBar';
 import HeaderAuth from './HeaderAuth';
 import HeaderBurger from './HeaderBurger';
 import { ILoggedUser, IRecipe } from '../../../types/types';
+import SearchResultsList from './SearchResultsList';
 
 interface HeaderProps {
   user: ILoggedUser | null
@@ -23,8 +24,8 @@ export default function Header(props: HeaderProps) {
         <>
       <header className="header">
         <HeaderLogo />
-        <SearchBar recipes={recipes} />
-        <div>SearchResults</div>
+        <SearchBar recipes={recipes} setResults={setResults} />
+        <SearchResultsList results={results} />
         <HeaderAuth />
         <HeaderBurger user={user}/>
 

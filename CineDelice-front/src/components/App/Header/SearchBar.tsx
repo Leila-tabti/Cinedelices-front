@@ -5,9 +5,10 @@ import { IRecipe } from '../../../types/types';
 
 interface HeaderProps {
     recipes: IRecipe[]
+    setResults: React.Dispatch<React.SetStateAction<IRecipe[]>>
 };
 
-export default function SearchBar({recipes}: HeaderProps) {
+export default function SearchBar({ recipes,  setResults }: HeaderProps) {
 
     const [input, setInput] = useState('');
 
@@ -16,7 +17,7 @@ export default function SearchBar({recipes}: HeaderProps) {
         const filteredRecipes = recipes.filter((recipe) => {
             return value && recipe && recipe.name && recipe.name.toLowerCase().includes(value.toLowerCase());
         });
-        console.log(filteredRecipes);
+        setResults(filteredRecipes);
     };
 
     return (

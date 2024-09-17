@@ -19,13 +19,20 @@ export default function Header(props: HeaderProps) {
   const { recipes } = props;
 
   const [results, setResults] = useState([]);
-    
+
+  // Fonction pour gérer le clic sur une recette et vider les résultats
+  const handleRecipeClick = () => {
+    setResults([]); // Vide la liste des résultats
+  };
+
   return (
         <>
       <header className="header">
         <HeaderLogo />
         <SearchBar recipes={recipes} setResults={setResults} />
-        <SearchResultsList results={results} />
+        <div className='search-results-list'>
+          <SearchResultsList results={results} onRecipeClick={handleRecipeClick} />
+        </div>
         <HeaderAuth />
         <HeaderBurger user={user}/>
 

@@ -3,12 +3,12 @@ import './SearchBar.scss';
 import { FaSearch } from 'react-icons/fa';
 import { IRecipe } from '../../../types/types';
 
-interface HeaderProps {
+interface SearchBarProps {
     recipes: IRecipe[]
     setResults: React.Dispatch<React.SetStateAction<IRecipe[]>>
 };
 
-export default function SearchBar({ recipes,  setResults }: HeaderProps) {
+export default function SearchBar({ recipes,  setResults }: SearchBarProps) {
 
     const [input, setInput] = useState('');
 

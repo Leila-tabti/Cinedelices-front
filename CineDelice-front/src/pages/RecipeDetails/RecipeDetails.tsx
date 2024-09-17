@@ -1,5 +1,4 @@
 import React from 'react';
-import ratatouille from '../../assets/Pictures/Recipes/Photo3.png';
 import './RecipeDetails.scss';
 import { NavLink } from 'react-router-dom';
 import { IRecipe } from '../../types/types';
@@ -13,7 +12,6 @@ import { useRootContext } from '../../routes/Root';
 export default function RecipeDetails () {
 
     const {RecipeId} = useParams();
-    console.log(RecipeId);
 
     const { recipes }: { recipes: IRecipe[]} = useRootContext();
 

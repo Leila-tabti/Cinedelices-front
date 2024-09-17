@@ -81,7 +81,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
     if (selectedOptions) {
       const updatedIngredients = selectedOptions.map((option: any) => ({
         id: option.value,
-        name: option.label,
+        name: option.name,
         quantity: '', // Initial quantity
       }));
       setSelectedIngredients(updatedIngredients);

@@ -4,9 +4,9 @@
 
 // Header logo
 .header-logo {
-    width: 7rem;
-    height: 7rem;
-    min-width: 7rem;
+    width: 5rem;
+    height: 5rem;
+    min-width: 5rem;
     
     img .logo {
     display: block;
@@ -17,6 +17,6 @@
 
 @media (min-width: 760px) {
     .header-logo {
-        min-width: 7rem;
+        min-width: 5rem;
     }
 }

@@ -6,4 +6,17 @@
 .header-logo {
     width: 7rem;
     height: 7rem;
+    min-width: 7rem;
+    
+    img .logo {
+    display: block;
+    position: absolute;
+  }
+}
+
+
+@media (min-width: 760px) {
+    .header-logo {
+        min-width: 7rem;
+    }
 }

@@ -28,6 +28,7 @@ export default function RecipeDetails () {
             {recipeFound.description}
             </p>
             <div className='second-container'>
+            <img src={`/Recipes/${recipeFound.id}.png`} alt="image ratatouille"/>
                 <p className='inspiredBy'>Inspiré du film :</p>
                 <h2>{recipeFound.movieAndSerie.name}</h2>
                 <img src={`/MoviesSeries/${recipeFound.movieAndSerie.id}.png`} alt={`image ${recipeFound.movieAndSerie.name} `} />

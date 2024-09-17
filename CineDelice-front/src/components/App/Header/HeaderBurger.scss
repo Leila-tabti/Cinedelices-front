@@ -3,17 +3,16 @@
 @use "../../../styles/_variables.scss" as v;
 
 // Burger Menu
-.icon-burger {
+.icon-burger  {
     color: v.$color-yellow;
     font-size: 2rem;
-    
 }
 
 .btn-menu-burger {
   background-color: transparent;
   border: none;
- 
 }
+
   // Media query pour les grands écrans (par exemple, à partir de 768px)
   
 /* Pour les écrans plus larges (par exemple, à partir de 768px) */

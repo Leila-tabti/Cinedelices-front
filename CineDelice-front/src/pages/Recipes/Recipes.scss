@@ -26,12 +26,10 @@ h1 {
 
 .cards-container {
     width: 100%;
-    margin: auto;
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 2rem;
     
 }
 
@@ -42,30 +40,14 @@ h1 {
     height: 18.75rem;
     margin-top: 2rem; 
     position: relative;
-    margin-bottom: 2rem;
     flex-direction: column;
 }
 
 .card img {
     width: 100%;
-    border-radius: 20px;
-    
-    
-}
-
-.card::after {
-    content: "";
-    position: absolute;  
-    width: 100%;
     height: 100%;
-    background-color: rgba(172, 46, 55, 0.05); /* Using the red color with 20% opacity */
-    border-radius: 20px;
-    transition: ease-out 0.2s;
-    cursor: pointer;
-}
-
-.card:hover::after {
-    background-color: transparent;
+    object-fit: cover !important;
+    object-position: center !important;
 }
 
 h2 {
@@ -84,9 +66,10 @@ a {
     font-family: f.$font-cinzel;
     display: flex;
     align-items: center;
+    margin: 1rem;
 
     label {
-        margin-right: 1rem;
+        margin-right: 2rem;
     }
 
     .select-bar {

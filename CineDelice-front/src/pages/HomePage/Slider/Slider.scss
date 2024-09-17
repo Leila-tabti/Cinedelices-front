@@ -4,9 +4,10 @@
 
 .slick-slider {
     position: relative;
-    margin: 0 auto;
-    padding: 0 0; 
-    width: 100%; 
+    margin: 0;
+    padding: 0; 
+    width: 100vw;
+    max-width: 100%; 
   }
   
   .slick-list {
@@ -26,6 +27,7 @@
       width: 100%;
       height: auto;
       object-fit: cover;
+      border-radius: 0;
     }
   }
   
@@ -64,11 +66,10 @@
   /* Points de navigation */
   .slick-dots {
     position: absolute;
-    bottom: 4px;
+    bottom: 1rem;
     width: 100%;
     display: flex !important;
     justify-content: center;
-    list-style: none;
     padding: 0;
     margin: 0;
   }
@@ -80,8 +81,8 @@
   .slick-dots li button {
     border: none;
     background-color: v.$color-light-grey;
-    width: 15px;
-    height: 15px;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
     cursor: pointer;
     font-size: 0; // Remove numbering
@@ -90,13 +91,16 @@
   .slick-dots li.slick-active button {
     background-color: v.$color-grey;
   }
+
+  .slick-dots li.slick-active button:hover {
+    background-color: v.$color-yellow;
+  }
   
-  @media (min-width: 760px) {
+  @media (min-width: 780px) {
     .slick-slider {
       position: relative;
       margin: 0 auto;
       padding: 0 0; 
       width: 50%; 
     }
-    
 }

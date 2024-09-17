@@ -7,14 +7,13 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    
 }
 
 .auth-list {
   padding: 0;
   margin: 0;
   list-style: none;
-  display: flex;
+  display: none;
   align-items: center;
   color: v.$color-grey;
 }
@@ -58,10 +57,13 @@
   display: flex;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 760px) {
 
   .active {
     display: block;
+  }
+  .auth-list {
+    display: flex;
   }
 
 }

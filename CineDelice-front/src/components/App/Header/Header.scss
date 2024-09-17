@@ -13,3 +13,13 @@
     padding: 1rem;
     font-family: f.$font-cinzel;
 }
+
+.search-results-list {
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: v.$color-red;
+  border-radius: 0 0 10px 10px;
+}

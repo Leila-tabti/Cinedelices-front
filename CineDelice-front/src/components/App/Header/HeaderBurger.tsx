@@ -7,8 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import './HeaderBurger.scss'
 
 interface HeaderProps {
+<<<<<<< HEAD
     user: ILoggedUser | null
 };
+=======
+    user: ILoggedUser | null;
+}
+>>>>>>> 606b11caab606cd165da68124fa2423fcc9357a1
 
 export default function HeaderAuth({ user }: HeaderProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);

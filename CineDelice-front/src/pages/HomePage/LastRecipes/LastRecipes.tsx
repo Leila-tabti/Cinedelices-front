@@ -39,7 +39,7 @@ export default function LastRecipes() {
 
             
             <NavLink to="/recipes">
-            <button className="subscribe_button"><a href="/recipes">Découvrir toutes les recettes</a></button>
+            <button className="subscribe_button"><a href="/recipes">Toutes les recettes</a></button>
             </NavLink>
         </section>
     );

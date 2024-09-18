@@ -1,10 +1,8 @@
-import React, { useState, FormEvent} from 'react';
+import React, { useState, FormEvent } from 'react';
 import './Login.scss';
-import { ILoggedUser, IRootContext } from '../../types/types';
-import {Navigate, redirect, useOutletContext} from 'react-router-dom';
+import { ILoggedUser } from '../../types/types';
+import { Navigate } from 'react-router-dom';
 import { useRootContext } from '../../routes/Root';
-
-
 
 export default function Login() {
     // State pour stocker les données du formulaire de connexion
@@ -12,41 +10,67 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
 
-    const {setUser} = useRootContext();
+    // State pour gérer les messages d'erreur
+    const [errors, setErrors] = useState({ email: '', password: '' });
+
+    const { setUser } = useRootContext();
+
+    const validateForm = () => {
+        const newErrors = { email: '', password: '' };
+
+        if (!email) {
+            newErrors.email = 'L\'email ou le pseudo est requis.';
+        }
+
+        if (!password) {
+            newErrors.password = 'Le mot de passe est requis.';
+        }
+
+        setErrors(newErrors);
+        return !newErrors.email && !newErrors.password;
+    };
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:3000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                
-            },
-            body: JSON.stringify({email, password}),
-            credentials: 'include'
-        });
 
-        const data = await response.json();
-        if(data.logged) {
-            const newUser: ILoggedUser = {
-                userId: data.user.id,
-                userPseudo: data.user.pseudo,
-                userRole: data.user.role,
-                userMail: data.user.email,
-                accessToken: data.token
-            };
-            
+        // Si le formulaire n'est pas valide, on arrête l'exécution ici
+        if (!validateForm()) {
+            return;
+        }
 
-            localStorage.setItem('user', JSON.stringify(newUser));
-            setUser(newUser);
-            setRedirect(true);
-        }  else {
-            throw new Error ('Identifiants incorrects');
+        try {
+            const response = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+                credentials: 'include'
+            });
+
+            const data = await response.json();
+            if (data.logged) {
+                const newUser: ILoggedUser = {
+                    userId: data.user.id,
+                    userPseudo: data.user.pseudo,
+                    userRole: data.user.role,
+                    userMail: data.user.email,
+                    accessToken: data.token
+                };
+
+                localStorage.setItem('user', JSON.stringify(newUser));
+                setUser(newUser);
+                setRedirect(true);
+            } else {
+                setErrors(prevErrors => ({ ...prevErrors, email: 'Identifiants ou mot de passe incorrects.' }));
+            }
+        } catch (error) {
+            console.error('Erreur', error);
         }
     };
 
-    if(redirect) {
-        return <Navigate to ="/" replace />;
+    if (redirect) {
+        return <Navigate to="/" replace />;
     }
 
     return (
@@ -57,37 +81,36 @@ export default function Login() {
                     <legend>Informations de connexion</legend>
 
                     <div className="input-group">
-                        <label htmlFor="emailOrPseudo">
-                        Pseudo ou Email
-                        </label>
+                        <label htmlFor="emailOrPseudo">Pseudo ou Email</label>
                         <input
-                        type="text"
-                        id="emailOrPseudo"
-                        name="emailOrPseudo"
-                        value={email} 
-                        onChange={(e) => setEmail(e.target.value)} 
-                        required
+                            type="text"
+                            id="emailOrPseudo"
+                            name="emailOrPseudo"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
+                        {/* Affiche l'erreur si présente */}
+                        {errors.email && <p className="error-message">{errors.email}</p>}
                     </div>
 
                     <div className="input-group">
-                        <label htmlFor="password">
-                        Mot de passe
-                        </label>
+                        <label htmlFor="password">Mot de passe</label>
                         <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
+                        {/* Affiche l'erreur si présente */}
+                        {errors.password && <p className="error-message">{errors.password}</p>}
                     </div>
 
-                <button type="submit" className="submit-button">Se connecter</button>
+                    <button type="submit" className="submit-button">Se connecter</button>
                 </fieldset>
             </form>
-        </div>    
-
+        </div>
     );
 }

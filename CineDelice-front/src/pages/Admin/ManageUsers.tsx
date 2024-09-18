@@ -43,7 +43,6 @@ console.log('users dans manageUsers', users);
                     <h3>{user.pseudo}</h3>
                     <div className="edit">
                 <MdDelete  />
-                <FaRegEdit  />
                     </div>
                 </div>
             

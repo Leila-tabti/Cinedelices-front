@@ -13,6 +13,7 @@ export function useRootContext() {
 export default function Root() {
 
     const [recipes, setRecipes] = useState<IRecipe[]>([]);
+    const [lastRecipes, setLastRecipes] = useState<IRecipe[]>([]);
     const [moviesSeries, setMoviesSeries] = useState<IMovieSerie[]>([]);
     const [user, setUser] = useState<ILoggedUser | null>(null);
     const [ingredients, setIngredients] = useState<IIngredient[]>([]);
@@ -30,6 +31,17 @@ export default function Root() {
         }
         };
         fetchRecipes();
+
+        const fetchLastRecipes = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/recipes/latest');
+                const newLastRecipes: IRecipe[] = await response.json();
+                setLastRecipes(newLastRecipes);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchLastRecipes();
 
         const fetchMoviesSeries = async () => {
             try {
@@ -74,6 +86,8 @@ const contextValue: IRootContext = {
     setUser,
     recipes, 
     setRecipes, 
+    lastRecipes,
+    setLastRecipes,
     moviesSeries, 
     setMoviesSeries,
     ingredients,

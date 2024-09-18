@@ -55,11 +55,13 @@ export interface ILoggedUser {
     userPseudo: string;
     userMail: string;
     userRole: string;
-    accessToken: `${string}.${string}.${string}`; // on précise le format (jwt)
+    accessToken: `${string}.${string}.${string}`; 
   }
 
-export type IRootContext = {
+  export type IRootContext = {
     recipes: IRecipe[];
+    lastRecipes: IRecipe[];  
+    setLastRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>;  
     user: ILoggedUser | null;
     setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>;
     setRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>;
@@ -69,5 +71,6 @@ export type IRootContext = {
     setIngredients: React.Dispatch<React.SetStateAction<IIngredient[]>>;
     profileData: any;
     setProfileData: React.Dispatch<React.SetStateAction<any>>;
-}
+};
+
 

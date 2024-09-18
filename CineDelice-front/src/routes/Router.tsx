@@ -10,6 +10,7 @@ import About from '../pages/About/About';
 import Contact from '../pages/Contact/Contact';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
+
 import MovieDetails from '../pages/MovieDetails/MovieDetails';
 import Page404 from '../pages/404/404';
 import RecipeDetails from '../pages/RecipeDetails/RecipeDetails';
@@ -94,3 +95,4 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
+

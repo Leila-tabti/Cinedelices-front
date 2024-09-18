@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import ModalEditRecipe from '../../components/Modal/ModalEditRecipe';
+import './ManageRecipes.scss';
 
 
 export default function ManageRecipes() {
@@ -103,17 +104,19 @@ export default function ManageRecipes() {
                     moviesSeries={moviesSeries}
                 />
             )}
-            <div className="cards-container">
+            <div className="cards-container-admin">
                 {filteredUser.length > 0 ? (
                     filteredUser.map((recipe) => (
-                        <div key={recipe.id} className="card">
+                        <div key={recipe.id} className="card-recipe">
                             <NavLink to={`/recipes/${recipe.id}`}>
-                                <img src={`/recipes/${recipe.id}.png`} alt={`image ${recipe.name}`} />
+                                
                                 <h3>{recipe.name}</h3>
                             </NavLink>
-                            <p onClick={() => handleOpenDeleteModal(recipe.id, recipe.name)}>supprimer la recette</p><MdDelete onClick={() => handleOpenDeleteModal(recipe.id, recipe.name)} />
-                            <p onClick={() => handleOpenEditModal(recipe)}>Editer la recette</p> <FaRegEdit onClick={() => handleOpenEditModal(recipe)} />
-                                </div>
+                            <div className="edit">
+                                <MdDelete onClick={() => handleOpenDeleteModal(recipe.id, recipe.name)} />
+                                <FaRegEdit onClick={() => handleOpenEditModal(recipe)} />
+                            </div>
+                        </div>
                     ))
                 ) : (
                     <p>Aucune recette trouvée.</p>

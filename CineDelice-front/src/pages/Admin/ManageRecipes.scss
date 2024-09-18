@@ -1,0 +1,28 @@
+@use '../../styles/_variables' as v;
+@use '../../styles/reset';
+@use '../../styles/_fonts' as f;
+
+
+.card-container-admin {
+
+    margin: 0 8%;
+    
+}
+.card-recipe {
+    margin: 2rem 0;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 5rem;
+    background-color: v.$color-light-red;
+    border-radius: 20px;
+}
+
+.card-recipe a {
+    margin-top: 0.5rem;
+}
+
+.edit {
+    display: flex;
+}

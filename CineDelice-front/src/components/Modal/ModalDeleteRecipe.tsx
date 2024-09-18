@@ -1,5 +1,6 @@
 import React from 'react';
 import {IRecipe} from '../../types/types';
+import './ModalDeleteRecipe.scss';
 interface ModalDeleteRecipeProps {
     onClose: () => void;
     onDelete:(recipeId: number | string) => void;
@@ -10,8 +11,8 @@ export default function modalDeleteRecipe({onClose, onDelete, recipeName, recipe
     return (
          
             <div className="modal">
-                <div className="modal-overlay">
-                    <div className="modal-content">
+                <div className="overlay">
+                    <div className="modal-delete">
                         <p>Etes-vous sûr de supprimer la recette : {recipeName} ?</p>
                         <button onClick={() => onDelete(recipeId)}>Oui</button>
                         <button className="cancel-button" onClick={onClose}>Annuler</button>

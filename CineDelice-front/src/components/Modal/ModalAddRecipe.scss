@@ -11,12 +11,11 @@
     z-index: 1000;
   }
   
-  .modal-overlay {
-    background: rgba(0, 0, 0, 0.6);
+  .overlay {
+    margin: auto;
+    margin: 0 8%;
     border-radius: 10px;
     padding: 20px;
-    max-width: 90%;
-    width: 600px;  // Largeur fixe pour une bonne apparence
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);

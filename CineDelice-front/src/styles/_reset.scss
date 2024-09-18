@@ -100,33 +100,14 @@
     margin: 2rem auto;
   }
 
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.45rem;
-  }
-
-  h3 {
-    font-size: 1.20rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-}
-
-
-// Styles pour les grands écrans (ordinateurs)
-@media (min-width: 768px) {
   .container {
     width: 70%;
     overflow: hidden; // Réintroduire les marges pour les grands écrans
   }
-
+  
   h1 {
-    font-size: 2rem; // Taille plus grande pour les titres sur grands écrans
+    font-size: 2rem;
+    padding-left: 1.5rem;
   }
 
   h2 {
@@ -140,7 +121,6 @@
   p {
     font-size: 1rem;
   }
-
 }
   
   

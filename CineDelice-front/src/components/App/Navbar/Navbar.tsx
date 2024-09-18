@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './Navbar.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-export default function Navbar() {
+interface NavBarProps {
+  onNavItemClick: () => void;
+}
+
+export default function Navbar({ onNavItemClick }: NavBarProps) {
   const navigate = useNavigate();
   const [user, setUser] = useState(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null);
 
@@ -26,12 +30,12 @@ export default function Navbar() {
     return (
       <nav className="navbar">
         <ul className="navbar-list">
-          <li className="navbar-item"><NavLink to='/'>Accueil</NavLink></li>
-          <li className="navbar-item"><NavLink to='/MoviesSeries'>Films & Séries</NavLink></li>
-          <li className="navbar-item"><NavLink to ='/Recipes'>Recettes</NavLink></li>
-          <li className="navbar-item "><NavLink to = '/Login'>Connexion</NavLink></li>
-          <li className="navbar-item "><NavLink to = '/Register'>Inscription</NavLink></li>
-          <li className="navbar-item">
+          <li className="navbar-item" onClick={onNavItemClick}><NavLink to='/'>Accueil</NavLink></li>
+          <li className="navbar-item" onClick={onNavItemClick}><NavLink to='/MoviesSeries'>Films & Séries</NavLink></li>
+          <li className="navbar-item" onClick={onNavItemClick}><NavLink to ='/Recipes'>Recettes</NavLink></li>
+          <li className="navbar-item" onClick={onNavItemClick}><NavLink to = '/Login'>Connexion</NavLink></li>
+          <li className="navbar-item" onClick={onNavItemClick}><NavLink to = '/Register'>Inscription</NavLink></li>
+          <li className="navbar-item" onClick={onNavItemClick}>
               <NavLink to="/" onClick={handleLogout}>Déconnexion</NavLink>
             </li>
         </ul>

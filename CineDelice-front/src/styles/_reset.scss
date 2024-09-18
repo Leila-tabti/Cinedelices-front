@@ -16,17 +16,17 @@
 
   }
   
-  img, picture, video, canvas, svg {
+  img {
+    padding: 0;
+    margin: 0;
     display: block;
     max-width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
   }
   
   input, button, textarea, select {
     font: inherit;
-  }
-  
-  img {
-    border-radius: 20px;
   }
 
   h1, h2 {

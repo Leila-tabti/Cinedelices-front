@@ -84,12 +84,12 @@ const contextValue: IRootContext = {
    
     return (
         <>
-            <Header user={user} />
+            <Header user={user} recipes={recipes} />
             <NavBar />
             <Outlet context={contextValue} />
             <Footer />
             
-     </>
+        </>
     );
 }
 

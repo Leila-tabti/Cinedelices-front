@@ -66,32 +66,53 @@
     isolation: isolate;
   }
 
-  @media (min-width: 321px), (max-width:600px) {
-    
-
-    h1 {
-      font-size: 1.45rem;
-    };
-
-    h2 {
-      font-size: 1.20rem;
-    };
-
-    h3 {
-      font-size: 1rem;
-    };
-  } 
-
-  @media (max-width: 320px) {
-    .form-wrapper {
-      width: 100%; /* Pour laisser un peu d'espace sur les côtés */
-      padding: 1rem; /* Ajuster le padding pour rendre le formulaire plus compact */    }
+  // Styles pour les écrans moyens (tablettes)
+@media (min-width: 321px) and (max-width: 600px) {
+  .form-wrapper {
+    width: 100%;
   }
+
+  h1 {
+    font-size: 1.45rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.90rem;
+  }
+}
+
+// Styles pour les grands écrans (ordinateurs)
+@media (min-width: 768px) {
+  .container {
+    width: 70%;
+    overflow: hidden; // Réintroduire les marges pour les grands écrans
+  }
+
+  h1 {
+    font-size: 2rem; // Taille plus grande pour les titres sur grands écrans
+  }
+
+  h2 {
+    font-size: 1.45rem;
+  }
+
+  h3 {
+    font-size: 1.20rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+}
   
-  @media (min-width: 321px) and (max-width: 600px) {
-    .form-wrapper {
-      width: 100%; /* Utiliser un peu plus de largeur */
-    }
-  }
   
   

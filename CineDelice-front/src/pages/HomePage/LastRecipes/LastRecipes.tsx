@@ -14,7 +14,7 @@ export default function LastRecipes() {
     }, [lastRecipes]);
 
     return (
-        <section className="last-recipes">
+        <section className="container">
             <h1>Vos dernières créations</h1>
 
             <div className="cards-container">

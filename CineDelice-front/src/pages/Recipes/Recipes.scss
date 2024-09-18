@@ -4,7 +4,7 @@
 
 .container {
     min-height: 100vh;
-    margin: 0 15vw ;
+    margin: 0 auto;
     background-color: v.$color-light-red;
     box-shadow: -10px 0px 15px rgba(253, 173, 173, 0.3), 10px 0px 15px rgba(253, 173, 173, 0.3),;
     border-radius: 20px;
@@ -12,6 +12,7 @@
     margin-top: 4rem;
     margin-bottom: 2rem;
     padding-bottom: 2rem;
+    width: 90%;
 }
 
 h1 {

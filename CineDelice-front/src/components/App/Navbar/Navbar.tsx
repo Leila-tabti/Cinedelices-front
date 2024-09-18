@@ -27,18 +27,37 @@ export default function Navbar({ onNavItemClick }: NavBarProps) {
     return () => clearInterval(interval); // Nettoie l'intervalle quand le composant est démonté
   }, []);
 
-    return (
-      <nav className="navbar">
-        <ul className="navbar-list">
-          <li className="navbar-item" onClick={onNavItemClick}><NavLink to='/'>Accueil</NavLink></li>
-          <li className="navbar-item" onClick={onNavItemClick}><NavLink to='/MoviesSeries'>Films & Séries</NavLink></li>
-          <li className="navbar-item" onClick={onNavItemClick}><NavLink to ='/Recipes'>Recettes</NavLink></li>
-          <li className="navbar-item" onClick={onNavItemClick}><NavLink to = '/Login'>Connexion</NavLink></li>
-          <li className="navbar-item" onClick={onNavItemClick}><NavLink to = '/Register'>Inscription</NavLink></li>
-          <li className="navbar-item" onClick={onNavItemClick}>
+  return (
+    <nav className="navbar">
+      <ul className="navbar-list">
+        <li className="navbar-item" onClick={onNavItemClick}>
+          <NavLink to='/'>Accueil</NavLink>
+        </li>
+        <li className="navbar-item" onClick={onNavItemClick}>
+          <NavLink to='/MoviesSeries'>Films & Séries</NavLink>
+        </li>
+        <li className="navbar-item" onClick={onNavItemClick}>
+          <NavLink to='/Recipes'>Recettes</NavLink>
+        </li>
+
+        {user ? (
+          <>
+            <li className="navbar-item" onClick={onNavItemClick}>
               <NavLink to="/" onClick={handleLogout}>Déconnexion</NavLink>
             </li>
-        </ul>
-      </nav>
-    );
-  }
+          </>
+        ) : (
+          <>
+            <li className="navbar-item" onClick={onNavItemClick}>
+              <NavLink to='/Login'>Connexion</NavLink>
+            </li>
+            <li className="navbar-item" onClick={onNavItemClick}>
+              <NavLink to='/Register'>Inscription</NavLink>
+            </li>
+          </>
+        )}
+      </ul>
+    </nav>
+  );
+}
+  

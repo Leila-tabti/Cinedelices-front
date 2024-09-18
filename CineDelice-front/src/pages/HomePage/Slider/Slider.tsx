@@ -3,9 +3,9 @@ import Slider from "react-slick"; // Assure-toi que react-slick est bien import�
 import "./Slider.scss";
 
 // Importation des images utilisées dans le carrousel
-import Photo1 from '../../../assets/Pictures/Recipes/Photo1.png';
-import Photo2 from '../../../assets/Pictures/Recipes/Photo2.png';
-import Photo3 from '../../../assets/Pictures/Recipes/Photo3.png';
+import Photo1 from '../../../assets/Pictures/Recipes/caroussel1.png';
+import Photo2 from '../../../assets/Pictures/Recipes/caroussel2.png';
+import Photo3 from '../../../assets/Pictures/Recipes/caroussel3.png';
 
 // Renommage de la fonction Slider en ImageSlider
 export default function ImageSlider() {
@@ -18,6 +18,8 @@ export default function ImageSlider() {
       slidesToScroll: 1, // Nombre de slides à faire défiler à chaque clic
       nextArrow: <div className="slick-arrow slick-next">❯</div>,
       prevArrow: <div className="slick-arrow slick-prev">❮</div>,
+      autoplay: true,
+      autosplaySpeed: 2000
   };
 
   return (

@@ -8,7 +8,7 @@
     background-color: v.$color-light-red;
     box-shadow: -10px 0px 15px rgba(253, 173, 173, 0.3), 10px 0px 15px rgba(253, 173, 173, 0.3);
     border-radius: 20px;
-    z-index: 0;
+    z-index: 0;/* This element is at the base level within its stacking context */
     margin-top: 4rem;
     margin-bottom: 2rem;
     padding-bottom: 2rem;

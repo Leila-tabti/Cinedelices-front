@@ -1,63 +1,58 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: flex-end; /* Alignement à droite */
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    background: #fff;
-    border-radius: 20px;
-    width: 40%;
-    height: 50%;
-    max-width: 80%;
-    position: fixed;
-    top: 1rem;
-    right: 1em;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    
-  }
-  
-  .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    background: none;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  // Modale d'affichage de la Navbar
+  position: fixed; /* Fixes the overlay to the viewport, ensuring it stays in place during scroll */
+  top: 0; /* Positions the overlay at the top of the viewport */
+  right: 0; /* Positions the overlay at the right of the viewport */
+  bottom: 0; /* Positions the overlay at the bottom of the viewport */
+  left: 0; /* Positions the overlay at the left of the viewport */
+  background: rgba(0, 0, 0, 0.5); /* Sets a semi-transparent black background for the overlay */
+  display: flex; /* Uses Flexbox layout for positioning child elements */
+  justify-content: flex-end; /* Aligns child elements to the right */
+  align-items: center; /* Centers child elements vertically */
+  z-index: 1000; /* Ensures the overlay is displayed above other content */
+}
+
+.modal-content {
+  background: #fff; /* Sets a white background for the modal content */
+  border-radius: 20px; /* Rounds the corners of the modal */
+  width: 40%; /* Sets the width of the modal to 40% of the viewport width */
+  height: 50%; /* Sets the height of the modal to 50% of the viewport height */
+  max-width: 80%; /* Sets the maximum width of the modal to 80% of the viewport width */
+  position: fixed; /* Fixes the modal content to the viewport */
+  top: 1rem; /* Positions the modal content 1rem from the top of the viewport */
+  right: 1em; /* Positions the modal content 1em from the right of the viewport */
+  margin: 0; /* Removes default margin around the modal content */
+  padding: 0; /* Removes default padding inside the modal content */
+  display: flex; /* Uses Flexbox layout for positioning child elements inside the modal */
+  align-items: center; /* Centers child elements vertically inside the modal */
+  justify-content: left; /* Aligns child elements to the left inside the modal */
+}
+
+.modal-close {
+  position: absolute; /* Positions the close button absolutely within the modal content */
+  top: 10px; /* Positions the button 10px from the top of the modal content */
+  right: 10px; /* Positions the button 10px from the right of the modal content */
+  border: none; /* Removes the default border around the button */
+  background: none; /* Removes the default background of the button */
+  font-size: 16px; /* Sets the font size of the button text */
+  cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
+}
+
+/* Navbar list styling inside the modal content */
 .modal-content .navbar-list {
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Uses Flexbox layout for the navbar list */
+  flex-direction: column; /* Arranges navbar items in a column */
 }
 
-
+/* Navbar menu styling inside the modal */
 nav.modal-menu {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 0;
+  display: flex; /* Uses Flexbox layout for the navbar menu */
+  flex-direction: column; /* Arranges menu items in a column */
+  padding: 1rem 0; /* Adds vertical padding to the menu */
 }
 
-
-// Styles pour mobile first (petits écrans) - Menu burger visible, Navbar cachée
-
-// Media query pour les grands écrans (par exemple, à partir de 768px)
+/* Media query for larger screens (768px and above) */
 @media (min-width: 760px) {
-
- .modal-overlay {
-   display: none; /* Cache la modale */
- }
+  .modal-overlay {
+      display: none; /* Hides the modal overlay on larger screens */
+  }
 }
-  

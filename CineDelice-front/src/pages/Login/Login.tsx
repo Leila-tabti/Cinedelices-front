@@ -7,15 +7,17 @@ import { useRootContext } from '../../routes/Root';
 
 
 export default function Login() {
-    // State pour stocker les données du formulaire de connexion
+    // State to store login form data
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
 
     const {setUser} = useRootContext();
 
+// Function to handle form submission
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // Send a POST request to the login endpoint
         const response = await fetch('http://localhost:3000/login', {
             method: 'POST',
             headers: {
@@ -27,6 +29,7 @@ export default function Login() {
         });
 
         const data = await response.json();
+        // Check if the login was successful
         if(data.logged) {
             const newUser: ILoggedUser = {
                 userId: data.user.id,

@@ -5,10 +5,10 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['dist'] },// Specifies folders to ignore during linting
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],// Extends recommended ESLint configurations for JavaScript and TypeScript
+    files: ['**/*.{ts,tsx}'],// Specifies which files to lint
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,

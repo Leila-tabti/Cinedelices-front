@@ -23,7 +23,7 @@ export default function Register() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Validation des champs
+        // Field validation
         if (!formData.pseudo || !formData.email || !formData.password || !formData.confirmPassword) {
             setErrorMessage("Tous les champs doivent être remplis.");
             return;

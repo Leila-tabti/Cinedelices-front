@@ -14,8 +14,8 @@
             font-size: f.$font-size-h1;
             color: v.$color-grey;
             font-family: f.$font-cinzel;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
+            overflow-wrap: break-word;/* Allows long words to be broken and wrapped onto the next line to prevent overflow */
+            word-wrap: break-word;/* Ensures long words or unbreakable text will wrap onto the next line to prevent overflow */
             padding: 1rem;
         }
 

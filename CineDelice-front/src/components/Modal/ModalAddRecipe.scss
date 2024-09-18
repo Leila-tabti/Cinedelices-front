@@ -1,79 +1,89 @@
+/* Modal container: Full-screen fixed position, centered content */
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-  }
-  
-  .modal-overlay {
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 90%;
-    width: 600px;  // Largeur fixe pour une bonne apparence
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .modal-Recipe {
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    overflow-y: auto;  // Assure le défilement si nécessaire
-  }
-  
-  h2 {
-    margin-top: 0;
-    color: #333;
-    font-size: 24px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 15px;
-    font-weight: 600;
-  }
-  
-  input[type="text"],
-  textarea,
-  select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-  
-  button {
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    margin-right: 10px;
-  }
-  
-  .modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-  
-  .modal-actions button {
-    margin-left: 10px;
-  }
+  position: fixed; 
+  top: 0; 
+  left: 0;
+  right: 0; 
+  bottom: 0; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000; /* High z-index to ensure the modal appears on top of other content */
+}
+
+/* Overlay: Styled container for modal content */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.6); 
+  border-radius: 10px; 
+  padding: 20px; 
+  max-width: 90%; 
+  width: 600px; 
+  display: flex; 
+  flex-direction: column; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+/* Content area: Main part of the modal */
+.modal-Recipe {
+  background: #fff; 
+  border-radius: 8px; 
+  padding: 20px; 
+  overflow-y: auto; /* Vertical scrolling if content overflows */
+}
+
+/* Heading style */
+h2 {
+  margin-top: 0; 
+  color: #333; 
+  font-size: 24px; 
+}
+
+/* Label styling */
+label {
+  display: block; 
+  margin-bottom: 15px; 
+  font-weight: 600; 
+}
+
+/* Form element styling: Text inputs, text areas, and selects */
+input[type="text"],
+textarea,
+select {
+  width: 100%; 
+  padding: 10px; 
+  margin-top: 5px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  font-size: 16px; 
+}
+
+/* Textarea specific styles */
+textarea {
+  resize: vertical; /* Allow vertical resizing only */
+  min-height: 100px; /* Minimum height for the textarea */
+}
+
+/* Button styling */
+button {
+  color: #fff; 
+  border: none; 
+  border-radius: 4px; 
+  padding: 10px 15px; 
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; 
+  transition: background-color 0.3s; /* Smooth background color transition */
+  margin-right: 10px; 
+}
+
+/* Container for action buttons */
+.modal-actions {
+  display: flex; 
+  justify-content: flex-end; 
+  margin-top: 20px; 
+}
+
+/* Styling for action buttons within the modal */
+.modal-actions button {
+  margin-left: 10px; 
+}

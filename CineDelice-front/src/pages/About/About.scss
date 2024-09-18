@@ -2,7 +2,7 @@
 @use '../../styles/reset';
 @use '../../styles/fonts' as f;
 
-.about-page {  // Classe spécifique pour la page "About"
+.about-page {  // Specific class for the "About" page
     .about {
         display: flex;
         flex-direction: column;
@@ -44,7 +44,7 @@
         }
     }
 
-    // Media query pour les écrans plus larges (>= 768px)
+    // Media query for wider screens (>= 768px)
     @media (min-width: 768px) {
         .about {
             gap: 2rem;
@@ -54,13 +54,13 @@
     
                 div {
                     max-width: 40%;
-                    text-align: left;  // Texte aligné à gauche sur grands écrans
+                    text-align: left;  // Text aligned to the left on larger screens
                 }
                 
                 img {
-                    max-width: 60%;  // L'image prend moins de place sur grands écrans
+                    max-width: 60%;  // Image takes up less space on larger screens
                 }
+            }
         }
     }
-}
 }

@@ -37,8 +37,9 @@ export default function LastRecipes() {
                 )}
             </div>
 
-            <NavLink to="/Recipes">
-                <button className="recipes_button">Voir toutes les recettes</button>
+            
+            <NavLink to="/recipes">
+            <button className="subscribe_button"><a href="/recipes">Découvrir toutes les recettes</a></button>
             </NavLink>
         </section>
     );

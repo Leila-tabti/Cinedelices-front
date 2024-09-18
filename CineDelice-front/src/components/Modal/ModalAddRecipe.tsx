@@ -118,7 +118,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
           time,
           difficulty,
           userId,
-          movieId: movieAndSerie?.id,
+          movieAndSerieId: movieAndSerie?.id,
           recipeCategoryId: category?.id,
           ingredients: selectedIngredients.map(ing => ({
             ingredient_id: ing.id,

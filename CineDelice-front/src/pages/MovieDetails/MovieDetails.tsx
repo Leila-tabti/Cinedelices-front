@@ -24,17 +24,20 @@ export default function MovieDetails() {
                 <li><span>Réalisateur :</span>{movieSerieFound.director}</li>
                 <li><span>Acteurs principaux :</span>{movieSerieFound.actor}</li>
                 <li><span>Sorti le :</span>{movieSerieFound.release_date}</li>
+                <li><span>Genre :</span>
+                    <ul>
+                        {movieSerieFound.movieAndSerieCategory.map((category) => {
+                            return <li key={category.id}>{category.name}</li>;
+                        })}
+                    </ul>
+                </li>
+                
             </ul>
             <img src={`/MoviesSeries/${movieSerieFound.id}.png`} alt={`image ${movieSerieFound.name} `} />
             <h3>Synopsis</h3>
             <p className='synopsis'>
                 {movieSerieFound.synopsis}
             </p>
-            <ul className='genres'>
-                <li>Fantastique</li>
-                <li>Aventure</li>
-                <li>Epique</li>
-            </ul>
             <div className='second-container'>
                 <h2>Recettes associées</h2>
                 <ul className='recipes'>

@@ -11,6 +11,7 @@ export default function Profile() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Function to fetch profile data
     const fetchProfileData = async () => {
       const storedUser = localStorage.getItem('user');
       if (!storedUser) {

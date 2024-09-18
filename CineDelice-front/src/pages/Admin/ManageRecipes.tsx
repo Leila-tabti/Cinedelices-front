@@ -16,21 +16,19 @@ export default function ManageRecipes() {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
     const [selectedRecipeId, setSelectedRecipeId] = useState<number| string>('');
     const [selectedRecipeName, setSelectedRecipeName] = useState<string>("");
-    const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false); // Nouveau state pour la modal d'édition
-    const [selectedRecipe, setSelectedRecipe] = useState<any>(null); // Pour stocker la recette sélectionnée
-    
-
+    const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false); // New state for the edit modal
+    const [selectedRecipe, setSelectedRecipe] = useState<any>(null); // To store the selected recipe
 
     const user = localStorage.getItem('user');
     const userId = JSON.parse(user!).userId;
     const handleOpenModal = () => {
-        console.log("open modal")
-        setIsModalOpen(true);
+        console.log("open modal")// Log when opening the modal
+        setIsModalOpen(true);// Set state to open the modal
     }
 
     const handleCloseModal = () => {
-        console.log("close modal")
-        setIsModalOpen(false);
+        console.log("close modal")// Log when closing the modal
+        setIsModalOpen(false);// Set state to close the modal
     }
 
     const handleOpenDeleteModal = (recipeId: number | string, recipeName: string) => {
@@ -88,6 +86,7 @@ export default function ManageRecipes() {
             <button onClick={handleOpenModal}>Créer une recette</button>
             
             {isModalOpen && (
+<<<<<<< HEAD
                 <ModalAddRecipe onClose={handleCloseModal} recipes={recipes} setRecipes={setRecipes} ingredients={ingredients} recipeCategory={recipeCategory} moviesSeries={moviesSeries}/>
             )}
             {isDeleteModalOpen && (
@@ -122,6 +121,10 @@ export default function ManageRecipes() {
                     <p>Aucune recette trouvée.</p>
                 )}
             </div>
+=======
+                <ModalAddRecipe onClose={handleCloseModal} recipes={recipes} setRecipes={setRecipes} ingredients={ingredients} />
+            )}{/* Conditionally render the ModalAddRecipe component */}
+>>>>>>> feature/comments
         </>
     );
 }

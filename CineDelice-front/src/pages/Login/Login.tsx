@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { useRootContext } from '../../routes/Root';
 
 export default function Login() {
-    // State pour stocker les données du formulaire de connexion
+    // State to store login form data
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
@@ -30,42 +30,38 @@ export default function Login() {
         return !newErrors.email && !newErrors.password;
     };
 
+// Function to handle form submission
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Si le formulaire n'est pas valide, on arrête l'exécution ici
-        if (!validateForm()) {
-            return;
-        }
+        // Send a POST request to the login endpoint
+        const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                
+            },
+            body: JSON.stringify({email, password}),
+            credentials: 'include'
+        });
 
-        try {
-            const response = await fetch('http://localhost:3000/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-                credentials: 'include'
-            });
+        const data = await response.json();
+        // Check if the login was successful
+        if(data.logged) {
+            const newUser: ILoggedUser = {
+                userId: data.user.id,
+                userPseudo: data.user.pseudo,
+                userRole: data.user.role,
+                userMail: data.user.email,
+                accessToken: data.token
+            };
+            
 
-            const data = await response.json();
-            if (data.logged) {
-                const newUser: ILoggedUser = {
-                    userId: data.user.id,
-                    userPseudo: data.user.pseudo,
-                    userRole: data.user.role,
-                    userMail: data.user.email,
-                    accessToken: data.token
-                };
-
-                localStorage.setItem('user', JSON.stringify(newUser));
-                setUser(newUser);
-                setRedirect(true);
-            } else {
-                setErrors(prevErrors => ({ ...prevErrors, email: 'Identifiants ou mot de passe incorrects.' }));
-            }
-        } catch (error) {
-            console.error('Erreur', error);
+            localStorage.setItem('user', JSON.stringify(newUser));
+            setUser(newUser);
+            setRedirect(true);
+        }  else {
+            throw new Error ('Identifiants incorrects');
         }
     };
 
@@ -90,7 +86,6 @@ export default function Login() {
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
-                        {/* Affiche l'erreur si présente */}
                         {errors.email && <p className="error-message">{errors.email}</p>}
                     </div>
 
@@ -104,7 +99,6 @@ export default function Login() {
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
-                        {/* Affiche l'erreur si présente */}
                         {errors.password && <p className="error-message">{errors.password}</p>}
                     </div>
 

@@ -31,7 +31,7 @@
     }
   }
   
-  /* Flèches de navigation */
+  /* Navigation arrows */
   .slick-arrow {
     position: absolute;
     top: 50%;
@@ -48,7 +48,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 0.8rem;
-    line-height: 28px;
+    line-height: 28px;/* Sets the line height to 28 pixels */
   
     &:hover {
       background-color: v.$color-light-yellow;
@@ -63,7 +63,7 @@
     right: 1.5rem;
   }
   
-  /* Points de navigation */
+ /* Navigation dots */
   .slick-dots {
     position: absolute;
     bottom: 1rem;

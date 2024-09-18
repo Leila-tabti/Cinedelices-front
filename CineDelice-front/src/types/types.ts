@@ -62,21 +62,20 @@ export interface ILoggedUser {
     accessToken: `${string}.${string}.${string}`; 
   }
 
-  export type IRootContext = {
-    recipes: IRecipe[];
-    lastRecipes: IRecipe[];  
-    setLastRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>;  
-    user: ILoggedUser | null;
-    setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>;
-    setRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>;
-    moviesSeries: IMovieSerie[];
-    setMoviesSeries: React.Dispatch<React.SetStateAction<IMovieSerie[]>>;
-    ingredients: IIngredient[];
-    setIngredients: React.Dispatch<React.SetStateAction<IIngredient[]>>;
-    recipeCategory: IRecipeCategory[];
-    setRecipeCategory: React.Dispatch<React.SetStateAction<IRecipeCategory[]>>;
-    profileData: any;
-    setProfileData: React.Dispatch<React.SetStateAction<any>>;
-};
+// Type representing the context used throughout the application
+export type IRootContext = {
+    recipes: IRecipe[]; // List of recipes
+    user: ILoggedUser | null; // Currently logged-in user or null
+    setUser: React.Dispatch<React.SetStateAction<ILoggedUser | null>>; // Function to update the user
+    setRecipes: React.Dispatch<React.SetStateAction<IRecipe[]>>; // Function to update the list of recipes
+    moviesSeries: IMovieSerie[]; // List of movies/series
+    setMoviesSeries: React.Dispatch<React.SetStateAction<IMovieSerie[]>>; // Function to update the list of movies/series
+    ingredients: IIngredient[]; // List of ingredients
+    setIngredients: React.Dispatch<React.SetStateAction<IIngredient[]>>; // Function to update the list of ingredients
+    profileData: any; // Profile data (type not specified)
+    setProfileData: React.Dispatch<React.SetStateAction<any>>; // Function to update profile data
+}
+
+
 
 

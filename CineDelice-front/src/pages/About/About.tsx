@@ -4,7 +4,7 @@ import About1 from '../../assets/Pictures/About/About.webp';
 
 export default function About() {
     return (
-        <main className="about-page"> {/* Classe parent spécifique */}
+        <main className="about-page"> {/* Specific parent class */}
             <div className="about">
                 <h1>Qu'est-ce que CinéDélices ?</h1>
                 

@@ -8,10 +8,10 @@ import { NavLink } from 'react-router-dom';
 export default function Recipes() {
     const { recipes } = useRootContext();
 
-    // Initialisation de la catégorie sélectionnée avec un objet de valeur et de label
+    // Initialize selected category with a value and label object
     const [selectedCategory, setSelectedCategory] = useState({ value: 'All', label: 'Toutes les catégories' });
 
-    // Options de catégories pour le sélecteur
+    // Category options for the selector
     const categoryOptions = [
         { value: 'All', label: 'Toutes les catégories' },
         { value: 'Entrée', label: 'Entrée' },
@@ -19,12 +19,12 @@ export default function Recipes() {
         { value: 'Dessert', label: 'Dessert' }
     ];
 
-    // Gestionnaire pour le changement de catégorie
+    // Handler for category change
     const handleCategoryChange = (selectedOption) => {
         setSelectedCategory(selectedOption);
     };
 
-    // Filtrer les recettes en fonction de la catégorie sélectionnée
+    // Filter recipes based on selected category
     const filteredRecipes = selectedCategory.value === 'All' 
         ? recipes 
         : recipes.filter(recipe => recipe.recipeCategory.name === selectedCategory.value);
@@ -35,11 +35,10 @@ export default function Recipes() {
             <div className="custom-select">
                 <label htmlFor="category-select">Filtrer par catégorie : </label>
                 <Select
-                    className="select-bar"
-                    value={selectedCategory}       // Valeur sélectionnée
-                    onChange={handleCategoryChange} // Gestion du changement
-                    options={categoryOptions}       // Options du select
-                    isSearchable={true}             // Permettre la recherche dans les options
+                    value={selectedCategory}       // Selected value
+                    onChange={handleCategoryChange} // Change handler
+                    options={categoryOptions}       // Options for select
+                    isSearchable={true}             // Allow search within options
                 />
             </div>
             <div className="cards-container">

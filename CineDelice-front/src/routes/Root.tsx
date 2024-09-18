@@ -7,7 +7,7 @@ import { IRecipe, IMovieSerie, ILoggedUser, IRootContext, IIngredient, IRecipeCa
 
 
 export function useRootContext() {
-    return useOutletContext<IRootContext>()
+    return useOutletContext<IRootContext>()// Custom hook to use context value
 }
 
 export default function Root() {

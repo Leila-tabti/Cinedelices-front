@@ -3,7 +3,7 @@ import NavBar from '../components/App/Navbar/Navbar';
 import Footer from '../components/App/Footer/Footer';
 import Header from '../components/App/Header/Header';
 import { Outlet, useOutletContext } from 'react-router-dom';
-import { IRecipe, IMovieSerie, ILoggedUser, IRootContext, IIngredient } from '../types/types';
+import { IRecipe, IMovieSerie, ILoggedUser, IRootContext, IIngredient, IRecipeCategory } from '../types/types';
 
 
 export function useRootContext() {
@@ -16,6 +16,7 @@ export default function Root() {
     const [moviesSeries, setMoviesSeries] = useState<IMovieSerie[]>([]);
     const [user, setUser] = useState<ILoggedUser | null>(null);
     const [ingredients, setIngredients] = useState<IIngredient[]>([]);
+    const [recipeCategory, setRecipeCategory] = useState<IRecipeCategory[]>([]);
     const [profileData, setProfileData] = useState<any>(null);
     
     useEffect(() => {
@@ -54,6 +55,16 @@ export default function Root() {
         };
         fetchIngredients();
 
+        const fetchRecipeCategory = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/recipeCategory');
+                const newRecipeCategory: IRecipeCategory[] = await response.json();
+                setRecipeCategory(newRecipeCategory);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchRecipeCategory();
       
       const stockedUser = localStorage.getItem('user');
     if(stockedUser) {
@@ -68,6 +79,7 @@ export default function Root() {
 
     }, []);
 
+   
 
 const contextValue: IRootContext = {
     user,
@@ -78,6 +90,8 @@ const contextValue: IRootContext = {
     setMoviesSeries,
     ingredients,
     setIngredients,
+    recipeCategory,
+    setRecipeCategory,
     profileData,
     setProfileData
 }

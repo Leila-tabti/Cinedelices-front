@@ -39,8 +39,9 @@ export interface IRecipe {
     instruction: string;
     recipeCategory: IRecipeCategory;
     movieAndSerie: IMovieSerie;
-    user: IUser;
+    userId: number ;
     ingredient: IIngredient[];
+    
 };
 
 export interface IIngredient {
@@ -50,6 +51,9 @@ export interface IIngredient {
     quantity: string;
 };
 
+export interface IRecipeCategory {
+    name: string;
+}
 export interface ILoggedUser {
     userId: number;
     userPseudo: string;
@@ -67,6 +71,8 @@ export type IRootContext = {
     setMoviesSeries: React.Dispatch<React.SetStateAction<IMovieSerie[]>>;
     ingredients: IIngredient[];
     setIngredients: React.Dispatch<React.SetStateAction<IIngredient[]>>;
+    recipeCategory: IRecipeCategory[];
+    setRecipeCategory: React.Dispatch<React.SetStateAction<IRecipeCategory[]>>;
     profileData: any;
     setProfileData: React.Dispatch<React.SetStateAction<any>>;
 }

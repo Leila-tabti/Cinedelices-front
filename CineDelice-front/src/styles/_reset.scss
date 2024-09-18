@@ -34,6 +34,7 @@
     overflow-wrap: break-word;
     font-weight: bolder;
     text-align: center;
+    padding: 0;
   }
   
   h3, h4, h5, h6 {
@@ -66,10 +67,10 @@
     isolation: isolate;
   }
 
-  // Styles pour les écrans moyens (tablettes)
-@media (min-width: 321px) and (max-width: 600px) {
+/* Pour les tablettes */
+@media (min-width: 321px) and (max-width: 768px) {
   .form-wrapper {
-    width: 100%;
+    width: 100%; 
   }
 
   h1 {
@@ -88,6 +89,34 @@
     font-size: 0.90rem;
   }
 }
+
+/* Pour les grands écrans (ordinateurs) */
+@media (min-width: 768px) {
+  .form-wrapper {
+    width: 50%; /* Garde une largeur fixe et raisonnable */
+    max-width: 600px; /* Pour limiter la taille sur les très grands écrans */
+    height: auto; /* Hauteur adaptée selon le contenu */
+    padding: 2rem; /* Un peu plus d'espace interne */
+    margin: 2rem auto;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.45rem;
+  }
+
+  h3 {
+    font-size: 1.20rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
 
 // Styles pour les grands écrans (ordinateurs)
 @media (min-width: 768px) {

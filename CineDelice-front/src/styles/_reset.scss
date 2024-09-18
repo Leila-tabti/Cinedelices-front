@@ -66,4 +66,32 @@
     isolation: isolate;
   }
 
+  @media (min-width: 321px), (max-width:600px) {
+    
+
+    h1 {
+      font-size: 1.45rem;
+    };
+
+    h2 {
+      font-size: 1.20rem;
+    };
+
+    h3 {
+      font-size: 1rem;
+    };
+  } 
+
+  @media (max-width: 320px) {
+    .form-wrapper {
+      width: 100%; /* Pour laisser un peu d'espace sur les côtés */
+      padding: 1rem; /* Ajuster le padding pour rendre le formulaire plus compact */    }
+  }
+  
+  @media (min-width: 321px) and (max-width: 600px) {
+    .form-wrapper {
+      width: 100%; /* Utiliser un peu plus de largeur */
+    }
+  }
+  
   

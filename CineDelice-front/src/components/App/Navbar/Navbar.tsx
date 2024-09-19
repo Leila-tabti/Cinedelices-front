@@ -51,7 +51,7 @@ export default function Navbar({ onNavItemClick }: NavBarProps) {
               </li>
             ) : (
               <li className="navbar-item" onClick={onNavItemClick}>
-                <NavLink to="/Profile">Profile</NavLink>
+                <NavLink to="/Profile">Profil</NavLink>
               </li>
             )}
           </>

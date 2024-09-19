@@ -118,6 +118,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
       if (!response.ok) {
         throw new Error('Erreur lors de l\'ajout de la recette');
       }
+
       const newRecipe: IRecipe = await response.json();
       setRecipes([...recipes, newRecipe]);
       onClose();
@@ -140,6 +141,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
             />
             {error.name && <p>{error.name}</p>}
           </label>
+
           <label>
             Description:
             <textarea
@@ -149,6 +151,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
             />
             {error.description && <p>{error.description}</p>}
           </label>
+
           <label>
             Ingrédients:
             <Select
@@ -170,6 +173,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
             ))}
             {error.ingredients && <p>{error.ingredients}</p>}
           </label>
+
           <label>
             Instructions:
             <textarea
@@ -179,6 +183,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
             />
             {error.instruction && <p>{error.instruction}</p>}
           </label>
+
           <label>
             Temps de préparation:
             <input
@@ -189,6 +194,8 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
             />
             {error.time && <p>{error.time}</p>}
           </label>
+
+
           <label>
             Difficulté:
             <select
@@ -200,6 +207,8 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
               <option value="Difficile">Difficile</option>
             </select>
           </label>
+
+
           <label>
             Catégorie de la recette:
             <Select
@@ -209,6 +218,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
             />
             {error.recipeCategory && <p>{error.recipeCategory}</p>}
           </label>
+
           <label>
             Film ou Série associé:
             <Select
@@ -218,6 +228,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
             />
             {error.movieAndSerie && <p>{error.movieAndSerie}</p>}
           </label>
+
           <div className="modal-actions">
             <button type="button" onClick={onClose}>Annuler</button>
             <button type="submit">Enregistrer</button>

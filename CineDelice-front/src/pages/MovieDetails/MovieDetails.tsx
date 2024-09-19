@@ -1,5 +1,6 @@
 import React from 'react';
 import './MovieDetails.scss';
+import '../Recipes/Recipes.scss';
 import { NavLink } from 'react-router-dom';
 import { useRootContext } from '../../routes/Root';
 import { useParams } from 'react-router-dom';
@@ -20,30 +21,33 @@ export default function MovieDetails() {
     return (
         <div className='container'>
             <h1>{movieSerieFound.name}</h1>
-            <ul className='informations'>
-                <li><span>Réalisateur :</span>{movieSerieFound.director}</li>
-                <li><span>Acteurs principaux :</span>{movieSerieFound.actor}</li>
-                <li><span>Sorti le :</span>{movieSerieFound.release_date}</li>
-                <li><span>Genre :</span>
-                    <ul>
-                        {movieSerieFound.movieAndSerieCategory.map((category) => {
-                            return <li key={category.id}>{category.name}</li>;
-                        })}
-                    </ul>
-                </li>
+            <div className="container-informations">
+                <img src={`/MoviesSeries/${movieSerieFound.id}.png`} alt={`image ${movieSerieFound.name} `} />
+                <ul className='informations'>
+                    <li><span>Réalisateur : </span>{movieSerieFound.director}</li>
+                    <li><span>Acteurs principaux : </span>{movieSerieFound.actor}</li>
+                    <li><span>Sorti le : </span>{movieSerieFound.release_date}</li>
+                     {movieSerieFound.movieAndSerieCategory.map((category) => {
+                            return <li key={category.id}><span>Genre : </span>{category.name}</li>;
+                     })}
+                    
+                        
+                        
+                    
                 
-            </ul>
-            <img src={`/MoviesSeries/${movieSerieFound.id}.png`} alt={`image ${movieSerieFound.name} `} />
+                </ul>
+            </div>
             <h3>Synopsis</h3>
             <p className='synopsis'>
                 {movieSerieFound.synopsis}
             </p>
-            <div className='second-container'>
-                <h2>Recettes associées</h2>
+            <h2>Recettes associées</h2>
+            <div className='second-container-movie'>
+                
                 <ul className='recipes'>
                     {movieSerieFound.recipes.map((recipe) => {
                         return(
-                        <div key={recipe.id}>
+                        <div key={recipe.id}className='card-detail'>
                             <NavLink to={`/Recipes/${recipe.id}`}>
                             <img src={`/Recipes/${recipe.id}.png`} alt={recipe.name} />
                             <h3>{recipe.name}</h3>

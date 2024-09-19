@@ -15,16 +15,6 @@
     z-index: 1000;
   }
   
-  .modal-overlay {
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    padding: 20px;
-    width: 400px;  // Ajustez la largeur pour un bon ajustement
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-  
   .modal-delete{
     background: #fff;
     border-radius: 8px;

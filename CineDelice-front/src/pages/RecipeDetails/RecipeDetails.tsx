@@ -1,5 +1,6 @@
 import React from 'react';
 import './RecipeDetails.scss';
+import '../Recipes/Recipes.scss'
 import { NavLink } from 'react-router-dom';
 import { IRecipe } from '../../types/types';
 import { useParams } from 'react-router-dom';
@@ -26,10 +27,10 @@ export default function RecipeDetails () {
             {recipeFound.description}
             </p>
             <div className='second-container'>
-                <img src={`/Recipes/${recipeFound.id}.png`} alt={recipeFound.name} />
-                <p className='inspiredBy'>Inspiré du film :</p>
-                <h2>{recipeFound.movieAndSerie.name}</h2>
-                <img src={`/MoviesSeries/${recipeFound.movieAndSerie.id}.png`} alt={`image ${recipeFound.movieAndSerie.name} `} />
+                <div className="card"><img src={`/Recipes/${recipeFound.id}.png`} alt={recipeFound.name} /></div>
+                
+                <h2>inspiré du film : {recipeFound.movieAndSerie.name}</h2>
+                <div className="card"><img src={`/MoviesSeries/${recipeFound.movieAndSerie.id}.png`} alt={`image ${recipeFound.movieAndSerie.name} `} /></div>
                 <div className='otherRecipesContainer'>
                     <NavLink to={`/MoviesSeries/${recipeFound.movieAndSerie.id}`}>
                     <h3 className='otherRecipes'>

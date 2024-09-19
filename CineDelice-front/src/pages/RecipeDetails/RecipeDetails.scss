@@ -2,16 +2,22 @@
 @use '../../styles/reset';
 @use '../../styles/_fonts' as f;
 
+.ingredientsContainer {
+    margin: 0 20%
+}
+
 
 .ingredient-list {
     flex-direction: column;
     display: block;
     justify-content: left;
+    padding: 0;
     padding-bottom: 1rem;
+    
 }
 
 .description {
-    text-align: center;
+    text-align: left;
     font-size: 1.3rem;
     padding: 1rem;
     padding-top: 3rem;
@@ -21,18 +27,12 @@
 .second-container {
     background-color: v.$color-yellow;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 0.5rem;
-    h2 {
-        padding-bottom: 1rem;
-    }
-    img {
-        display: block;
-        justify-content: center;
-        margin: auto;
-    }
-    p {
-        line-height: 1.7rem;
-    }
+    margin:0 20%
 }
 
 .recipe-picture {
@@ -63,6 +63,7 @@ h2 {
 h3 {
     font-size: f.$font-size-h3;
     padding: 1rem;
+    
 }
 
 a {

@@ -21,3 +21,5 @@ export default function modalDeleteRecipe({onClose, onDelete, recipeName, recipe
             </div>
         );
     }
+
+

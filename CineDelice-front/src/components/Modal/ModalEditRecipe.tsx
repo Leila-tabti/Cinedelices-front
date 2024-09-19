@@ -156,7 +156,6 @@ export default function ModalEditRecipe({
 
   return (
     <div className="modal">
-      <div className="modal-overlay">
         <div className="modal-Recipe">
           <form onSubmit={(e) => handleSubmit(e)}>
             <h2>Modifier la recette</h2>
@@ -261,6 +260,6 @@ export default function ModalEditRecipe({
           </form>
         </div>
       </div>
-    </div>
+   
   );
 }

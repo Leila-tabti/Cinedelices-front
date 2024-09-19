@@ -7,7 +7,7 @@ export default function Page404 () {
     
     return (
         <div className="error-page">
-          <h1>Oups ! Cette scène semble manquer au scénario.</h1>
+          <h2>Oups ! Cette scène semble manquer au scénario.</h2>
           <img src={chefImage} alt="Erreur 404 Chef" />
           <div className='error-page-text'>
           <p>

@@ -86,45 +86,8 @@ export default function ManageRecipes() {
             <button onClick={handleOpenModal}>Créer une recette</button>
             
             {isModalOpen && (
-<<<<<<< HEAD
-                <ModalAddRecipe onClose={handleCloseModal} recipes={recipes} setRecipes={setRecipes} ingredients={ingredients} recipeCategory={recipeCategory} moviesSeries={moviesSeries}/>
-            )}
-            {isDeleteModalOpen && (
-                <ModalDeleteRecipe onClose={handleCloseDeleteModal} onDelete={deleteRecipe} recipeId={selectedRecipeId} recipeName={selectedRecipeName} />
-            )}
-             {isEditModalOpen && (
-                <ModalEditRecipe
-                    onClose={handleCloseEditModal}
-                    recipe={selectedRecipe}
-                    recipes={recipes}
-                    setRecipes={setRecipes}
-                    ingredients={ingredients}
-                    recipeCategory={recipeCategory}
-                    moviesSeries={moviesSeries}
-                />
-            )}
-            <div className="cards-container-admin">
-                {filteredUser.length > 0 ? (
-                    filteredUser.map((recipe) => (
-                        <div key={recipe.id} className="card-recipe">
-                            <NavLink to={`/recipes/${recipe.id}`}>
-                                
-                                <h3>{recipe.name}</h3>
-                            </NavLink>
-                            <div className="edit">
-                                <MdDelete onClick={() => handleOpenDeleteModal(recipe.id, recipe.name)} />
-                                <FaRegEdit onClick={() => handleOpenEditModal(recipe)} />
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <p>Aucune recette trouvée.</p>
-                )}
-            </div>
-=======
                 <ModalAddRecipe onClose={handleCloseModal} recipes={recipes} setRecipes={setRecipes} ingredients={ingredients} />
             )}{/* Conditionally render the ModalAddRecipe component */}
->>>>>>> feature/comments
         </>
     );
 }

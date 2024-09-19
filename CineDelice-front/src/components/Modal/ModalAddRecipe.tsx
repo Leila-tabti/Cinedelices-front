@@ -73,7 +73,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
     if (selectedOptions) {
       const updatedIngredients = selectedOptions.map((option: any) => ({
         id: option.value,
-        name: option.name,
+        name: option.label,
         quantity: '', // Initial quantity
       }));
       setSelectedIngredients(updatedIngredients);
@@ -127,110 +127,103 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
   };
   return (
     <div className="modal">
-        <div className="modal-Recipe">
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <h2>Créer une nouvelle recette</h2>
-            <label>
-              Nom de la recette:
-              <input
-                type="text"
-                value={name}
-                onChange={e => setName(e.target.value)}
-                placeholder="Nom de la recette"
-              />
-              {error.name && <p>{error.name}</p>}
-            </label>
-            <label>
-              Description:
-              <textarea
-                value={description}
-                onChange={e => setDescription(e.target.value)}
-                placeholder="Description de la recette"
-              />
-              {error.description && <p>{error.description}</p>}
-            </label>
-            <label>
-              Ingrédients:
-              <Select
-                isMulti
-                options={ingredients.map((ing) => ({ label: ing.name, value: ing.id }))}
-                onChange={handleIngredientChange}
-                placeholder="Sélectionnez les ingrédients"
-              />
-              {selectedIngredients.map((ing, index) => (
-                <div key={ing.id}>
-                  <span>{ing.name}</span>
-                  <input
-                    type="text"
-                    placeholder="Quantité"
-                    value={ing.quantity}
-                    onChange={e => handleQuantityChange(index, e.target.value)}
-                  />
-                </div>
-              ))}
-              {error.ingredients && <p>{error.ingredients}</p>}
-            </label>
-            <label>
-              Instructions:
-              <textarea
-                value={instruction}
-                onChange={e => setInstruction(e.target.value)}
-                placeholder="Instructions de préparation"
-              />
-              {error.instruction && <p>{error.instruction}</p>}
-            </label>
-            <label>
-              Temps de préparation:
-              <input
-                type="text"
-                value={time}
-                onChange={e => setTime(e.target.value)}
-                placeholder="Ex: 30 min"
-              />
-              {error.time && <p>{error.time}</p>}
-            </label>
-            <label>
-              Difficulté:
-              <select
-                value={difficulty}
-                onChange={e => setDifficulty(e.target.value)}
-              >
-                <option value="Facile">Facile</option>
-                <option value="Moyenne">Moyenne</option>
-                <option value="Difficile">Difficile</option>
-              </select>
-            </label>
-            <label>
-              Catégorie de la recette:
-              <Select
-                options={recipeCategory.map(category => ({ label: category.name, value: category.id }))}
-                onChange={option => setCategory(recipeCategory.find(cat => cat.id === option?.value) || null)}
-                placeholder="Sélectionnez une catégorie"
-              />
-              {error.recipeCategory && <p>{error.recipeCategory}</p>}
-            </label>
-            <label>
-              Film ou Série associé:
-              <Select
-                options={moviesSeries.map(movie => ({ label: movie.name, value: movie.id }))}
-                onChange={option => setMovieAndSerie(moviesSeries.find(movie => movie.id === option?.value) || null)}
-                placeholder="Sélectionnez un film ou une série"
-              />
-              {error.movieAndSerie && <p>{error.movieAndSerie}</p>}
-            </label>
-            <div className="modal-actions">
-              <button type="button" onClick={onClose}>Annuler</button>
-              <button type="submit">Enregistrer</button>
-            </div>
-          </form>
-        </div>
+      <div className="modal-Recipe">
+        <form onSubmit={handleSubmit}>
+          <h2>Créer une nouvelle recette</h2>
+          <label>
+            Nom de la recette:
+            <input
+              type="text"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              placeholder="Nom de la recette"
+            />
+            {error.name && <p>{error.name}</p>}
+          </label>
+          <label>
+            Description:
+            <textarea
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+              placeholder="Description de la recette"
+            />
+            {error.description && <p>{error.description}</p>}
+          </label>
+          <label>
+            Ingrédients:
+            <Select
+              isMulti
+              options={ingredients?.map((ing) => ({ label: ing.name, value: ing.id })) || []}
+              onChange={handleIngredientChange}
+              placeholder="Sélectionnez les ingrédients"
+            />
+            {selectedIngredients.map((ing, index) => (
+              <div key={ing.id}>
+                <span>{ing.name}</span>
+                <input
+                  type="text"
+                  placeholder="Quantité"
+                  value={ing.quantity}
+                  onChange={e => handleQuantityChange(index, e.target.value)}
+                />
+              </div>
+            ))}
+            {error.ingredients && <p>{error.ingredients}</p>}
+          </label>
+          <label>
+            Instructions:
+            <textarea
+              value={instruction}
+              onChange={e => setInstruction(e.target.value)}
+              placeholder="Instructions de préparation"
+            />
+            {error.instruction && <p>{error.instruction}</p>}
+          </label>
+          <label>
+            Temps de préparation:
+            <input
+              type="text"
+              value={time}
+              onChange={e => setTime(e.target.value)}
+              placeholder="Ex: 30 min"
+            />
+            {error.time && <p>{error.time}</p>}
+          </label>
+          <label>
+            Difficulté:
+            <select
+              value={difficulty}
+              onChange={e => setDifficulty(e.target.value)}
+            >
+              <option value="Facile">Facile</option>
+              <option value="Moyenne">Moyenne</option>
+              <option value="Difficile">Difficile</option>
+            </select>
+          </label>
+          <label>
+            Catégorie de la recette:
+            <Select
+              options={recipeCategory?.map(category => ({ label: category.name, value: category.id })) || []}
+              onChange={option => setCategory(recipeCategory.find(cat => cat.id === option?.value) || null)}
+              placeholder="Sélectionnez une catégorie"
+            />
+            {error.recipeCategory && <p>{error.recipeCategory}</p>}
+          </label>
+          <label>
+            Film ou Série associé:
+            <Select
+              options={moviesSeries?.map(movie => ({ label: movie.name, value: movie.id })) || []}
+              onChange={option => setMovieAndSerie(moviesSeries.find(movie => movie.id === option?.value) || null)}
+              placeholder="Sélectionnez un film ou une série"
+            />
+            {error.movieAndSerie && <p>{error.movieAndSerie}</p>}
+          </label>
+          <div className="modal-actions">
+            <button type="button" onClick={onClose}>Annuler</button>
+            <button type="submit">Enregistrer</button>
+          </div>
+        </form>
       </div>
+    </div>
   );
 }
-
-
-
-
-
-
-

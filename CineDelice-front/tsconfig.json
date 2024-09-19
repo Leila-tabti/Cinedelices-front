@@ -5,9 +5,4 @@
     { "path": "./tsconfig.node.json" }
   ]
 }
-{
-  "scripts": {
-    "dev": "vite"  // Ou toute autre commande appropriée
-  }
-}
 

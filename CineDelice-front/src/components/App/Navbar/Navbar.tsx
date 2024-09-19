@@ -45,13 +45,22 @@ export default function Navbar({ onNavItemClick }: NavBarProps) {
             <li className="navbar-item" onClick={onNavItemClick}>
               <NavLink to="/" onClick={handleLogout}>Déconnexion</NavLink>
             </li>
+            {user.userRole === 'admin' ? (
+              <li className="navbar-item" onClick={onNavItemClick}>
+                <NavLink to="/Admin">Admin</NavLink>
+              </li>
+            ) : (
+              <li className="navbar-item" onClick={onNavItemClick}>
+                <NavLink to="/Profile">Profile</NavLink>
+              </li>
+            )}
           </>
         ) : (
           <>
             <li className="navbar-item" onClick={onNavItemClick}>
               <NavLink to='/Login'>Connexion</NavLink>
             </li>
-            <li className="navbar-item" onClick={onNavItemClick}>
+            <li className="navbar-item none" onClick={onNavItemClick}>
               <NavLink to='/Register'>Inscription</NavLink>
             </li>
           </>

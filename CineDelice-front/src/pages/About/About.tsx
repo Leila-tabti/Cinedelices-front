@@ -1,6 +1,10 @@
 import React from 'react';
 import '../About/About.scss';
-import About1 from '../../assets/Pictures/About/About.webp';
+import About1 from '../../assets/About/About.webp';
+import About2 from '../../assets/About/About2.jpg';
+import About3 from '../../assets/About/About3.jpg';
+import About4 from '../../assets/About/About4.jpg';
+import About5 from '../../assets/About/About5.jpg';
 
 export default function About() {
     return (
@@ -30,7 +34,7 @@ export default function About() {
                             voyage culinaire unique.
                         </p>
                     </div>
-                    <img src={About1} alt="Mission Image" />
+                    <img src={About2} alt="Mission Image" />
                 </section>
 
                 <section>
@@ -41,7 +45,7 @@ export default function About() {
                             qui souhaitent découvrir des plats sous un nouvel angle, celui de vos films et séries préférés.
                         </p>
                     </div>
-                    <img src={About1} alt="Public Image" />
+                    <img src={About3} alt="Public Image" />
                 </section>
 
                 <section>
@@ -52,7 +56,7 @@ export default function About() {
                             L'organisation suit la méthode agile pour permettre un développement collaboratif et itératif pendant 4 semaines.
                         </p>
                     </div>
-                    <img src={About1} alt="Team Image" />
+                    <img src={About4} alt="Team Image" />
                 </section>
 
                 <section>
@@ -63,7 +67,7 @@ export default function About() {
                             Il s'agit d'un exercice complet qui couvre toutes les étapes de la création d'un site, de la conception au déploiement.
                         </p>
                     </div>
-                    <img src={About1} alt="Project Image" />
+                    <img src={About5} alt="Project Image" />
                 </section>
             </div>
         </main>

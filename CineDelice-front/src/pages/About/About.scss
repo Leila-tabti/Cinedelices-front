@@ -2,65 +2,87 @@
 @use '../../styles/reset';
 @use '../../styles/fonts' as f;
 
-.about-page {  // Specific class for the "About" page
+.about-page {
     .about {
+      display: flex;
+      flex-direction: column;  // Column by default for mobile-first
+      gap: 1rem;
+      padding: 2rem;
+      margin: 0.5rem auto;
+      max-width: 1200px;  // Limits max width on large screens
+  
+      h1 {
+        font-size: f.$font-size-h1;
+        text-align: left;
+        margin-bottom: 2rem;
+      }
+  
+      section {
         display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        padding: 2rem;
-        margin: 1rem;
-
-        h1 {
-            font-size: f.$font-size-h1;
-            text-align: left;
-            margin-bottom: 2rem;
+        flex-direction: column;  // Column by default for mobile
+        align-items: center;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background-color: v.$color-light-red;
+        border-radius: 20px;
+        box-shadow: v.$color-shadow;
+        max-width: 1000px;  // Limits section size
+  
+        h2 {
+          font-size: f.$font-size-h2;
+          margin: 0;
         }
+  
+        p {
+          font-size: f.$font-size-p;
+          line-height: 1.5;
+          padding: 1.5rem;
+        }
+  
+        img {
+            width: 100%; 
+            max-width: 400px;  // Limits image width
+            height: 250px;  // Sets a consistent height for all images
+            object-fit: cover;  // Ensures image maintains aspect ratio and crops cleanly if needed
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+
+// For large screens (from 768px): change to "row"
+@media (min-width: 768px) {
+    .about-page {
+      .about {
+        gap: 2rem;
+        
         section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background-color: v.$color-light-red;
-            border-radius: 20px;
-            box-shadow: v.$color-shadow;
-            
-            h2 {
-                font-size: f.$font-size-h2;
-                margin: 0;
-            }
-            
-            p {
-                font-size: f.$font-size-p;
-                line-height: 1;
-                padding: 2rem;
-            }
-            
-            img {
-                width: 100%;
-                height: auto;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
+        max-width: 100%;  // Uses full width available
+        display: flex;
+        flex-direction: row;  // Switches to row layout on larger screens
+        align-items: flex-start;  // Aligns elements at the start
+        justify-content: space-between;  // Separates text and image
+        padding: 2rem;
+      }
+  
+      
+  
+        div {
+          max-width: 45%;  // Text takes 45% of the width
+          text-align: left;
         }
-    }
-
-    // Media query for wider screens (>= 768px)
-    @media (min-width: 768px) {
-        .about {
-            gap: 2rem;
-
-            section {
-                flex-direction: row;
-    
-                div {
-                    max-width: 40%;
-                    text-align: left;  // Text aligned to the left on larger screens
-                }
-                
-                img {
-                    max-width: 60%;  // Image takes up less space on larger screens
-                }
-            }
+          text-align: left;
         }
+  
+        img {
+          max-width: 50%;  // Image takes 50% of the width
+          height: auto;  // Ensures the image maintains its proportions
+        }
+  
+        p {
+          padding: 1.5rem;  // Reduces padding for a more compact design
+          line-height: 1.75rem;
+        }
+      }
     }
-}
+  

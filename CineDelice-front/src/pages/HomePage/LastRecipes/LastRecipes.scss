@@ -2,16 +2,14 @@
 @use "../../../styles/reset";
 @use "../../../styles/variables" as v;
 
-.last-recipes {
-    min-height: 100vh;
-    margin: 0 15vw ;
+.container {
+    width: 100%;
     background-color: v.$color-light-red;
     box-shadow: -10px 0px 15px rgba(253, 173, 173, 0.3), 10px 0px 15px rgba(253, 173, 173, 0.3);
     border-radius: 20px;
     z-index: 0;/* This element is at the base level within its stacking context */
     margin-top: 4rem;
     margin-bottom: 2rem;
-    padding-bottom: 2rem;
 }
 
 h1 {
@@ -61,7 +59,8 @@ h1 {
     padding: 0.1rem 1rem;
     border-radius: 20px;
     font-weight: bold;
-    margin-top: 10rem;
+    margin-top: 3rem;
+    text-align: center;
 }
   
 .recipes_button a {
@@ -69,4 +68,5 @@ h1 {
     text-transform: uppercase;
     font-size: f.$font-size-h2;
     text-decoration: none;
+    text-align: center;
 }

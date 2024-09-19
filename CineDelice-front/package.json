@@ -1,0 +1,12 @@
+{
+  "name": "cinedelice-front",
+  "version": "1.0.0",
+  "description": "1. Installer les dépendances Installez toutes les dépendances nécessaires au projet. Ces dépendances sont listées dans le fichier package.json. ``` npm install ```",
+  "main": "config.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -14,7 +14,7 @@ export default function LastRecipes() {
     }, [lastRecipes]);
 
     return (
-        <section className="last-recipes">
+        <section className="container">
             <h1>Vos dernières créations</h1>
 
             <div className="cards-container">
@@ -37,8 +37,9 @@ export default function LastRecipes() {
                 )}
             </div>
 
-            <NavLink to="/Recipes">
-                <button className="recipes_button">Voir toutes les recettes</button>
+            
+            <NavLink to="/recipes">
+            <button className="subscribe_button"><a href="/recipes">Toutes les recettes</a></button>
             </NavLink>
         </section>
     );

@@ -142,7 +142,7 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
 
   return (
     <div className="modal">
-      <div className="modal-overlay">
+     
         <div className="modal-Recipe">
           <form onSubmit={(e) => handleSubmit(e)}>
             <h2>Créer une nouvelle recette</h2>
@@ -249,6 +249,6 @@ export default function ModalAddRecipe({ onClose, recipes, setRecipes, ingredien
           </form>
         </div>
       </div>
-    </div>
+   
   );
 }

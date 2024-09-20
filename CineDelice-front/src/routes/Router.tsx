@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ModalAddRecipe from '../../components/Modal/ModalAddRecipe';
+import ModalAddRecipe from '../../components/Modal/ModalAddRecipe.tsx';
 import ModalDeleteRecipe from '../../components/Modal/ModalDeleteRecipe';
 import { useRootContext } from '../../routes/Root';
 import { NavLink } from 'react-router-dom';
